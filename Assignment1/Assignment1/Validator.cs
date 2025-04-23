@@ -50,5 +50,10 @@ namespace Assignment1
             }
             return false;
         }
+
+        public static bool IsContactListEmpty(List <Contact> contactList)
+        {
+            return contactList.Count == 0;
+        }
     }
 }

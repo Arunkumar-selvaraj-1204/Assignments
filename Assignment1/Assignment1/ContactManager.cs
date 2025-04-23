@@ -12,42 +12,50 @@ namespace Assignment1
         private List<Contact> _contactList= new List<Contact> ();
         public void AddContact()
         {
-            Console.WriteLine("Enter contact name:");
+            Console.Write("Enter contact name: ");
             String userName = Console.ReadLine();
             while (!Validator.ValidateName(userName) || Validator.IsDuplicateContact(_contactList, userName))
             {
                 Console.WriteLine("Enter a valid name and name should not be duplicate");
+                Console.Write("Enter contact name: ");
                 userName = Console.ReadLine();
             }
-            Console.WriteLine("Enter Phone number:");
+            Console.Write("Enter Phone number: ");
             string phoneNumber = Console.ReadLine();
             while (!Validator.ValidatePhoneNumber(phoneNumber) || Validator.IsDuplicateContact(_contactList,"",phoneNumber))
             {
                 Console.WriteLine("Enter valid Phone number and phone number should not be duplicate");
+                Console.Write("Enter Phone number: ");
                 phoneNumber = Console.ReadLine();
             }
-            Console.WriteLine("Enter email address");
+            Console.Write("Enter email address: ");
             string email = Console.ReadLine();
             while (!Validator.ValidateEmail(email) || Validator.IsDuplicateContact(_contactList, "", "", email))
             {
                 Console.WriteLine("Enter valid email and email should not be duplicate");
+                Console.Write("Enter email address: ");
                 email = Console.ReadLine();
             }
-            Console.WriteLine("Enter notes");
+            Console.Write("Enter notes: ");
             string notes = Console.ReadLine();
             Contact newContact = new Contact(userName, phoneNumber, email, notes);
             AddContactToList(newContact);
-            Console.WriteLine("Close");
             
         }
 
         public void EditContact()
         {
-            Console.WriteLine("Enter user name:");
+            if (Validator.IsContactListEmpty(_contactList))
+            {
+                Console.WriteLine("Your Contact list is empty");
+                return;
+            }
+            Console.Write("Enter user name:");
             String userName = Console.ReadLine();
             Contact selectedContact = FindContact(userName);
             if (selectedContact != null)
             {
+                Console.WriteLine("Enter the choise to edit: ");
                 Console.WriteLine($"1.Name: {selectedContact.Name}");
                 Console.WriteLine($"2.PhoneNumber: {selectedContact.PhoneNumber}");
                 Console.WriteLine($"3.Email:  {selectedContact.Email}");
@@ -67,6 +75,11 @@ namespace Assignment1
         }
         public void ViewContact()
         {
+            if( Validator.IsContactListEmpty(_contactList))
+            {
+                Console.WriteLine("Your Contact list is empty");
+                return;
+            }
             for(int index = 0; index < _contactList.Count; index++)
             {
                 Console.WriteLine($"{index + 1}. {_contactList[index].Name}");
@@ -75,7 +88,12 @@ namespace Assignment1
 
         public void SearchContact()
         {
-            Console.WriteLine("Enter userName/phoneNumber to search:");
+            if (Validator.IsContactListEmpty(_contactList))
+            {
+                Console.WriteLine("Your Contact list is empty");
+                return;
+            }
+            Console.Write("Enter userName/phoneNumber to search:");
             string userInput = Console.ReadLine();
             Contact searchedContact = FindContact(userInput);
             
@@ -94,7 +112,12 @@ namespace Assignment1
 
         public void DeleteContact()
         {
-            Console.WriteLine("Enter name/phoneNumber/email to delete");
+            if (Validator.IsContactListEmpty(_contactList))
+            {
+                Console.WriteLine("Your Contact list is empty");
+                return;
+            }
+            Console.Write("Enter name/phoneNumber/email to delete");
             string userInput = Console.ReadLine();
             Contact searchedContact = FindContact(userInput);
             if (searchedContact != null)
@@ -124,6 +147,7 @@ namespace Assignment1
                 while (!Validator.ValidatePhoneNumber(userInput))
                 {
                     Console.WriteLine("Enter valid PhoneNumber and it should not be duplicate");
+                    Console.Write("Enter PhoneNumber");
                     userInput = Console.ReadLine();
                 }
                 return GetContactByPhoneNumber(userInput);
@@ -132,7 +156,8 @@ namespace Assignment1
             {
                 while (!Validator.ValidateName(userInput))
                 {
-                    Console.WriteLine("Enter valid userName and it should not be duplicate");
+                    Console.WriteLine("Enter valid userName/email and it should not be duplicate");
+                    Console.Write("Enter UserName/email: ");
                     userInput = Console.ReadLine();
                 }
                 return GetContactByName(userInput);
@@ -170,31 +195,34 @@ namespace Assignment1
             switch(option)
             {
                 case 1:
-                    Console.WriteLine("Enter name");
+                    Console.Write("Enter name:");
                     string userName = Console.ReadLine();
                     while (!Validator.ValidateName(userName) || Validator.IsDuplicateContact(_contactList, userName))
                     {
                         Console.WriteLine("Enter a valid name and its should not be duplicate");
+                        Console.Write("Enter name:");
                         userName = Console.ReadLine();
                     }
                     contact.Name = userName;
                     break;
                 case 2:
-                    Console.WriteLine("Enter Phone Number");
+                    Console.Write("Enter Phone Number:");
                     string phoneNumber = Console.ReadLine();
                     while (!Validator.ValidatePhoneNumber(phoneNumber) || Validator.IsDuplicateContact(_contactList, "", phoneNumber))
                     {
                         Console.WriteLine("Enter a valid Phone number and its should not be duplicate");
+                        Console.Write("Enter Phone Number:");
                         phoneNumber = Console.ReadLine();
                     }
                     contact.PhoneNumber = phoneNumber;
                     break;
                 case 3:
-                    Console.WriteLine("Enter email");
+                    Console.Write("Enter email:");
                     string email = Console.ReadLine();
                     while (!Validator.ValidateEmail(email) || Validator.IsDuplicateContact(_contactList, "", "", email))
                     {
                         Console.WriteLine("Enter a valid email and its should not be duplicate");
+                        Console.Write("Enter email:");
                         email = Console.ReadLine();
                     }
                     contact.Email = email;
