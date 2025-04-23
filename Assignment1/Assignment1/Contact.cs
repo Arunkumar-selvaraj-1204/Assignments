@@ -9,10 +9,17 @@ namespace Assignment1
     internal class Contact
     {
         private string _name;
-        private long _phoneNumber;
+        private string _phoneNumber;
         private string _email;
         private string _notes;
 
+        public Contact(string name, string phoneNumber, string email, string notes)
+        {
+            _name = name;
+            _phoneNumber = phoneNumber;
+            _email = email;
+            _notes = notes;
+        }
         public string Name
         {
             get { return _name; }
@@ -20,7 +27,7 @@ namespace Assignment1
         }
 
 
-        public long PhoneNumber
+        public string PhoneNumber
         {
             get { return _phoneNumber; }
             set { _phoneNumber = value; }
