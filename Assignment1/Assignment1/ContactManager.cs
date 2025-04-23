@@ -64,6 +64,8 @@ namespace Assignment1
                     int contactIndex = _contactList.IndexOf(selectedContact);
                     selectedContact = EditContactDetail(editOption, selectedContact);
                     _contactList[contactIndex] = selectedContact;
+                    _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
+
                 }
                 
             }
