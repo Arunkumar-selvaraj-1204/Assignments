@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment1
+﻿namespace Assignment1
 {
     internal class ContactUi
     {
@@ -22,15 +16,15 @@ namespace Assignment1
                     switch (userSelection)
                     {
                         case 1:
-                            Console.WriteLine("Add contact");
+                            Console.WriteLine("Adding new contact...");
                             contactManager.AddContact();
                             break;
                         case 2:
-                            Console.WriteLine("edit");
+                            Console.WriteLine("Editing the contact...");
                             contactManager.EditContact();
                             break;
                         case 3:
-                            Console.WriteLine("view");
+                            Console.WriteLine("All contacts...");
                             contactManager.ViewContact();
                             break;
                         case 4:
