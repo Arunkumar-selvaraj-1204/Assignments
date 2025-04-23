@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BBE9A50A-16B1-40A8-936A-D9757A6CF2F4}|Assignment1\\Assignment1.csproj|c:\\users\\arunkumar.selvaraj\\desktop\\c# assignments\\assignments\\assignment1\\assignment1\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBE9A50A-16B1-40A8-936A-D9757A6CF2F4}|Assignment1\\Assignment1.csproj|solutionrelative:assignment1\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBE9A50A-16B1-40A8-936A-D9757A6CF2F4}|Assignment1\\Assignment1.csproj|c:\\users\\arunkumar.selvaraj\\desktop\\c# assignments\\assignments\\assignment1\\assignment1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBE9A50A-16B1-40A8-936A-D9757A6CF2F4}|Assignment1\\Assignment1.csproj|solutionrelative:assignment1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,24 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "gitignore",
+              "DocumentMoniker": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\gitignore",
+              "RelativeDocumentMoniker": "gitignore",
+              "ToolTip": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\gitignore",
+              "RelativeToolTip": "gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-23T04:28:18.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Contact.cs",
+              "DocumentMoniker": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\Assignment1\\Contact.cs",
+              "RelativeDocumentMoniker": "Assignment1\\Contact.cs",
+              "ToolTip": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\Assignment1\\Contact.cs",
+              "RelativeToolTip": "Assignment1\\Contact.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAuwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T04:08:43.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\Assignment1\\Program.cs",
               "RelativeDocumentMoniker": "Assignment1\\Program.cs",
               "ToolTip": "C:\\Users\\arunkumar.selvaraj\\Desktop\\C# Assignments\\Assignments\\Assignment1\\Assignment1\\Program.cs",
               "RelativeToolTip": "Assignment1\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T11:18:27.391Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
