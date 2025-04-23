@@ -105,7 +105,7 @@
             if (long.TryParse(userInput, out long PhoneNumber))
             {
                 userInput = InputManager.GetPhoneNumber(_contactList, false);
-                return GetContactByPhoneNumber(userInput);
+                return Utilities.GetContactByPhoneNumber(userInput, _contactList);
             }
             else
             {
@@ -115,36 +115,10 @@
                     Console.Write("Enter UserName/email: ");
                     userInput = Console.ReadLine();
                 }
-                return GetContactByName(userInput);
+                return Utilities.GetContactByNameOrEmail(userInput, _contactList);
             }
         }
-        private Contact GetContactByPhoneNumber(string phoneNumber)
-        {
-            foreach (Contact contact in _contactList)
-            {
-                if (contact.PhoneNumber == phoneNumber)
-                {
-                    return contact;
-                }
-            }
-            return null;
-        }
-
-        Contact GetContactByName(string userName)
-        {
-            foreach (Contact contact in _contactList)
-            {
-                if (contact.Name == userName)
-                {
-                    return contact;
-                }
-                else if (contact.Email == userName)
-                {
-                    return contact;
-                }
-            }
-            return null;
-        }
+        
         Contact EditContactDetail(int option, Contact contact)
         {
             switch(option)

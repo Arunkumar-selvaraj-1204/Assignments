@@ -7,13 +7,13 @@
             switch (message)
             {
                 case "EmptyList":
-                    Console.WriteLine("Your Contact list is empty");
+                    Utilities.PrintColorMessage("Your Contact list is empty", ConsoleColor.Red);
                     break;
                 case "NotFound":
-                    Console.WriteLine("Contact Not Found!");
+                    Utilities.PrintColorMessage("Contact Not Found!", ConsoleColor.Red);
                     break;
                 case "EditChoise":
-                    Console.WriteLine("\nEnter the choise to edit: ");
+                    Utilities.PrintColorMessage("\nEnter the choise to edit: ", ConsoleColor.Red);
                     break;
             }
         }
