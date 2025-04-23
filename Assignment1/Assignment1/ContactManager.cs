@@ -49,11 +49,77 @@ namespace Assignment1
             }
         }
 
+        public void SearchContact()
+        {
+            Console.WriteLine("Enter userName/phoneNumber:");
+            string userInput = Console.ReadLine();
+            Contact searchedContact = null;
+            if (long.TryParse(userInput, out long PhoneNumber))
+            {
+                while (!Validator.ValidatePhoneNumber(userInput))
+                {
+                    Console.WriteLine("Enter valid user name/PhoneNumber");
+                    userInput = Console.ReadLine();
+                }
+                searchedContact = GetContactByPhoneNumber(userInput);
+            }
+            else
+            {
+                while (!Validator.ValidateName(userInput))
+                {
+                    Console.WriteLine("Enter valid user name/PhoneNumber");
+                    userInput = Console.ReadLine();
+                }
+                searchedContact = GetContactByName(userInput);
+            }
+
+            if (searchedContact != null)
+            {
+                Console.WriteLine($"Name: {searchedContact.Name}");
+                Console.WriteLine($"PhoneNumber: {searchedContact.PhoneNumber}");
+                Console.WriteLine($"Email:  {searchedContact.Email}");
+                Console.WriteLine($"Notes: {searchedContact.Notes}");
+            }
+            else
+            {
+                Console.WriteLine("Contact not Found!");
+            }
+            }
+
+        private Contact GetContactByPhoneNumber(string phoneNumber)
+        {
+            foreach (Contact contact in _contactList)
+            {
+                if (contact.PhoneNumber == phoneNumber)
+                {
+                    return contact;
+                }
+            }
+            return null;
+        }
+
+
         // Helper functions
         void AddContactToList(Contact contact)
         {
             _contactList.Add(contact);
             _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        Contact GetContactByName(string userName)
+        {
+            foreach (Contact contact in _contactList)
+            {
+                if (contact.Name == userName)
+                {
+                    return contact;
+                }
+                else if (contact.Email == userName)
+                {
+                    return contact;
+                }
+            }
+            return null;
         }
     }
 }

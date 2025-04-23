@@ -34,6 +34,7 @@ namespace Assignment1
                             break;
                         case 4:
                             Console.WriteLine("serach");
+                            contactManager.SearchContact();
                             break;
                         case 5:
                             Console.WriteLine("delete");
