@@ -14,23 +14,23 @@ namespace Assignment1
         {
             Console.WriteLine("Enter contact name:");
             String userName = Console.ReadLine();
-            while (!Validator.ValidateName(userName))
+            while (!Validator.ValidateName(userName) || Validator.IsDuplicateContact(_contactList, userName))
             {
-                Console.WriteLine("Enter a valid name");
+                Console.WriteLine("Enter a valid name and name should not be duplicate");
                 userName = Console.ReadLine();
             }
             Console.WriteLine("Enter Phone number:");
             string phoneNumber = Console.ReadLine();
-            while (!Validator.ValidatePhoneNumber(phoneNumber))
+            while (!Validator.ValidatePhoneNumber(phoneNumber) || Validator.IsDuplicateContact(_contactList,"",phoneNumber))
             {
-                Console.WriteLine("Enter valid Phone number");
+                Console.WriteLine("Enter valid Phone number and phone number should not be duplicate");
                 phoneNumber = Console.ReadLine();
             }
             Console.WriteLine("Enter email address");
             string email = Console.ReadLine();
-            while (!Validator.ValidateEmail(email))
+            while (!Validator.ValidateEmail(email) || Validator.IsDuplicateContact(_contactList, "", "", email))
             {
-                Console.WriteLine("Enter valid email");
+                Console.WriteLine("Enter valid email and email should not be duplicate");
                 email = Console.ReadLine();
             }
             Console.WriteLine("Enter notes");
@@ -123,7 +123,7 @@ namespace Assignment1
             {
                 while (!Validator.ValidatePhoneNumber(userInput))
                 {
-                    Console.WriteLine("Enter valid userName/PhoneNumber");
+                    Console.WriteLine("Enter valid PhoneNumber and it should not be duplicate");
                     userInput = Console.ReadLine();
                 }
                 return GetContactByPhoneNumber(userInput);
@@ -132,7 +132,7 @@ namespace Assignment1
             {
                 while (!Validator.ValidateName(userInput))
                 {
-                    Console.WriteLine("Enter valid userName/PhoneNumber");
+                    Console.WriteLine("Enter valid userName and it should not be duplicate");
                     userInput = Console.ReadLine();
                 }
                 return GetContactByName(userInput);
@@ -172,9 +172,9 @@ namespace Assignment1
                 case 1:
                     Console.WriteLine("Enter name");
                     string userName = Console.ReadLine();
-                    while (!Validator.ValidateName(userName))
+                    while (!Validator.ValidateName(userName) || Validator.IsDuplicateContact(_contactList, userName))
                     {
-                        Console.WriteLine("Enter a valid name");
+                        Console.WriteLine("Enter a valid name and its should not be duplicate");
                         userName = Console.ReadLine();
                     }
                     contact.Name = userName;
@@ -182,9 +182,9 @@ namespace Assignment1
                 case 2:
                     Console.WriteLine("Enter Phone Number");
                     string phoneNumber = Console.ReadLine();
-                    while (!Validator.ValidateName(phoneNumber))
+                    while (!Validator.ValidatePhoneNumber(phoneNumber) || Validator.IsDuplicateContact(_contactList, "", phoneNumber))
                     {
-                        Console.WriteLine("Enter a valid Phone number");
+                        Console.WriteLine("Enter a valid Phone number and its should not be duplicate");
                         phoneNumber = Console.ReadLine();
                     }
                     contact.PhoneNumber = phoneNumber;
@@ -192,9 +192,9 @@ namespace Assignment1
                 case 3:
                     Console.WriteLine("Enter email");
                     string email = Console.ReadLine();
-                    while (!Validator.ValidateName(email))
+                    while (!Validator.ValidateEmail(email) || Validator.IsDuplicateContact(_contactList, "", "", email))
                     {
-                        Console.WriteLine("Enter a valid name");
+                        Console.WriteLine("Enter a valid email and its should not be duplicate");
                         email = Console.ReadLine();
                     }
                     contact.Email = email;
@@ -202,11 +202,6 @@ namespace Assignment1
                 case 4:
                     Console.WriteLine("Enter notes");
                     string notes = Console.ReadLine();
-                    while (!Validator.ValidateName(notes))
-                    {
-                        Console.WriteLine("Enter a valid name");
-                        notes = Console.ReadLine();
-                    }
                     contact.Notes = notes;
                     break;
             }
