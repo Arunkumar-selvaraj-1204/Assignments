@@ -27,6 +27,7 @@ namespace Assignment1
                             break;
                         case 2:
                             Console.WriteLine("edit");
+                            contactManager.EditContact();
                             break;
                         case 3:
                             Console.WriteLine("view");
@@ -38,6 +39,7 @@ namespace Assignment1
                             break;
                         case 5:
                             Console.WriteLine("delete");
+                            contactManager.DeleteContact();
                             break;
                         case 6:
                             Console.WriteLine("Exit");
@@ -51,7 +53,7 @@ namespace Assignment1
                 {
                     Console.WriteLine("Enter valid input");
                 }
-                if (userSelection == 5)
+                if (userSelection == 6)
                 {
                     isExit = true;
                 }

@@ -41,6 +41,30 @@ namespace Assignment1
             
         }
 
+        public void EditContact()
+        {
+            Console.WriteLine("Enter user name:");
+            String userName = Console.ReadLine();
+            Contact selectedContact = FindContact(userName);
+            if (selectedContact != null)
+            {
+                Console.WriteLine($"1.Name: {selectedContact.Name}");
+                Console.WriteLine($"2.PhoneNumber: {selectedContact.PhoneNumber}");
+                Console.WriteLine($"3.Email:  {selectedContact.Email}");
+                Console.WriteLine($"4.Notes: {selectedContact.Notes}");
+                if(int.TryParse(Console.ReadLine(), out int editOption)){
+                    int contactIndex = _contactList.IndexOf(selectedContact);
+                    selectedContact = EditContactDetail(editOption, selectedContact);
+                    _contactList[contactIndex] = selectedContact;
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine("Contact Not Found!");
+            }
+
+        }
         public void ViewContact()
         {
             for(int index = 0; index < _contactList.Count; index++)
@@ -51,28 +75,10 @@ namespace Assignment1
 
         public void SearchContact()
         {
-            Console.WriteLine("Enter userName/phoneNumber:");
+            Console.WriteLine("Enter userName/phoneNumber to search:");
             string userInput = Console.ReadLine();
-            Contact searchedContact = null;
-            if (long.TryParse(userInput, out long PhoneNumber))
-            {
-                while (!Validator.ValidatePhoneNumber(userInput))
-                {
-                    Console.WriteLine("Enter valid user name/PhoneNumber");
-                    userInput = Console.ReadLine();
-                }
-                searchedContact = GetContactByPhoneNumber(userInput);
-            }
-            else
-            {
-                while (!Validator.ValidateName(userInput))
-                {
-                    Console.WriteLine("Enter valid user name/PhoneNumber");
-                    userInput = Console.ReadLine();
-                }
-                searchedContact = GetContactByName(userInput);
-            }
-
+            Contact searchedContact = FindContact(userInput);
+            
             if (searchedContact != null)
             {
                 Console.WriteLine($"Name: {searchedContact.Name}");
@@ -84,8 +90,54 @@ namespace Assignment1
             {
                 Console.WriteLine("Contact not Found!");
             }
+        }
+
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter name/phoneNumber/email to delete");
+            string userInput = Console.ReadLine();
+            Contact searchedContact = FindContact(userInput);
+            if (searchedContact != null)
+            {
+                int contactIndex = _contactList.IndexOf(searchedContact);
+                _contactList.RemoveAt(contactIndex);
+            }
+            else
+            {
+                Console.WriteLine("Contact not Found!");
             }
 
+        }
+
+        // Helper functions
+
+        void AddContactToList(Contact contact)
+        {
+            _contactList.Add(contact);
+            _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        Contact FindContact(string userInput)
+        {
+            if (long.TryParse(userInput, out long PhoneNumber))
+            {
+                while (!Validator.ValidatePhoneNumber(userInput))
+                {
+                    Console.WriteLine("Enter valid userName/PhoneNumber");
+                    userInput = Console.ReadLine();
+                }
+                return GetContactByPhoneNumber(userInput);
+            }
+            else
+            {
+                while (!Validator.ValidateName(userInput))
+                {
+                    Console.WriteLine("Enter valid userName/PhoneNumber");
+                    userInput = Console.ReadLine();
+                }
+                return GetContactByName(userInput);
+            }
+        }
         private Contact GetContactByPhoneNumber(string phoneNumber)
         {
             foreach (Contact contact in _contactList)
@@ -96,14 +148,6 @@ namespace Assignment1
                 }
             }
             return null;
-        }
-
-
-        // Helper functions
-        void AddContactToList(Contact contact)
-        {
-            _contactList.Add(contact);
-            _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
         }
 
         Contact GetContactByName(string userName)
@@ -120,6 +164,53 @@ namespace Assignment1
                 }
             }
             return null;
+        }
+        Contact EditContactDetail(int option, Contact contact)
+        {
+            switch(option)
+            {
+                case 1:
+                    Console.WriteLine("Enter name");
+                    string userName = Console.ReadLine();
+                    while (!Validator.ValidateName(userName))
+                    {
+                        Console.WriteLine("Enter a valid name");
+                        userName = Console.ReadLine();
+                    }
+                    contact.Name = userName;
+                    break;
+                case 2:
+                    Console.WriteLine("Enter Phone Number");
+                    string phoneNumber = Console.ReadLine();
+                    while (!Validator.ValidateName(phoneNumber))
+                    {
+                        Console.WriteLine("Enter a valid Phone number");
+                        phoneNumber = Console.ReadLine();
+                    }
+                    contact.PhoneNumber = phoneNumber;
+                    break;
+                case 3:
+                    Console.WriteLine("Enter email");
+                    string email = Console.ReadLine();
+                    while (!Validator.ValidateName(email))
+                    {
+                        Console.WriteLine("Enter a valid name");
+                        email = Console.ReadLine();
+                    }
+                    contact.Email = email;
+                    break;
+                case 4:
+                    Console.WriteLine("Enter notes");
+                    string notes = Console.ReadLine();
+                    while (!Validator.ValidateName(notes))
+                    {
+                        Console.WriteLine("Enter a valid name");
+                        notes = Console.ReadLine();
+                    }
+                    contact.Notes = notes;
+                    break;
+            }
+            return contact;
         }
     }
 }
