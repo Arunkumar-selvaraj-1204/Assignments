@@ -36,17 +36,24 @@ namespace Assignment1
             Console.WriteLine("Enter notes");
             string notes = Console.ReadLine();
             Contact newContact = new Contact(userName, phoneNumber, email, notes);
-            _contactList.Add(newContact);
+            AddContactToList(newContact);
             Console.WriteLine("Close");
             
         }
 
         public void ViewContact()
         {
-            foreach(Contact contact in _contactList)
+            for(int index = 0; index < _contactList.Count; index++)
             {
-                Console.WriteLine(contact.Name);
+                Console.WriteLine($"{index + 1}. {_contactList[index].Name}");
             }
+        }
+
+        // Helper functions
+        void AddContactToList(Contact contact)
+        {
+            _contactList.Add(contact);
+            _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

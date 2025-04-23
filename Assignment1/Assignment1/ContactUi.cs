@@ -17,7 +17,7 @@ namespace Assignment1
                 Console.WriteLine("Contact Manager");
             do
                 {
-                    Console.WriteLine("1. Add new contact \n2. Edit contact \n3. View contact \n4. Delete contact \n5. Exit");
+                    Console.WriteLine("1. Add new contact \n2. Edit contact \n3. View contact \n4. Search contact \n5. Delete Contact \n6. Exit");
                 if (int.TryParse(Console.ReadLine(), out userSelection)){
                     switch (userSelection)
                     {
@@ -33,10 +33,13 @@ namespace Assignment1
                             contactManager.ViewContact();
                             break;
                         case 4:
-                            Console.WriteLine("delete");
+                            Console.WriteLine("serach");
                             break;
                         case 5:
-                            Console.WriteLine("exit");
+                            Console.WriteLine("delete");
+                            break;
+                        case 6:
+                            Console.WriteLine("Exit");
                             break;
                         default:
                             Console.WriteLine("Enter a valid input");
