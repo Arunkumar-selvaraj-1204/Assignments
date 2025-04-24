@@ -18,14 +18,14 @@ namespace EmployeeHierarchy
             salary = IOManager.GetSalary();
         }
 
-        public override decimal CalculateSalary()
+        public override decimal CalculateBonus()
         {
             return salary * (decimal)0.02;
         }
 
         public void PrintDetails()
         {
-            IOManager.PrintEmployeeDetails(name, "Developer", salary, CalculateSalary());
+            IOManager.PrintEmployeeDetails(name, "Developer", salary, CalculateBonus());
         }
     }
 }
