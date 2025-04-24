@@ -25,7 +25,7 @@ namespace EmployeeHierarchy
 
         public void PrintDetails()
         {
-            IOManager.PrintEmployeeDetails(name, salary);
+            IOManager.PrintEmployeeDetails(name, "Developer", salary, CalculateSalary());
         }
     }
 }

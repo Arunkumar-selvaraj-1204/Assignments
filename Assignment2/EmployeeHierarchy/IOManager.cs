@@ -16,8 +16,8 @@ namespace EmployeeHierarchy
             string userInput = Console.ReadLine();
             while (string.IsNullOrWhiteSpace(userInput) || userInput.Any(char.IsDigit))
             {
+                Console.WriteLine("Invalid input!");
                 Console.Write($"Enter the {parameter}: ");
-                Console.WriteLine("Invalid input! Please enter a decimal or integer.");
                 userInput = Console.ReadLine();
             }
             return userInput;
@@ -29,18 +29,33 @@ namespace EmployeeHierarchy
             decimal parsedInput;
             while (!decimal.TryParse(userInput, out parsedInput))
             {
-                Console.Write("Enter the salary: ");
                 Console.WriteLine("Invalid input! Please enter a decimal or integer.");
+                Console.Write("Enter the salary: ");
                 userInput = Console.ReadLine();
             }
             return parsedInput;
         }
 
-        public static void PrintEmployeeDetails(string name, decimal salary)
+        public static void PrintEmployeeDetails(string name, string position, decimal salary, decimal bonus)
         {
-            Console.WriteLine($"Name: {name} \nSalary: {salary}");
+            Console.WriteLine($"Name: {name} \nPosition: {position} \nSalary: {salary} \nBonus: {bonus}");
+            Console.WriteLine("\n================\n");
         }
-    
+        public static int GetChoice()
+        {
+            Console.WriteLine("1. Manager \n2. Developer \n3. Exit");
+            Console.Write("Enter choice: ");
+            string userInput = Console.ReadLine();
+            int userChoice;
+            while (!int.TryParse(userInput, out userChoice))
+            {
+                Console.Write("Enter choice: ");
+                Console.WriteLine("Enter a valid input");
+                userInput = Console.ReadLine();
+            }
+            return userChoice;
+        }
+
     }
 
 }
