@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,8 +27,9 @@ namespace ShapeHierarchy
         {
             Console.Write("Enter color: ");
             string color = Console.ReadLine();
-            while (string.IsNullOrWhiteSpace(color))
+            while (string.IsNullOrWhiteSpace(color) || color.Any(char.IsDigit))
             {
+                Console.WriteLine("Invalid Color");
                 Console.Write("Enter color: ");
                 color = Console.ReadLine();
             }
