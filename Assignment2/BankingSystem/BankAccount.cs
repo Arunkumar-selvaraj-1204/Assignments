@@ -15,6 +15,6 @@ namespace BankingSystem
         {
             balance += amount;
         }
-        public abstract void WithdrawAmount();
+        public abstract void WithdrawAmount(decimal amount);
     }
 }
