@@ -14,6 +14,7 @@ namespace BankingSystem
         public void DepositAmount(decimal amount)
         {
             balance += amount;
+            Console.WriteLine($"Rs.{amount} deposit successfully. Current balance: {balance}");
         }
         public abstract void WithdrawAmount(decimal amount);
     }

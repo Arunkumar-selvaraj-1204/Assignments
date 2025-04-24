@@ -13,6 +13,10 @@ namespace BankingSystem
             if (balance - amount < 0)
             {
                 Console.WriteLine("Insufficient Balance!!!.");
+            }else
+            {
+                balance -= amount;
+                Console.WriteLine($"Rs.{amount} deposit successfully. Current balance: {balance}");
             }
         }
     }

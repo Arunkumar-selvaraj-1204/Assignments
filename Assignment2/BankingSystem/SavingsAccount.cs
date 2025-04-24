@@ -14,6 +14,11 @@ namespace BankingSystem
             {
                 Console.WriteLine("Insufficient Balance!!!. You should maintain Rs.100 as minimum balance.");
             }
+            else
+            {
+                balance -= amount;
+                Console.WriteLine($"Rs.{amount} deposit successfully. Current balance: {balance}");
+            }
         }
     }
 }
