@@ -6,10 +6,9 @@
         {
             ShapeGenerator generator = new ShapeGenerator();
             bool isExit = false;
-            Console.WriteLine("1. Create rectangle \n2. Create circle \n3. Exit");
-            int userChoice = InputManager.GetChoice();
             while (!isExit)
             {
+                int userChoice = InputManager.GetChoice();
                 switch (userChoice)
                 {
                     case 1:

@@ -38,6 +38,7 @@ namespace ShapeHierarchy
 
         public static int GetChoice()
         {
+            Console.WriteLine("1. Create rectangle \n2. Create circle \n3. Exit");
             Console.Write("Enter choice: ");
             string userInput = Console.ReadLine();
             int userChoice;
