@@ -44,8 +44,8 @@ namespace ShapeHierarchy
             int userChoice;
             while(!int.TryParse(userInput , out userChoice))
             {
-                Console.Write("Enter choice: ");
                 Console.WriteLine("Enter a valid input");
+                Console.Write("Enter choice: ");
                 userInput = Console.ReadLine();
             }
             return userChoice;
