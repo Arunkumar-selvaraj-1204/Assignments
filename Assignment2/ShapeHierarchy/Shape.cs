@@ -8,8 +8,8 @@ namespace ShapeHierarchy
 {
     internal abstract class Shape
     {
-        string color = "Red";
-        public abstract int CalculateArea();
+        public string color { get; set; }
+        public abstract double CalculateArea();
         public void PrintDetails()
         {
             Console.WriteLine("It a generic shape");
