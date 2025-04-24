@@ -2,6 +2,10 @@
 {
     internal class OutputManager
     {
+        /// <summary>
+        /// To print the correct message in the console.
+        /// </summary>
+        /// <param name="message">message to check condition.</param>
         public static void PrintMessage(string message)
         {
             switch (message)
@@ -18,6 +22,10 @@
             }
         }
 
+        /// <summary>
+        /// To print contact details.
+        /// </summary>
+        /// <param name="contact">particular contact</param>
         public static void PrintContactDetails(Contact contact)
         {
             Console.WriteLine($"1.Name: {contact.Name}");
@@ -26,6 +34,10 @@
             Console.WriteLine($"4.Notes: {contact.Notes}");
         }
 
+        /// <summary>
+        /// To print all the contact name in the list.
+        /// </summary>
+        /// <param name="contactList">contact list</param>
         public static void PrintContactNames(List<Contact> contactList)
         {
             for (int index = 0; index < contactList.Count; index++)

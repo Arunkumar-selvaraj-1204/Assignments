@@ -6,6 +6,9 @@
         int userSelection = 0;
         ContactManager contactManager = new ContactManager();
         
+        /// <summary>
+        /// To get user input to perofom the operation.
+        /// </summary>
         public void GetUserInput()
         {
                 Console.WriteLine("Welcome to Contact Manager!!");

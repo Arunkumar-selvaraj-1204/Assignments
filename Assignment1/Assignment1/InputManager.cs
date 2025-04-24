@@ -2,6 +2,12 @@
 {
     internal class InputManager
     {
+        /// <summary>
+        /// To get valid contact name from the user
+        /// </summary>
+        /// <param name="_contactList">contact list</param>
+        /// <param name="checkDuplicate">whether need to check duplicate or not</param>
+        /// <returns>returns the valid user name</returns>
         public static string GetUserName(List<Contact> _contactList, bool checkDuplicate)
         {
             Console.Write("Enter contact name: ");
@@ -16,6 +22,12 @@
             return userName;
         }
 
+        /// <summary>
+        /// To get valid phone number from the user.
+        /// </summary>
+        /// <param name="_contactList">Contact list</param>
+        /// <param name="checkDuplicate">whether need to check duplicate or not<</param>
+        /// <returns>returns the valid user phone number</returns>
         public static string GetPhoneNumber(List<Contact> _contactList, bool checkDuplicate)
         {
             Console.Write("Enter Phone number: ");
@@ -30,6 +42,12 @@
             return phoneNumber;
         }
 
+        /// <summary>
+        /// To get valid email from the user.
+        /// </summary>
+        /// <param name="_contactList">Contact list</param>
+        /// <param name="checkDuplicate">whether need to check duplicate or not<</param>
+        /// <returns>returns the valid email</returns>
         public static string GetEmail(List<Contact> _contactList, bool checkDuplicate)
         {
             Console.Write("Enter email address: ");
@@ -44,12 +62,21 @@
             return email;
         }
 
+        /// <summary>
+        /// To get additional notes from the user.
+        /// </summary>
+        /// <returns>returns additional notes.</returns>
         public static string GetNotes()
         {
             Console.Write("Enter notes: ");
             string notes = Console.ReadLine();
             return notes;
         }
+
+        /// <summary>
+        /// To get contact name or phone number from user.
+        /// </summary>
+        /// <returns>returns contact name or phone number</returns>
         public static string GetNameOrPhoneNumber()
         {
             Console.Write("Enter userName/phoneNumber to search:");
@@ -57,6 +84,10 @@
             return userInput;
         }
 
+        /// <summary>
+        /// To get contact name or phone number or email from user.
+        /// </summary>
+        /// <returns>returns contact name or phone number or email</returns>
         public static string GetNameOrPhoneNumberOrEmail()
         {
             Console.Write("Enter name/phoneNumber/email to delete");
