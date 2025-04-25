@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InventoryManager.Utils;
 
 namespace InventoryManager.IOManager
 {
@@ -13,9 +14,19 @@ namespace InventoryManager.IOManager
             Console.WriteLine("\n1. Add new product \n2. View all products \n3. Search product \n4. Edit product details \n5. Delete Product \n6. Exit");
         }
 
-        public static void PrintInvalidOption(string format)
+        public static void PrintInvalidOption(string validFormat)
         {
-            Console.WriteLine($"Invalid option. {format}");
+            Console.WriteLine($"Invalid option. {validFormat}");
+        }
+        public static void PrintInvalidInput(string validFormat)
+        {
+            Utilities.PrintColorMessage("Invalid Input!", ConsoleColor.Red);
+            Console.WriteLine(validFormat);
+        }
+
+        public static void PrintCurrentTask(string task)
+        {
+            Console.WriteLine($"----- {task} PRODUCT -----");
         }
     }
 }

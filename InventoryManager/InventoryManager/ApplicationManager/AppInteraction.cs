@@ -12,6 +12,7 @@ namespace InventoryManager.ApplicationManager
     internal class AppInteraction
     {
         bool isExit = false;
+        InventoryManager inventoryManager = new InventoryManager();
         public void DisplayInitialMenu()
         {
             OutputManager.PrintInitialMenu();
@@ -29,7 +30,7 @@ namespace InventoryManager.ApplicationManager
                 switch (choice)
                 {
                     case MainMenuChoices.addProduct:
-                        //add
+                        inventoryManager.AddProduct();
                         break;
                     case MainMenuChoices.viewProduct:
                         //view
