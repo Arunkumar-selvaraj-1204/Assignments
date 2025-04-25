@@ -11,7 +11,7 @@ namespace Assignment1
         /// <returns>return true if contact name is valid otherwise false</returns>
         public static bool ValidateName(string name)
         {
-            if(name.Trim() == "")
+            if(string.IsNullOrWhiteSpace(name) || !Regex.IsMatch(name, "[A-Za-z]"))
             {
                 return false;
             }

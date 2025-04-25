@@ -1,4 +1,6 @@
-﻿namespace Assignment1
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Assignment1
 {
     internal class ContactManager
     {
@@ -9,12 +11,15 @@
         /// </summary>
         public void AddContact()
         {
+            Console.Clear();
+            OutputManager.PrintCurrentTask("Add");
             string userName = InputManager.GetUserName(_contactList, true);
             string phoneNumber = InputManager.GetPhoneNumber(_contactList, true);
             string email = InputManager.GetEmail(_contactList, true);
             string notes = InputManager.GetNotes();
             Contact newContact = new Contact(userName, phoneNumber, email, notes);
             AddContactToList(newContact);
+            OutputManager.PrintSuccessMessaage("add");
 
         }
 
@@ -28,8 +33,10 @@
                 OutputManager.PrintMessage("EmptyList");
                 return;
             }
+            Console.Clear();
+            OutputManager.PrintCurrentTask("Edit");
             string userName = InputManager.GetUserName(_contactList, false);
-            Contact selectedContact = FindContact(userName);
+            Contact selectedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userName, _contactList);
             if (selectedContact != null)
             {
                 OutputManager.PrintMessage("EditChoise");
@@ -40,6 +47,7 @@
                     selectedContact = EditContactDetail(editOption, selectedContact);
                     _contactList[contactIndex] = selectedContact;
                     _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
+                    OutputManager.PrintSuccessMessaage("edit");
                 }
 
             }
@@ -59,7 +67,10 @@
                 OutputManager.PrintMessage("EmptyList");
                 return;
             }
+            Console.Clear();
+            OutputManager.PrintCurrentTask("View");
             OutputManager.PrintContactNames(_contactList);
+            OutputManager.PrintSuccessMessaage("view");
         }
 
         /// <summary>
@@ -72,12 +83,15 @@
                 OutputManager.PrintMessage("EmptyList");
                 return;
             }
-            string userInput = InputManager.GetNameOrPhoneNumber();
-            Contact searchedContact = FindContact(userInput);
+            Console.Clear();
+            OutputManager.PrintCurrentTask("Search");
+            string userInput = InputManager.GetNameOrPhoneNumberOrEmail();
+            Contact searchedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
 
             if (searchedContact != null)
             {
                 OutputManager.PrintContactDetails(searchedContact);
+                OutputManager.PrintSuccessMessaage("search");
             }
             else
             {
@@ -95,12 +109,15 @@
                 OutputManager.PrintMessage("EmptyList");
                 return;
             }
+            Console.Clear();
+            OutputManager.PrintCurrentTask("Delete");
             string userInput = InputManager.GetNameOrPhoneNumberOrEmail();
-            Contact searchedContact = FindContact(userInput);
+            Contact searchedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
             if (searchedContact != null)
             {
                 int contactIndex = _contactList.IndexOf(searchedContact);
                 _contactList.RemoveAt(contactIndex);
+                OutputManager.PrintSuccessMessaage("delete");
             }
             else
             {
@@ -119,30 +136,6 @@
         {
             _contactList.Add(contact);
             _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
-        }
-
-        /// <summary>
-        /// To find a contact using name or email or phone number.
-        /// </summary>
-        /// <param name="userInput">user input which is name or email or phone number</param>
-        /// <returns>Returns the contact if exist otherwise null </returns>
-        Contact FindContact(string userInput)
-        {
-            if (long.TryParse(userInput, out long PhoneNumber))
-            {
-                userInput = InputManager.GetPhoneNumber(_contactList, false);
-                return Utilities.GetContactByPhoneNumber(userInput, _contactList);
-            }
-            else
-            {
-                while (!Validator.ValidateName(userInput))
-                {
-                    Console.WriteLine("Enter valid userName/email and it should not be duplicate");
-                    Console.Write("Enter UserName/email: ");
-                    userInput = Console.ReadLine();
-                }
-                return Utilities.GetContactByNameOrEmail(userInput, _contactList);
-            }
         }
 
         /// <summary>

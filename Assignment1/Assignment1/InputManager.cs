@@ -74,25 +74,31 @@
         }
 
         /// <summary>
-        /// To get contact name or phone number from user.
-        /// </summary>
-        /// <returns>returns contact name or phone number</returns>
-        public static string GetNameOrPhoneNumber()
-        {
-            Console.Write("Enter userName/phoneNumber to search:");
-            string userInput = Console.ReadLine();
-            return userInput;
-        }
-
-        /// <summary>
         /// To get contact name or phone number or email from user.
         /// </summary>
         /// <returns>returns contact name or phone number or email</returns>
         public static string GetNameOrPhoneNumberOrEmail()
         {
-            Console.Write("Enter name/phoneNumber/email to delete");
+            Console.Write("Enter name/phoneNumber/email: ");
             string userInput = Console.ReadLine();
+            while(!Validator.ValidateName(userInput) && !Validator.ValidateEmail(userInput) && !Validator.ValidatePhoneNumber(userInput))
+            {
+                Console.Write("Invalid input! \nEnter name/phoneNumber/email: ");
+                userInput = Console.ReadLine();
+            }
             return userInput;
+        }
+
+        public static string ReadPhoneNumber()
+        {
+            Console.Write("Enter Phone number: ");
+            string phoneNumber = Console.ReadLine();
+            if (!Validator.ValidatePhoneNumber(phoneNumber))
+            {
+                Console.WriteLine("Enter a valid phoneNumber.");
+                return null;
+            }
+            return phoneNumber;
         }
     }
 }

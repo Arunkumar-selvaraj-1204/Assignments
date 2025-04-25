@@ -11,10 +11,10 @@
         /// </summary>
         public void GetUserInput()
         {
-                Console.WriteLine("Welcome to Contact Manager!!");
+                Console.WriteLine("=== Welcome to Contact Manager!! ===");
             do
                 {
-                    Console.Write("\n=======================================\n1. Add new contact \n2. Edit contact \n3. View contact \n4. Search contact \n5. Delete Contact \n6. Exit\nEnter your choice: ");
+                    Console.Write("\n1. Add new contact \n2. Edit contact \n3. View contact \n4. Search contact \n5. Delete Contact \n6. Exit\nEnter your choice: ");
                 if (int.TryParse(Console.ReadLine(), out userSelection)){
                     switch (userSelection)
                     {
