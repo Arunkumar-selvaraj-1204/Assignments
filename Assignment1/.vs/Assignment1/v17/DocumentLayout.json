@@ -42,11 +42,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -80,8 +84,8 @@
               "Title": "OutputManager.cs",
               "DocumentMoniker": "C:\\Users\\Arun AK\\source\\repos\\Assignments\\Assignment1\\Assignment1\\OutputManager.cs",
               "RelativeDocumentMoniker": "Assignment1\\OutputManager.cs",
-              "ToolTip": "C:\\Users\\Arun AK\\source\\repos\\Assignments\\Assignment1\\Assignment1\\OutputManager.cs*",
-              "RelativeToolTip": "Assignment1\\OutputManager.cs*",
+              "ToolTip": "C:\\Users\\Arun AK\\source\\repos\\Assignments\\Assignment1\\Assignment1\\OutputManager.cs",
+              "RelativeToolTip": "Assignment1\\OutputManager.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAewCoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T11:54:23.683Z",
@@ -93,9 +97,9 @@
               "Title": "ContactManager.cs",
               "DocumentMoniker": "C:\\Users\\Arun AK\\source\\repos\\Assignments\\Assignment1\\Assignment1\\ContactManager.cs",
               "RelativeDocumentMoniker": "Assignment1\\ContactManager.cs",
-              "ToolTip": "C:\\Users\\Arun AK\\source\\repos\\Assignments\\Assignment1\\Assignment1\\ContactManager.cs*",
-              "RelativeToolTip": "Assignment1\\ContactManager.cs*",
-              "ViewState": "AgIAADkAAAAAAAAAAAAYwEkAAAAtAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Arun AK\\source\\repos\\Assignments\\Assignment1\\Assignment1\\ContactManager.cs",
+              "RelativeToolTip": "Assignment1\\ContactManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T05:43:48.902Z",
               "EditorCaption": ""
