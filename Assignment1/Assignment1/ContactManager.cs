@@ -33,10 +33,12 @@ namespace Assignment1
                 OutputManager.PrintMessage("EmptyList");
                 return;
             }
+
             Console.Clear();
             OutputManager.PrintCurrentTask("Edit");
-            string userName = InputManager.GetUserName(_contactList, false);
-            Contact selectedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userName, _contactList);
+            string userInput = InputManager.GetNameOrPhoneNumberOrEmail();
+            Contact selectedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
+
             if (selectedContact != null)
             {
                 OutputManager.PrintMessage("EditChoise");
@@ -115,9 +117,21 @@ namespace Assignment1
             Contact searchedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
             if (searchedContact != null)
             {
-                int contactIndex = _contactList.IndexOf(searchedContact);
-                _contactList.RemoveAt(contactIndex);
-                OutputManager.PrintSuccessMessaage("delete");
+                OutputManager.PrintContactDetails(searchedContact);
+                bool isConfirm = InputManager.GetConfirmation();
+                if (isConfirm)
+                {
+                    int contactIndex = _contactList.IndexOf(searchedContact);
+                    _contactList.RemoveAt(contactIndex);
+                    OutputManager.PrintSuccessMessaage("delete");
+                }
+                else
+                {
+                    Utilities.PrintColorMessage("Confirmation denied", ConsoleColor.Red);
+                    Console.WriteLine("Contact not get deleted");
+                    OutputManager.PrintPressKeyToContinueMessage();
+                }
+                
             }
             else
             {

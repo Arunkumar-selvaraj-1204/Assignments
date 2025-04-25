@@ -79,7 +79,7 @@
         /// <returns>returns contact name or phone number or email</returns>
         public static string GetNameOrPhoneNumberOrEmail()
         {
-            Console.Write("Enter name/phoneNumber/email: ");
+            Console.Write("Enter name/phoneNumber/email to find contact: ");
             string userInput = Console.ReadLine();
             while(!Validator.ValidateName(userInput) && !Validator.ValidateEmail(userInput) && !Validator.ValidatePhoneNumber(userInput))
             {
@@ -99,6 +99,21 @@
                 return null;
             }
             return phoneNumber;
+        }
+
+        public static bool GetConfirmation()
+        {
+            Console.WriteLine("Enter Y/y for confirmation");
+            string userInput = Console.ReadLine();
+            if(userInput == "y" || userInput == "Y" || userInput == "yes" || userInput == "Yes" || userInput == "YES")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }

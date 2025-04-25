@@ -5,17 +5,18 @@
         bool isExit = false;
         int userSelection = 0;
         ContactManager contactManager = new ContactManager();
-        
+
         /// <summary>
         /// To get user input to perofom the operation.
         /// </summary>
         public void GetUserInput()
         {
-                Console.WriteLine("=== Welcome to Contact Manager!! ===");
+            Console.WriteLine("=== Welcome to Contact Manager!! ===");
             do
+            {
+                Console.Write("\n1. Add new contact \n2. Edit contact \n3. View contact \n4. Search contact \n5. Delete Contact \n6. Exit\nEnter your choice: ");
+                if (int.TryParse(Console.ReadLine(), out userSelection))
                 {
-                    Console.Write("\n1. Add new contact \n2. Edit contact \n3. View contact \n4. Search contact \n5. Delete Contact \n6. Exit\nEnter your choice: ");
-                if (int.TryParse(Console.ReadLine(), out userSelection)){
                     switch (userSelection)
                     {
                         case 1:
@@ -54,7 +55,7 @@
                 {
                     isExit = true;
                 }
-                } while(!isExit);
+            } while (!isExit);
         }
     }
 }
