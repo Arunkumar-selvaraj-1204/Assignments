@@ -71,7 +71,7 @@ namespace Assignment1
             }
             Console.Clear();
             OutputManager.PrintCurrentTask("View");
-            OutputManager.PrintContactNames(_contactList);
+            OutputManager.PrintContactDetails(_contactList);
             OutputManager.PrintSuccessMessaage("view");
         }
 

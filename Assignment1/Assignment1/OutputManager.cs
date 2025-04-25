@@ -40,13 +40,21 @@
         /// To print all the contact name in the list.
         /// </summary>
         /// <param name="contactList">contact list</param>
-        public static void PrintContactNames(List<Contact> contactList)
+        public static void PrintContactDetails(List<Contact> contactList)
         {
-            for (int index = 0; index < contactList.Count; index++)
+            Console.WriteLine("---------------------------------------------------------------------------------------------");
+            Console.WriteLine($"{"No.",-5} {"Name",-20} {"Phone Number",-15} {"Email",-25} {"Notes",-20}");
+            Console.WriteLine("---------------------------------------------------------------------------------------------");
+
+            for (int i = 0; i < contactList.Count; i++)
             {
-                Console.WriteLine($"{index + 1}. {contactList[index].Name}");
+                var contact = contactList[i];
+                Console.WriteLine($"{i + 1,-5} {contact.Name,-20} {contact.PhoneNumber,-15} {contact.Email,-25} {contact.Notes,-20}");
             }
+
+            Console.WriteLine("---------------------------------------------------------------------------------------------");
         }
+
 
         /// <summary>
         /// To print the current task.
