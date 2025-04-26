@@ -9,7 +9,7 @@ namespace InventoryManager.ApplicationManager
 {
     internal class InventoryManager
     {
-        private List<Product> _productList = new List<Product>(); 
+        private static List<Product> _productList = new List<Product>(); 
 
         public void AddProduct()
         {
@@ -38,6 +38,35 @@ namespace InventoryManager.ApplicationManager
             Console.WriteLine("------------------------------------------------------------");
             InputManager.PressKeyToContinue();
             OutputManager.ClearConsoleAndPrintMenu();
+        }
+
+        public void SearchProduct()
+        {
+            OutputManager.PrintCurrentTask("Search");
+            string productIdOrName = InputManager.GetProductNameorId();
+            Product searchedProduct = FindProduct(productIdOrName);
+            if (searchedProduct != null)
+            {
+                OutputManager.ShowProductDetail(searchedProduct);
+                InputManager.PressKeyToContinue();
+                OutputManager.ClearConsoleAndPrintMenu();
+            }
+            else
+            {
+                OutputManager.PrintErrorMessage("Product Not Found!");
+            }
+        }
+
+
+        //helper functions
+        private static Product FindProduct(string productIdOrName)
+        {
+            foreach(Product product in _productList)
+            {
+                if(product.ProductName == productIdOrName) return product;
+                if (product.ProductId == productIdOrName) return product;
+            }
+            return null;
         }
     }
 }

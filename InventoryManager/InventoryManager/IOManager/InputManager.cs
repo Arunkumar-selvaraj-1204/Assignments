@@ -87,9 +87,21 @@ namespace InventoryManager.IOManager
             return int.Parse(quantity);
         }
 
+        public static string GetProductNameorId()
+        {
+            Console.Write("Enter product ID/Name: ");
+            string userInput = Console.ReadLine();
+            while (!Validator.IsValidProductIdOrName(userInput))
+            {
+                OutputManager.PrintInvalidInput("Note: Product Name should not be a number.");
+                Console.Write("Enter product ID/Name: ");
+                userInput = Console.ReadLine();
+            }
+            return userInput;
+        }
         public static void PressKeyToContinue()
         {
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
     }

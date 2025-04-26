@@ -38,6 +38,8 @@ namespace InventoryManager.ApplicationManager
                         inventoryManager.ViewAllProducts();
                         break;
                     case MainMenuChoices.searchProduct:
+                        Console.Clear();
+                        inventoryManager.SearchProduct();
                         break;
                     case MainMenuChoices.editProduct:
                         break;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InventoryManager.Model;
 using InventoryManager.Utils;
 
 namespace InventoryManager.IOManager
@@ -38,6 +39,21 @@ namespace InventoryManager.IOManager
         public static void PrintSuccessMessage(string message)
         {
             Utilities.PrintColorMessage(message, ConsoleColor.Green);
+        }
+
+        public static void PrintErrorMessage(string message)
+        {
+            Utilities.PrintColorMessage(message, ConsoleColor.Red);
+        }
+
+        public static void ShowProductDetail(Product product)
+        {
+            Console.WriteLine("--- Product Details ---");
+            Console.WriteLine($"Product ID:        {product.ProductId}");
+            Console.WriteLine($"Product Name:      {product.ProductName}");
+            Console.WriteLine($"Price:             ₹{product.Price:N2}");
+            Console.WriteLine($"Quantity in Stock: {product.QuantityInStock}");
+            Console.WriteLine("-----------------------");
         }
     }
 }

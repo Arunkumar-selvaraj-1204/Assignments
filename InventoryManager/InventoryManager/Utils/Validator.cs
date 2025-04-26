@@ -22,7 +22,7 @@
         public static bool IsValidProductPrice(string price, out string invalidMessage)
         {
             float value;
-            if (!float.TryParse(price, out value)) {
+            if (string.IsNullOrWhiteSpace(price) || !float.TryParse(price, out value)) {
                 invalidMessage = "Price should be int or float.";
                 return false;
             }
@@ -37,13 +37,22 @@
         }
         public static bool IsValidProductQuantity(string quantity)
         {
-            if (!int.TryParse(quantity, out int value) || value < 0)
+            if (string.IsNullOrWhiteSpace(quantity) || !int.TryParse(quantity, out int value) || value < 0)
             {
                 Console.WriteLine("Quantity Should be a positive integer");
                 return false;
             }
             return true;
 
+        }
+
+        public static bool IsValidProductIdOrName(string userInput)
+        {
+            if ((string.IsNullOrWhiteSpace(userInput)))
+            {
+                return false;
+            }
+            return true;
         }
 
     }
