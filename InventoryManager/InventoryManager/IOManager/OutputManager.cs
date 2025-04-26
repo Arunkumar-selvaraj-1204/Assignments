@@ -28,5 +28,16 @@ namespace InventoryManager.IOManager
         {
             Console.WriteLine($"----- {task} PRODUCT -----");
         }
+
+        public static void ClearConsoleAndPrintMenu()
+        {
+            Console.Clear();
+            PrintInitialMenu();
+        }
+
+        public static void PrintSuccessMessage(string message)
+        {
+            Utilities.PrintColorMessage(message, ConsoleColor.Green);
+        }
     }
 }

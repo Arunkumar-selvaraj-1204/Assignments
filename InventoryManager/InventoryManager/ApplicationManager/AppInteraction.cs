@@ -30,10 +30,12 @@ namespace InventoryManager.ApplicationManager
                 switch (choice)
                 {
                     case MainMenuChoices.addProduct:
+                        Console.Clear();
                         inventoryManager.AddProduct();
                         break;
                     case MainMenuChoices.viewProduct:
-                        //view
+                        Console.Clear();
+                        inventoryManager.ViewAllProducts();
                         break;
                     case MainMenuChoices.searchProduct:
                         break;

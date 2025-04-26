@@ -86,5 +86,11 @@ namespace InventoryManager.IOManager
             }
             return int.Parse(quantity);
         }
+
+        public static void PressKeyToContinue()
+        {
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+        }
     }
 }
