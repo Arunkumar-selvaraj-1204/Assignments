@@ -46,13 +46,13 @@ namespace InventoryManager.IOManager
             Utilities.PrintColorMessage(message, ConsoleColor.Red);
         }
 
-        public static void ShowProductDetail(Product product)
+        public static void ShowProductDetail(Product product, bool showChoice = false)
         {
             Console.WriteLine("--- Product Details ---");
-            Console.WriteLine($"Product ID:        {product.ProductId}");
-            Console.WriteLine($"Product Name:      {product.ProductName}");
-            Console.WriteLine($"Price:             ₹{product.Price:N2}");
-            Console.WriteLine($"Quantity in Stock: {product.QuantityInStock}");
+            Console.WriteLine($"{(showChoice ? "1." : "")}Product ID:        {product.ProductId}");
+            Console.WriteLine($"{(showChoice ? "2." : "")}Product Name:      {product.ProductName}");
+            Console.WriteLine($"{(showChoice ? "3." : "")}Price:             ₹{product.Price:N2}");
+            Console.WriteLine($"{(showChoice ? "4." : "")}Quantity in Stock: {product.QuantityInStock}");
             Console.WriteLine("-----------------------");
         }
     }

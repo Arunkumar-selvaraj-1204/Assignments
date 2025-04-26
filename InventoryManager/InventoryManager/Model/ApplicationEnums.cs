@@ -17,5 +17,13 @@ namespace InventoryManager.Model
             deleteProduct = 5,
             exit = 6,
         }
+
+        public enum EditChoice
+        {
+            productId = 1,
+            productName = 2,
+            productPrice = 3,
+            productQuantity = 4,
+        }
     }
 }

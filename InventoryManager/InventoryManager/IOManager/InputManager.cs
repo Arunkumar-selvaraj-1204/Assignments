@@ -34,11 +34,11 @@ namespace InventoryManager.IOManager
             return new Product(productId, productName, price, quantity);
         }
 
-        private static string GetProductId()
+        public static string GetProductId(bool checkDuplicate)
         {
             Console.Write("Enter Product ID: ");
             string productId = Console.ReadLine();
-            while (!Validator.IsValidProductId(productId))
+            while (!Validator.IsValidProductId(productId) || (checkDuplicate ? Validator.IsDuplicateIdOrName(, productId) : false))
             {
                 OutputManager.PrintInvalidInput("Product id should be less than 5 chars");
                 Console.Write("Enter Product ID: ");
@@ -47,7 +47,7 @@ namespace InventoryManager.IOManager
             return productId;
         }
 
-        private static string GetProductName()
+        public static string GetProductName()
         {
             Console.Write("Enter Product Name: ");
             string productName = Console.ReadLine();
@@ -60,7 +60,7 @@ namespace InventoryManager.IOManager
             return productName;
         }
 
-        private static float GetPrice()
+        public static float GetPrice()
         {
             Console.Write("Enter Product Price: ");
             string userInput = Console.ReadLine();
@@ -75,7 +75,7 @@ namespace InventoryManager.IOManager
             return price;
         }
 
-        private static int GetQuantity()
+        public static int GetQuantity()
         {
             Console.Write("Enter Product Quantity: ");
             string quantity = Console.ReadLine();
@@ -103,6 +103,18 @@ namespace InventoryManager.IOManager
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
+        }
+
+        public static bool GetConfirmation()
+        {
+            Console.Write("Enter Y/y to confirm: ");
+            string confirmation = Console.ReadLine();
+            confirmation = confirmation.ToLower();
+            if (confirmation != null && (confirmation == "yes" || confirmation == "y"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace InventoryManager.Utils
+﻿using InventoryManager.Model;
+namespace InventoryManager.Utils
 {
     internal class Validator
     {
@@ -53,6 +54,18 @@
                 return false;
             }
             return true;
+        }
+
+        public static bool IsDuplicateIdOrName(List<Product> productList, string userInput)
+        {
+            foreach (Product product in productList)
+            {
+                if(product.ProductId == userInput || product.ProductName == userInput)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

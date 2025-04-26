@@ -42,9 +42,11 @@ namespace InventoryManager.ApplicationManager
                         inventoryManager.SearchProduct();
                         break;
                     case MainMenuChoices.editProduct:
+                        Console.Clear();
+                        inventoryManager.EditProduct();
                         break;
                     case MainMenuChoices.deleteProduct:
-                        //delete
+                        inventoryManager.DeleteProduct();
                         break;
                     case MainMenuChoices.exit:
                         isExit = true;
