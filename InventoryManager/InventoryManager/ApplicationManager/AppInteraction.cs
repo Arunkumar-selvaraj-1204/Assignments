@@ -12,13 +12,15 @@ namespace InventoryManager.ApplicationManager
     internal class AppInteraction
     {
         bool isExit = false;
-        InventoryManager inventoryManager = new InventoryManager();
+        InventoryManager inventoryManager = new InventoryManager(new List<Product>());
+        InputManager inputManager = new InputManager();
+        
         public void DisplayInitialMenu()
         {
             OutputManager.PrintInitialMenu();
             while (!isExit)
             {
-                int userChoice = InputManager.GetUserChoice();
+                int userChoice = inputManager.GetUserChoice();
                 MainMenuChoices mainMenuChoice = (MainMenuChoices)userChoice;
                 MakeIntialChoice(mainMenuChoice);
             }

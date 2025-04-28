@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InventoryManager.Model;
+﻿using InventoryManager.Model;
 using InventoryManager.Utils;
 
 
@@ -11,8 +6,17 @@ namespace InventoryManager.IOManager
 {
     internal class InputManager
     {
+        private List<Product> _productList;
 
-        public static int GetUserChoice()
+        public InputManager(List<Product> productList)
+        {
+            _productList = productList;
+        }
+
+        public InputManager() { 
+
+        }
+        public int GetUserChoice()
         {
             Console.Write("Enter choice: ");
             string userInput = Console.ReadLine();
@@ -25,42 +29,42 @@ namespace InventoryManager.IOManager
             return userChoice;
         }
 
-        public static Product GetProductDetails()
+        public Product GetProductDetails()
         {
-            string productId = GetProductId();
-            string productName = GetProductName();
+            string productId = GetProductId(true);
+            string productName = GetProductName(true);
             float price = GetPrice();
             int quantity = GetQuantity();
             return new Product(productId, productName, price, quantity);
         }
 
-        public static string GetProductId(bool checkDuplicate)
+        public string GetProductId(bool checkDuplicate = false)
         {
             Console.Write("Enter Product ID: ");
             string productId = Console.ReadLine();
-            while (!Validator.IsValidProductId(productId) || (checkDuplicate ? Validator.IsDuplicateIdOrName(, productId) : false))
+            while (!Validator.IsValidProductId(productId) || (checkDuplicate ? Validator.IsDuplicateIdOrName(_productList, productId) : false))
             {
-                OutputManager.PrintInvalidInput("Product id should be less than 5 chars");
+                OutputManager.PrintInvalidInput("Product id should be less than 5 chars and should not be duplicate.");
                 Console.Write("Enter Product ID: ");
                 productId = Console.ReadLine();
             }
             return productId;
         }
 
-        public static string GetProductName()
+        public string GetProductName(bool checkDuplicate = false)
         {
             Console.Write("Enter Product Name: ");
             string productName = Console.ReadLine();
-            while (!Validator.IsValidProductName(productName))
+            while (!Validator.IsValidProductName(productName) || (checkDuplicate ? Validator.IsDuplicateIdOrName(_productList, productName) : false))
             {
-                OutputManager.PrintInvalidInput("Product Name should not have only numbers or empty");
+                OutputManager.PrintInvalidInput("Product Name should not have only numbers or empty and should not be duplicate.");
                 Console.Write("Enter Product Name: ");
                 productName = Console.ReadLine();
             }
             return productName;
         }
 
-        public static float GetPrice()
+        public float GetPrice()
         {
             Console.Write("Enter Product Price: ");
             string userInput = Console.ReadLine();
@@ -75,7 +79,7 @@ namespace InventoryManager.IOManager
             return price;
         }
 
-        public static int GetQuantity()
+        public int GetQuantity()
         {
             Console.Write("Enter Product Quantity: ");
             string quantity = Console.ReadLine();
@@ -87,7 +91,7 @@ namespace InventoryManager.IOManager
             return int.Parse(quantity);
         }
 
-        public static string GetProductNameorId()
+        public string GetProductNameorId()
         {
             Console.Write("Enter product ID/Name: ");
             string userInput = Console.ReadLine();
@@ -99,13 +103,13 @@ namespace InventoryManager.IOManager
             }
             return userInput;
         }
-        public static void PressKeyToContinue()
+        public void PressKeyToContinue()
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
 
-        public static bool GetConfirmation()
+        public bool GetConfirmation()
         {
             Console.Write("Enter Y/y to confirm: ");
             string confirmation = Console.ReadLine();
