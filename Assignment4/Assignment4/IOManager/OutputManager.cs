@@ -40,5 +40,10 @@ namespace ExpenseTracker.IOManager
                 );
             }
         }
+
+        public static void PrintIncomeDetails(Income income)
+        {
+            Console.WriteLine($"1. Source: {income.Source} \n2. Date: {income.Date} \n3. Amount: {income.Amount}");
+        }
     }
 }

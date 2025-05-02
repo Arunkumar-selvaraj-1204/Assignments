@@ -28,6 +28,9 @@ namespace ExpenseTracker.AppInteraction
                 case IncomeChoice.AddIncome:
                     AddIncome();
                     break;
+                case IncomeChoice.EditIncome:
+                    EditIncome();
+                    break;
                 case IncomeChoice.DeleteIncome:
                     DeleteIncome();
                     break;
@@ -54,7 +57,44 @@ namespace ExpenseTracker.AppInteraction
         {
             ShowAllIncome();
             int index = _inputManager.GetIndex("delete");
+            if (index > _listOfIncome.Count())
+            {
+                Console.WriteLine("Invalid index entered");
+                return;
+            }
             _listOfIncome.RemoveAt(index);
+        }
+
+        private void EditIncome()
+        {
+            ShowAllIncome();
+            int index = _inputManager.GetIndex("edit");
+            if (index > _listOfIncome.Count())
+            {
+                Console.WriteLine("Invalid index entered");
+                return;
+            }
+            Income selectedRecord = _listOfIncome[index-1];
+            OutputManager.PrintIncomeDetails(selectedRecord);
+            int userChoice = _inputManager.GetUserChoice();
+            EditChoice choice = (EditChoice) userChoice;
+            switch (choice)
+            {
+                case EditChoice.EditSource:
+                    selectedRecord.Source = _inputManager.GetIncomeSource();
+                    break;
+                case EditChoice.EditDate:
+                    selectedRecord.Date = _inputManager.GetDate();
+                    break;
+                case EditChoice.EditAmount:
+                    selectedRecord.Amount = _inputManager.GetAmount();
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
+            _listOfIncome[index-1] = selectedRecord;
+            Console.WriteLine("Edited successfully");
         }
     }
 }

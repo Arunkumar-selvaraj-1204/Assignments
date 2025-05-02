@@ -33,10 +33,10 @@ namespace ExpenseTracker.IOManager
 
         public int GetIndex(string operation)
         {
-            Console.Write($"Enter index to {operation}: ");
+            Console.Write($"Select record to {operation}: ");
             string userInput = Console.ReadLine();
             int index;
-            while (!int.TryParse(userInput, out index))
+            while (!int.TryParse(userInput, out index) || index <= 0)
             {
                 OutputManager.PrintInvalidOption("");
                 userInput = Console.ReadLine();
@@ -44,7 +44,7 @@ namespace ExpenseTracker.IOManager
             return index;
         }
 
-        private string GetIncomeSource()
+        public string GetIncomeSource()
         {
             Console.Write("Enter source of income: ");
             string incomeSource = Console.ReadLine();
@@ -58,7 +58,7 @@ namespace ExpenseTracker.IOManager
             return incomeSource;
         }
 
-        private DateOnly GetDate()
+        public DateOnly GetDate()
         {
             Console.Write("Enter Date in YYYY-MM-DD: ");
             string date = Console.ReadLine();
@@ -71,7 +71,7 @@ namespace ExpenseTracker.IOManager
             return DateOnly.Parse(date);
         }
 
-        private double GetAmount()
+        public double GetAmount()
         {
             Console.Write("Enter amount: ");
             string amount = Console.ReadLine();

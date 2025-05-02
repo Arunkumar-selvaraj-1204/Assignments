@@ -25,5 +25,12 @@ namespace ExpenseTracker.Model
             ShowAllIncome = 4,
             MainMenu = 5,
         }
+
+        public enum EditChoice
+        {
+            EditSource = 1,
+            EditDate = 2,
+            EditAmount = 3,
+        }
     }
 }
