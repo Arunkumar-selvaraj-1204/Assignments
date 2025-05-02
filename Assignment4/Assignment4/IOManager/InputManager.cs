@@ -8,7 +8,7 @@ using ExpenseTracker.Utils;
 
 namespace ExpenseTracker.IOManager
 {
-    internal class InputManager
+    public class InputManager
     {
         public int GetUserChoice()
         {
@@ -31,6 +31,18 @@ namespace ExpenseTracker.IOManager
             return new Income(source, date, amount);
         }
 
+        public int GetIndex(string operation)
+        {
+            Console.Write($"Enter index to {operation}: ");
+            string userInput = Console.ReadLine();
+            int index;
+            while (!int.TryParse(userInput, out index))
+            {
+                OutputManager.PrintInvalidOption("");
+                userInput = Console.ReadLine();
+            }
+            return index;
+        }
 
         private string GetIncomeSource()
         {

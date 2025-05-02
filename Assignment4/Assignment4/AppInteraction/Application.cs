@@ -20,15 +20,25 @@ namespace ExpenseTracker.AppInteraction
         }
         public void DisplayMainMenu()
         {
-            OutputManager.PrintMainMenu();
-            int userChoice = _inputManager.GetUserChoice();
-            MainMenu choice = (MainMenu) userChoice;
-            switch (choice)
+            bool isExit = false;
+            while (!isExit)
             {
-                case MainMenu.TrackIncome:
-                    _moneyManager.TrackIncome();
-                    break;
+                OutputManager.PrintMainMenu();
+                int userChoice = _inputManager.GetUserChoice();
+                MainMenu choice = (MainMenu)userChoice;
+                switch (choice)
+                {
+                    case MainMenu.TrackIncome:
+                        _moneyManager.TrackIncome();
+                        break;
+                    case MainMenu.Exit:
+                        isExit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
 
+                }
             }
 
         }

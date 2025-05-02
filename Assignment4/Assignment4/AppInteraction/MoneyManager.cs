@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using ExpenseTracker.IOManager;
 using static ExpenseTracker.Model.ApplicationEnum;
 using ExpenseTracker.Model;
+using System.Runtime.CompilerServices;
 
 namespace ExpenseTracker.AppInteraction
 {
-    internal class MoneyManager
+    public class MoneyManager
     {
         private InputManager _inputManager;
         private List<Income> _listOfIncome = new List<Income>();
@@ -27,6 +28,13 @@ namespace ExpenseTracker.AppInteraction
                 case IncomeChoice.AddIncome:
                     AddIncome();
                     break;
+                case IncomeChoice.DeleteIncome:
+                    DeleteIncome();
+                    break;
+                case IncomeChoice.ShowAllIncome:
+                    ShowAllIncome();
+                    break;
+
             }
             
         }
@@ -37,6 +45,16 @@ namespace ExpenseTracker.AppInteraction
         {
             Income income =_inputManager.GetIncomeDetails();
             _listOfIncome.Add(income);
+        }
+        private void ShowAllIncome()
+        {
+            OutputManager.PrintAllIncome(_listOfIncome);
+        }
+        private void DeleteIncome()
+        {
+            ShowAllIncome();
+            int index = _inputManager.GetIndex("delete");
+            _listOfIncome.RemoveAt(index);
         }
     }
 }

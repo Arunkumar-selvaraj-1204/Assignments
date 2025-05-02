@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Model
 {
-    internal class Expense
+    public class Expense
     {
         private string _category;
         private DateOnly _date;

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Model
 {
-    internal class Income
+    public class Income
     {
-        private string _source;
-        private DateOnly _date;
-        private double _amount;
 
+        public string Source { get; set; }
+        public DateOnly Date { get; set; }
+        public double Amount { get; set; }
         public Income(string source, DateOnly date, double amount)
         {
-            _source = source;
-            _date = date;
-            _amount = amount;
+            Source = source;
+            Date = date;
+            Amount = amount;
         }
 
     }
