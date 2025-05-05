@@ -35,7 +35,7 @@ namespace ExpenseTracker.Model
 
         public enum EditChoice
         {
-            EditSource = 1,
+            EditSourceOrCategory = 1,
             EditDate = 2,
             EditAmount = 3,
         }

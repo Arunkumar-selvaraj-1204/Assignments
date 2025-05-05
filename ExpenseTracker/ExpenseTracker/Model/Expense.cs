@@ -8,15 +8,15 @@ namespace ExpenseTracker.Model
 {
     public class Expense
     {
-        private string _category;
-        private DateOnly _date;
-        private double _amount;
+        public string Category { get; set; }
+        public DateOnly Date { get; set; }
+        public double Amount { get; set; }
 
         public Expense(string category, DateOnly date, double amount)
         {
-            _category = category;
-            _date = date;
-            _amount = amount;
+            Category = category;
+            Date = date;
+            Amount = amount;
         }
     }
 }
