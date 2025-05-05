@@ -31,6 +31,9 @@ namespace ExpenseTracker.ApplicationService
                     case MainMenu.TrackIncome:
                         _transactionHandler.TrackIncome();
                         break;
+                    case MainMenu.TrackExpense:
+                        _moneyManager.TrackExpense();
+                        break;
                     case MainMenu.Exit:
                         isExit = true;
                         break;

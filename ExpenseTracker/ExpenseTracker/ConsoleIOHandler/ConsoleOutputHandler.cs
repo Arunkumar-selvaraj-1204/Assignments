@@ -21,7 +21,12 @@ namespace ExpenseTracker.ConsoleIOHandler
         public static void DisplayIncomeChoice()
         {
             Console.WriteLine("-----Income operations-----");
-            Console.WriteLine("1. Add Income \n2. Edit Income \n3. Delete Income \n4. Show All Income \n3. Main Menu ");
+            Console.WriteLine("1. Add Income \n2. Edit Income \n3. Delete Income \n4. Show All Income \n5. Main Menu ");
+        }
+        public static void DisplayExpenseChoice()
+        {
+            Console.WriteLine("-----Expense operations-----");
+            Console.WriteLine("1. Add Expense \n2. Edit Expense \n3. Delete Expense \n4. Show All Expense \n5. Main Menu ");
         }
         public static void PrintAllIncome(List<Income> incomeList)
         {
