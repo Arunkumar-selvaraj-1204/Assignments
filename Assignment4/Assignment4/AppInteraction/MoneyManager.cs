@@ -7,13 +7,17 @@ using ExpenseTracker.IOManager;
 using static ExpenseTracker.Model.ApplicationEnum;
 using ExpenseTracker.Model;
 using System.Runtime.CompilerServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Text.Json;
+using ExpenseTracker.Utils;
 
 namespace ExpenseTracker.AppInteraction
 {
     public class MoneyManager
     {
         private InputManager _inputManager;
-        private List<Income> _listOfIncome = new List<Income>();
+        
+        private List<Income> _listOfIncome  = InitializeListOfIncome();
         private List<Expense> _listOfExpense = new List<Expense>();
         public MoneyManager(InputManager manager) {
             _inputManager = manager;
@@ -27,12 +31,15 @@ namespace ExpenseTracker.AppInteraction
             {
                 case IncomeChoice.AddIncome:
                     AddIncome();
+                    WriteToFile();
                     break;
                 case IncomeChoice.EditIncome:
                     EditIncome();
+                    WriteToFile();
                     break;
                 case IncomeChoice.DeleteIncome:
                     DeleteIncome();
+                    WriteToFile();
                     break;
                 case IncomeChoice.ShowAllIncome:
                     ShowAllIncome();
@@ -48,6 +55,7 @@ namespace ExpenseTracker.AppInteraction
         {
             Income income =_inputManager.GetIncomeDetails();
             _listOfIncome.Add(income);
+            
         }
         private void ShowAllIncome()
         {
@@ -95,6 +103,21 @@ namespace ExpenseTracker.AppInteraction
             }
             _listOfIncome[index-1] = selectedRecord;
             Console.WriteLine("Edited successfully");
+        }
+
+        private void WriteToFile()
+        {
+            string json = JsonSerializer.Serialize(_listOfIncome, new JsonSerializerOptions { WriteIndented = true });
+            FileOperations.WriteListToFile(json, "IncomeList.json");
+        }
+        private static List<Income> InitializeListOfIncome()
+        {
+            string data = FileOperations.ReadListFromFile("IncomeList.json");
+            if (data != null && data !="")
+            {
+                return JsonSerializer.Deserialize<List<Income>>(data);
+            }
+            return new List<Income>();
         }
     }
 }
