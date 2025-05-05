@@ -24,54 +24,80 @@ namespace ExpenseTracker.ApplicationService
         }
         public void TrackIncome()
         {
-            ConsoleOutputHandler.DisplayIncomeChoice();
-            int userChoice =  _consoleInputHandler.GetUserChoice();
-            IncomeChoice choice = (IncomeChoice)userChoice;
-            switch (choice)
+            bool isExit = false;
+            while (!isExit)
             {
-                case IncomeChoice.AddIncome:
-                    AddIncome();
-                    WriteToFile("IncomeList.json");
-                    break;
-                case IncomeChoice.EditIncome:
-                    EditIncome();
-                    WriteToFile("IncomeList.json");
-                    break;
-                case IncomeChoice.DeleteIncome:
-                    DeleteIncome();
-                    WriteToFile("IncomeList.json");
-                    break;
-                case IncomeChoice.ShowAllIncome:
-                    ShowAllIncome();
-                    break;
+                Console.Clear();
+                ConsoleOutputHandler.DisplayIncomeChoice();
+                int userChoice = _consoleInputHandler.GetUserChoice();
+                IncomeChoice choice = (IncomeChoice)userChoice;
+                switch (choice)
+                {
+                    case IncomeChoice.AddIncome:
+                        AddIncome();
+                        WriteToFile("IncomeList.json", _listOfIncome);
+                        break;
+                    case IncomeChoice.EditIncome:
+                        EditIncome();
+                        WriteToFile("IncomeList.json", _listOfIncome);
+                        break;
+                    case IncomeChoice.DeleteIncome:
+                        DeleteIncome();
+                        WriteToFile("IncomeList.json", _listOfIncome);
+                        break;
+                    case IncomeChoice.ShowAllIncome:
+                        ShowAllIncome();
+                        Utilities.PressAnyKey();
+                        break;
+                    case IncomeChoice.MainMenu:
+                        isExit = true;
+                        Console.Clear();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        break;
 
+                }
             }
             
         }
 
         public void TrackExpense()
         {
-            OutputManager.DisplayExpenseChoice();
-            int userChoice = _inputManager.GetUserChoice();
-            ExpenseChoice choice = (ExpenseChoice)userChoice;
-            switch (choice)
+            bool isExit = false;
+            while (!isExit)
             {
-                case ExpenseChoice.AddExpense:
-                    AddExpense();
-                    WriteToFile("ExpenseList.json");
-                    break;
-                case ExpenseChoice.EditExpense:
-                    EditExpense();
-                    WriteToFile("ExpenseList.json");
-                    break;
-                case ExpenseChoice.DeleteExpense:
-                    DeleteExpense();
-                    WriteToFile("ExpenseList.json");
-                    break;
-                case ExpenseChoice.ShowAllExpense:
-                    ShowAllExpense();
-                    break;
+                Console.Clear();
+                OutputManager.DisplayExpenseChoice();
+                int userChoice = _inputManager.GetUserChoice();
+                ExpenseChoice choice = (ExpenseChoice)userChoice;
+                switch (choice)
+                {
+                    case ExpenseChoice.AddExpense:
+                        AddExpense();
+                        WriteToFile("ExpenseList.json", _listOfExpense);
+                        break;
+                    case ExpenseChoice.EditExpense:
+                        EditExpense();
+                        WriteToFile("ExpenseList.json", _listOfExpense);
+                        break;
+                    case ExpenseChoice.DeleteExpense:
+                        DeleteExpense();
+                        WriteToFile("ExpenseList.json", _listOfExpense);
+                        break;
+                    case ExpenseChoice.ShowAllExpense:
+                        ShowAllExpense();
+                        Utilities.PressAnyKey();
+                        break;
+                    case ExpenseChoice.MainMenu:
+                        isExit = true;
+                        Console.Clear();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        break;
 
+                }
             }
         }
 
@@ -80,13 +106,14 @@ namespace ExpenseTracker.ApplicationService
         {
             Income income =_consoleInputHandler.GetIncomeDetails();
             _listOfIncome.Add(income);
+            Utilities.PrintSuccessMessage("Added");
             
         }
         public void AddExpense()
         {
             Expense expense = _inputManager.GetExpenseDetails();
             _listOfExpense.Add(expense);
-
+            Utilities.PrintSuccessMessage("Added");
         }
         private void ShowAllIncome()
         {
@@ -105,9 +132,11 @@ namespace ExpenseTracker.ApplicationService
             if (index > _listOfIncome.Count())
             {
                 Console.WriteLine("Invalid index entered");
+                Utilities.PressAnyKey();
                 return;
             }
             _listOfIncome.RemoveAt(index -1);
+            Utilities.PrintSuccessMessage("Deleted");
         }
 
         public void DeleteExpense()
@@ -116,9 +145,11 @@ namespace ExpenseTracker.ApplicationService
             if (index > _listOfExpense.Count())
             {
                 Console.WriteLine("Invalid index entered");
+                Utilities.PressAnyKey();
                 return;
             }
             _listOfExpense.RemoveAt(index - 1);
+            Utilities.PrintSuccessMessage("Deleted");
         }
 
         private void EditIncome()
@@ -128,6 +159,7 @@ namespace ExpenseTracker.ApplicationService
             if (index > _listOfIncome.Count())
             {
                 Console.WriteLine("Invalid index entered");
+                Utilities.PressAnyKey();
                 return;
             }
             Income selectedRecord = _listOfIncome[index-1];
@@ -150,7 +182,7 @@ namespace ExpenseTracker.ApplicationService
                     break;
             }
             _listOfIncome[index-1] = selectedRecord;
-            Console.WriteLine("Edited successfully");
+            Utilities.PrintSuccessMessage("Edited");
         }
 
         private void EditExpense()
@@ -182,11 +214,11 @@ namespace ExpenseTracker.ApplicationService
                     break;
             }
             _listOfExpense[index - 1] = selectedRecord;
-            Console.WriteLine("Edited successfully");
+            Utilities.PrintSuccessMessage("Edited");
         }
-        private void WriteToFile(string path)
+        private void WriteToFile<T>(string path, List<T> transationList)
         {
-            string json = JsonSerializer.Serialize(_listOfIncome, new JsonSerializerOptions { WriteIndented = true });
+            string json = JsonSerializer.Serialize(transationList, new JsonSerializerOptions { WriteIndented = true });
             FileOperations.WriteListToFile(json, path);
         }
         private static List<Income> InitializeListOfIncome()
