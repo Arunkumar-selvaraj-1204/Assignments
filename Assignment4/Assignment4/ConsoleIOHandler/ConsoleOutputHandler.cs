@@ -45,10 +45,31 @@ namespace ExpenseTracker.ConsoleIOHandler
                 );
             }
         }
+        public static void PrintAllExpense(List<Expense> expenseList)
+        {
+            Console.WriteLine("{0,-5} | {1,-20} | {2,-15} | {3,-10}", "No.", "Source", "Date", "Amount");
+            Console.WriteLine(new string('-', 60));
+
+            int count = 1;
+            foreach (Expense expense in expenseList)
+            {
+                Console.WriteLine(
+                    "{0,-5} | {1,-20} | {2,-15} | {3,-10:C}",
+                    count++,
+                    expense.Category,
+                    expense.Date.ToString("yyyy-MM-dd"),
+                    expense.Amount
+                );
+            }
+        }
 
         public static void PrintIncomeDetails(Income income)
         {
             Console.WriteLine($"1. Source: {income.Source} \n2. Date: {income.Date} \n3. Amount: {income.Amount}");
+        }
+        public static void PrintExpenseDetails(Expense expense)
+        {
+            Console.WriteLine($"1. Source: {expense.Category} \n2. Date: {expense.Date} \n3. Amount: {expense.Amount}");
         }
     }
 }
