@@ -31,6 +31,14 @@ namespace ExpenseTracker.ConsoleIOHandler
             return new Income(source, date, amount);
         }
 
+        public Expense GetExpenseDetails()
+        {
+            string category = GetCategory();
+            DateOnly date = GetDate();
+            double amount = GetAmount();
+            return new Expense(category, date, amount);
+        }
+
         public int GetIndex(string operation)
         {
             Console.Write($"Select record to {operation}: ");
@@ -56,6 +64,20 @@ namespace ExpenseTracker.ConsoleIOHandler
                 incomeSource = Console.ReadLine();
             }
             return incomeSource;
+        }
+
+        public string GetCategory()
+        {
+            Console.Write("Enter category of expense: ");
+            string category = Console.ReadLine();
+            while (!Validator.IsValidSource(category))
+            {
+                Console.WriteLine("Invalid category");
+                Console.Write("Enter category of expense: ");
+
+                category = Console.ReadLine();
+            }
+            return category;
         }
 
         public DateOnly GetDate()

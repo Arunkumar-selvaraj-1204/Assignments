@@ -24,6 +24,15 @@ namespace ExpenseTracker.Model
             MainMenu = 5,
         }
 
+        public enum ExpenseChoice
+        {
+            AddExpense = 1,
+            EditExpense = 2,
+            DeleteExpense = 3,
+            ShowAllExpense = 4,
+            MainMenu = 5,
+        }
+
         public enum EditChoice
         {
             EditSource = 1,

@@ -30,15 +30,15 @@ namespace ExpenseTracker.ApplicationService
             {
                 case IncomeChoice.AddIncome:
                     AddIncome();
-                    WriteToFile();
+                    WriteToFile("IncomeList.json");
                     break;
                 case IncomeChoice.EditIncome:
                     EditIncome();
-                    WriteToFile();
+                    WriteToFile("IncomeList.json");
                     break;
                 case IncomeChoice.DeleteIncome:
                     DeleteIncome();
-                    WriteToFile();
+                    WriteToFile("IncomeList.json");
                     break;
                 case IncomeChoice.ShowAllIncome:
                     ShowAllIncome();
@@ -48,6 +48,31 @@ namespace ExpenseTracker.ApplicationService
             
         }
 
+        public void TrackExpense()
+        {
+            OutputManager.DisplayExpenseChoice();
+            int userChoice = _inputManager.GetUserChoice();
+            ExpenseChoice choice = (ExpenseChoice)userChoice;
+            switch (choice)
+            {
+                case ExpenseChoice.AddExpense:
+                    AddExpense();
+                    WriteToFile("IncomeList.json");
+                    break;
+                case IncomeChoice.EditIncome:
+                    EditIncome();
+                    WriteToFile("IncomeList.json");
+                    break;
+                case IncomeChoice.DeleteIncome:
+                    DeleteIncome();
+                    WriteToFile("IncomeList.json");
+                    break;
+                case IncomeChoice.ShowAllIncome:
+                    ShowAllIncome();
+                    break;
+
+            }
+        }
 
         //helper
         public void AddIncome()
@@ -55,6 +80,12 @@ namespace ExpenseTracker.ApplicationService
             Income income =_consoleInputHandler.GetIncomeDetails();
             _listOfIncome.Add(income);
             
+        }
+        public void AddExpense()
+        {
+            Expense expense = _inputManager.GetExpenseDetails();
+            _listOfExpense.Add(expense);
+
         }
         private void ShowAllIncome()
         {
@@ -104,10 +135,10 @@ namespace ExpenseTracker.ApplicationService
             Console.WriteLine("Edited successfully");
         }
 
-        private void WriteToFile()
+        private void WriteToFile(string path)
         {
             string json = JsonSerializer.Serialize(_listOfIncome, new JsonSerializerOptions { WriteIndented = true });
-            FileOperations.WriteListToFile(json, "IncomeList.json");
+            FileOperations.WriteListToFile(json, path);
         }
         private static List<Income> InitializeListOfIncome()
         {
