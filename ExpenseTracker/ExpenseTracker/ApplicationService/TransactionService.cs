@@ -36,18 +36,22 @@ namespace ExpenseTracker.ApplicationService
                     case IncomeChoice.AddIncome:
                         AddIncome();
                         WriteToFile("IncomeList.json", _listOfIncome);
+                        Console.Clear();
                         break;
                     case IncomeChoice.EditIncome:
                         EditIncome();
                         WriteToFile("IncomeList.json", _listOfIncome);
+                        Console.Clear();
                         break;
                     case IncomeChoice.DeleteIncome:
                         DeleteIncome();
                         WriteToFile("IncomeList.json", _listOfIncome);
+                        Console.Clear();
                         break;
                     case IncomeChoice.ShowAllIncome:
                         ShowAllIncome();
                         Utilities.PressAnyKey();
+                        Console.Clear();
                         break;
                     case IncomeChoice.MainMenu:
                         isExit = true;
@@ -101,6 +105,24 @@ namespace ExpenseTracker.ApplicationService
             }
         }
 
+        public void ShowFinancialSummary()
+        {
+            Console.Clear();
+            double totalIncome = 0;
+            double totalExpense = 0;
+            foreach(Income income in _listOfIncome)
+            {
+                totalIncome += income.Amount;
+            }
+            foreach (Expense expense in _listOfExpense)
+            {
+                totalExpense += expense.Amount;
+            }
+            OutputManager.PrintFinancialSummary(totalIncome,totalExpense);
+            Utilities.PressAnyKey();
+            Console.Clear();
+        }
+
         //helper
         public void AddIncome()
         {
@@ -117,16 +139,31 @@ namespace ExpenseTracker.ApplicationService
         }
         private void ShowAllIncome()
         {
+            if (_listOfIncome.Count < 1)
+            {
+                Utilities.PrintNoRecords("income");
+                return;
+            }
             ConsoleOutputHandler.PrintAllIncome(_listOfIncome);
         }
 
         public void ShowAllExpense()
         {
+            if (_listOfExpense.Count < 1)
+            {
+                Utilities.PrintNoRecords("expense");
+                return;
+            }
             OutputManager.PrintAllExpense(_listOfExpense);
         }
 
         private void DeleteIncome()
         {
+            if (_listOfIncome.Count < 1)
+            {
+                Utilities.PrintNoRecords("income");
+                return;
+            }
             ShowAllIncome();
             int index = _consoleInputHandler.GetIndex("delete");
             if (index > _listOfIncome.Count())
@@ -141,6 +178,12 @@ namespace ExpenseTracker.ApplicationService
 
         public void DeleteExpense()
         {
+            if (_listOfExpense.Count < 1)
+            {
+                Utilities.PrintNoRecords("expense");
+                return;
+            }
+            ShowAllIncome();
             int index = _inputManager.GetIndex("delete");
             if (index > _listOfExpense.Count())
             {
@@ -154,6 +197,11 @@ namespace ExpenseTracker.ApplicationService
 
         private void EditIncome()
         {
+            if (_listOfIncome.Count < 1)
+            {
+                Utilities.PrintNoRecords("income");
+                return;
+            }
             ShowAllIncome();
             int index = _consoleInputHandler.GetIndex("edit");
             if (index > _listOfIncome.Count())
@@ -187,6 +235,11 @@ namespace ExpenseTracker.ApplicationService
 
         private void EditExpense()
         {
+            if (_listOfExpense.Count < 1)
+            {
+                Utilities.PrintNoRecords("expense");
+                return;
+            }
             ShowAllExpense();
             int index = _inputManager.GetIndex("edit");
             if (index > _listOfIncome.Count())

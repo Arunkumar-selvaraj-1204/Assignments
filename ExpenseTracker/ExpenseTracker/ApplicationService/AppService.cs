@@ -36,6 +36,9 @@ namespace ExpenseTracker.ApplicationService
                         Console.Clear();
                         _moneyManager.TrackExpense();
                         break;
+                    case MainMenu.FinancialSummary:
+                        _moneyManager.ShowFinancialSummary();
+                        break;
                     case MainMenu.Exit:
                         isExit = true;
                         break;

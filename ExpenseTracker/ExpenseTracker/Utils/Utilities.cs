@@ -21,5 +21,12 @@ namespace ExpenseTracker.Utils
             Console.ForegroundColor = ConsoleColor.White;
             PressAnyKey();
         }
+        public static void PrintNoRecords(string transactionType)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"No {transactionType} records found!");
+            Console.ForegroundColor = ConsoleColor.White;
+            PressAnyKey();
+        }
     }
 }
