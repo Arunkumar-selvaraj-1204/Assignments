@@ -18,6 +18,7 @@ namespace ExpenseTracker.ConsoleIOHandler
             while (!int.TryParse(userInput, out userChoice))
             {
                 ConsoleOutputHandler.PrintInvalidOption("");
+                Console.Write("Enter choice: ");
                 userInput = Console.ReadLine();
             }
             return userChoice;
@@ -47,6 +48,7 @@ namespace ExpenseTracker.ConsoleIOHandler
             while (!int.TryParse(userInput, out index) || index <= 0)
             {
                 ConsoleOutputHandler.PrintInvalidOption("");
+                Console.Write($"Select record to {operation}: ");
                 userInput = Console.ReadLine();
             }
             return index;

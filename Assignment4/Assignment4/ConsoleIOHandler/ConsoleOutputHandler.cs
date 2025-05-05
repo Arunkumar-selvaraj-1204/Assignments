@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,27 @@ namespace ExpenseTracker.ConsoleIOHandler
         public static void PrintExpenseDetails(Expense expense)
         {
             Console.WriteLine($"1. Source: {expense.Category} \n2. Date: {expense.Date} \n3. Amount: {expense.Amount}");
+        }
+        public static void PrintFinancialSummary(double income, double expense)
+        {
+            Console.Write($"Total income: {income} \nTotal expense: {expense} \nNet balance: ");
+            if(income - expense < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            Console.WriteLine($"{income - expense}");
+            Console.ResetColor();
+        }
+        public static Object PrintBalance(double balance, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write($"{balance}");
+            Console.ResetColor();
+            return null;
         }
     }
 }
