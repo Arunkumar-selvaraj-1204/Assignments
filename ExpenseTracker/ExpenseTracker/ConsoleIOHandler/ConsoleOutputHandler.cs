@@ -47,7 +47,7 @@ namespace ExpenseTracker.ConsoleIOHandler
         }
         public static void PrintAllExpense(List<Expense> expenseList)
         {
-            Console.WriteLine("{0,-5} | {1,-20} | {2,-15} | {3,-10}", "No.", "Source", "Date", "Amount");
+            Console.WriteLine("{0,-5} | {1,-20} | {2,-15} | {3,-10}", "No.", "Category", "Date", "Amount");
             Console.WriteLine(new string('-', 60));
 
             int count = 1;

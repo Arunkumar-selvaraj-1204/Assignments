@@ -29,9 +29,11 @@ namespace ExpenseTracker.ApplicationService
                 switch (choice)
                 {
                     case MainMenu.TrackIncome:
-                        _transactionHandler.TrackIncome();
+                        Console.Clear();
+                        _transactionHandler.TrackIncome();  
                         break;
                     case MainMenu.TrackExpense:
+                        Console.Clear();
                         _moneyManager.TrackExpense();
                         break;
                     case MainMenu.Exit:
