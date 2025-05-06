@@ -2,10 +2,10 @@
 
 namespace ContactManager
 {
-    internal class Validator
+    internal class ContactValidator
     {
         /// <summary>
-        /// To validate conatct name
+        /// To validate contact name
         /// </summary>
         /// <param name="name">contact name</param>
         /// <returns>return true if contact name is valid otherwise false</returns>

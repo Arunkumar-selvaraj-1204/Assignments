@@ -1,5 +1,5 @@
 ﻿using System.Reflection.Metadata.Ecma335;
-using Assignment1;
+using ContactManager;
 
 namespace ContactManager
 {
@@ -29,7 +29,7 @@ namespace ContactManager
         /// </summary>
         public void EditContact()
         {
-            if (Validator.IsContactListEmpty(_contactList))
+            if (ContactValidator.IsContactListEmpty(_contactList))
             {
                 ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
@@ -65,7 +65,7 @@ namespace ContactManager
         /// </summary>
         public void ViewContact()
         {
-            if (Validator.IsContactListEmpty(_contactList))
+            if (ContactValidator.IsContactListEmpty(_contactList))
             {
                 ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
@@ -81,7 +81,7 @@ namespace ContactManager
         /// </summary>
         public void SearchContact()
         {
-            if (Validator.IsContactListEmpty(_contactList))
+            if (ContactValidator.IsContactListEmpty(_contactList))
             {
                 ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
@@ -107,7 +107,7 @@ namespace ContactManager
         /// </summary>
         public void DeleteContact()
         {
-            if (Validator.IsContactListEmpty(_contactList))
+            if (ContactValidator.IsContactListEmpty(_contactList))
             {
                 ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;

@@ -12,7 +12,7 @@
         {
             Console.Write("Enter contact name: ");
             String userName = Console.ReadLine();
-            while (!Validator.ValidateName(userName) || checkDuplicate && Validator.IsDuplicateContact(_contactList, userName))
+            while (!ContactValidator.ValidateName(userName) || checkDuplicate && ContactValidator.IsDuplicateContact(_contactList, userName))
             {
                 string message = checkDuplicate ? "Enter a valid name and it should not be duplicate" : "Enter valid name";
                 Console.WriteLine(message);
@@ -32,7 +32,7 @@
         {
             Console.Write("Enter Phone number: ");
             string phoneNumber = Console.ReadLine();
-            while (!Validator.ValidatePhoneNumber(phoneNumber) || checkDuplicate && Validator.IsDuplicateContact(_contactList, "", phoneNumber))
+            while (!ContactValidator.ValidatePhoneNumber(phoneNumber) || checkDuplicate && ContactValidator.IsDuplicateContact(_contactList, "", phoneNumber))
             {
                 string message = checkDuplicate ? "Enter a valid phoneNumber and it should not be duplicate" : "Enter valid PhoneNumber";
                 Console.WriteLine(message);
@@ -52,7 +52,7 @@
         {
             Console.Write("Enter email address: ");
             string email = Console.ReadLine();
-            while (!Validator.ValidateEmail(email) || Validator.IsDuplicateContact(_contactList, "", "", email))
+            while (!ContactValidator.ValidateEmail(email) || ContactValidator.IsDuplicateContact(_contactList, "", "", email))
             {
                 string message = checkDuplicate ? "Enter a valid email and it should not be duplicate" : "Enter valid email";
                 Console.WriteLine(message);
@@ -81,7 +81,7 @@
         {
             Console.Write("Enter name/phoneNumber/email to find contact: ");
             string userInput = Console.ReadLine();
-            while(!Validator.ValidateName(userInput) && !Validator.ValidateEmail(userInput) && !Validator.ValidatePhoneNumber(userInput))
+            while(!ContactValidator.ValidateName(userInput) && !ContactValidator.ValidateEmail(userInput) && !ContactValidator.ValidatePhoneNumber(userInput))
             {
                 Console.Write("Invalid input! \nEnter name/phoneNumber/email: ");
                 userInput = Console.ReadLine();
@@ -93,7 +93,7 @@
         {
             Console.Write("Enter Phone number: ");
             string phoneNumber = Console.ReadLine();
-            if (!Validator.ValidatePhoneNumber(phoneNumber))
+            if (!ContactValidator.ValidatePhoneNumber(phoneNumber))
             {
                 Console.WriteLine("Enter a valid phoneNumber.");
                 return null;
