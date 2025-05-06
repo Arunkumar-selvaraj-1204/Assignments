@@ -4,7 +4,7 @@ class Program
 {
     public static void Main(String[] args)
     {
-        ContactUi contactUi = new ContactUi();
+        ConsoleContactApp contactUi = new ConsoleContactApp();
         contactUi.GetUserInput();
     }
 }

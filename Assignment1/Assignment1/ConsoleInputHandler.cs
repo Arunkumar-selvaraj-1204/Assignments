@@ -1,6 +1,6 @@
 ﻿namespace ContactManager
 {
-    internal class InputManager
+    internal class ConsoleInputHandler
     {
         /// <summary>
         /// To get valid contact name from the user
@@ -77,7 +77,7 @@
         /// To get contact name or phone number or email from user.
         /// </summary>
         /// <returns>returns contact name or phone number or email</returns>
-        public static string GetNameOrPhoneNumberOrEmail()
+        public static string GetContactInfo()
         {
             Console.Write("Enter name/phoneNumber/email to find contact: ");
             string userInput = Console.ReadLine();

@@ -2,7 +2,7 @@
 
 namespace ContactManager
 {
-    internal class ContactManager
+    internal class ContactServices
     {
         private List<Contact> _contactList = new List<Contact>();
 
@@ -12,14 +12,14 @@ namespace ContactManager
         public void AddContact()
         {
             Console.Clear();
-            OutputManager.PrintCurrentTask("Add");
-            string userName = InputManager.GetUserName(_contactList, true);
-            string phoneNumber = InputManager.GetPhoneNumber(_contactList, true);
-            string email = InputManager.GetEmail(_contactList, true);
-            string notes = InputManager.GetNotes();
+            ConsoleOutputHandler.PrintCurrentTask("Add");
+            string userName = ConsoleInputHandler.GetUserName(_contactList, true);
+            string phoneNumber = ConsoleInputHandler.GetPhoneNumber(_contactList, true);
+            string email = ConsoleInputHandler.GetEmail(_contactList, true);
+            string notes = ConsoleInputHandler.GetNotes();
             Contact newContact = new Contact(userName, phoneNumber, email, notes);
             AddContactToList(newContact);
-            OutputManager.PrintSuccessMessaage("add");
+            ConsoleOutputHandler.PrintSuccessMessaage("add");
 
         }
 
@@ -30,32 +30,32 @@ namespace ContactManager
         {
             if (Validator.IsContactListEmpty(_contactList))
             {
-                OutputManager.PrintMessage("EmptyList");
+                ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
             }
 
             Console.Clear();
-            OutputManager.PrintCurrentTask("Edit");
-            string userInput = InputManager.GetNameOrPhoneNumberOrEmail();
-            Contact selectedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
+            ConsoleOutputHandler.PrintCurrentTask("Edit");
+            string userInput = ConsoleInputHandler.GetContactInfo();
+            Contact selectedContact = Utilities.GetContact(userInput, _contactList);
 
             if (selectedContact != null)
             {
-                OutputManager.PrintMessage("EditChoise");
-                OutputManager.PrintContactDetails(selectedContact);
+                ConsoleOutputHandler.PrintMessage("EditChoise");
+                ConsoleOutputHandler.PrintContactDetails(selectedContact);
                 if (int.TryParse(Console.ReadLine(), out int editOption))
                 {
                     int contactIndex = _contactList.IndexOf(selectedContact);
                     selectedContact = EditContactDetail(editOption, selectedContact);
                     _contactList[contactIndex] = selectedContact;
                     _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
-                    OutputManager.PrintSuccessMessaage("edit");
+                    ConsoleOutputHandler.PrintSuccessMessaage("edit");
                 }
 
             }
             else
             {
-                OutputManager.PrintMessage("NotFound");
+                ConsoleOutputHandler.PrintMessage("NotFound");
             }
         }
 
@@ -66,13 +66,13 @@ namespace ContactManager
         {
             if (Validator.IsContactListEmpty(_contactList))
             {
-                OutputManager.PrintMessage("EmptyList");
+                ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
             }
             Console.Clear();
-            OutputManager.PrintCurrentTask("View");
-            OutputManager.PrintContactDetails(_contactList);
-            OutputManager.PrintSuccessMessaage("view");
+            ConsoleOutputHandler.PrintCurrentTask("View");
+            ConsoleOutputHandler.PrintContactDetails(_contactList);
+            ConsoleOutputHandler.PrintSuccessMessaage("view");
         }
 
         /// <summary>
@@ -82,22 +82,22 @@ namespace ContactManager
         {
             if (Validator.IsContactListEmpty(_contactList))
             {
-                OutputManager.PrintMessage("EmptyList");
+                ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
             }
             Console.Clear();
-            OutputManager.PrintCurrentTask("Search");
-            string userInput = InputManager.GetNameOrPhoneNumberOrEmail();
-            Contact searchedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
+            ConsoleOutputHandler.PrintCurrentTask("Search");
+            string userInput = ConsoleInputHandler.GetContactInfo();
+            Contact searchedContact = Utilities.GetContact(userInput, _contactList);
 
             if (searchedContact != null)
             {
-                OutputManager.PrintContactDetails(searchedContact);
-                OutputManager.PrintSuccessMessaage("search");
+                ConsoleOutputHandler.PrintContactDetails(searchedContact);
+                ConsoleOutputHandler.PrintSuccessMessaage("search");
             }
             else
             {
-                OutputManager.PrintMessage("NotFound");
+                ConsoleOutputHandler.PrintMessage("NotFound");
             }
         }
 
@@ -108,34 +108,34 @@ namespace ContactManager
         {
             if (Validator.IsContactListEmpty(_contactList))
             {
-                OutputManager.PrintMessage("EmptyList");
+                ConsoleOutputHandler.PrintMessage("EmptyList");
                 return;
             }
             Console.Clear();
-            OutputManager.PrintCurrentTask("Delete");
-            string userInput = InputManager.GetNameOrPhoneNumberOrEmail();
-            Contact searchedContact = Utilities.GetContactByNameOrPhoneNumberOrEmail(userInput, _contactList);
+            ConsoleOutputHandler.PrintCurrentTask("Delete");
+            string userInput = ConsoleInputHandler.GetContactInfo();
+            Contact searchedContact = Utilities.GetContact(userInput, _contactList);
             if (searchedContact != null)
             {
-                OutputManager.PrintContactDetails(searchedContact);
-                bool isConfirm = InputManager.GetConfirmation();
+                ConsoleOutputHandler.PrintContactDetails(searchedContact);
+                bool isConfirm = ConsoleInputHandler.GetConfirmation();
                 if (isConfirm)
                 {
                     int contactIndex = _contactList.IndexOf(searchedContact);
                     _contactList.RemoveAt(contactIndex);
-                    OutputManager.PrintSuccessMessaage("delete");
+                    ConsoleOutputHandler.PrintSuccessMessaage("delete");
                 }
                 else
                 {
                     Utilities.PrintColorMessage("Confirmation denied", ConsoleColor.Red);
                     Console.WriteLine("Contact not get deleted");
-                    OutputManager.PrintPressKeyToContinueMessage();
+                    ConsoleOutputHandler.PrintPressKeyToContinueMessage();
                 }
                 
             }
             else
             {
-                OutputManager.PrintMessage("NotFound");
+                ConsoleOutputHandler.PrintMessage("NotFound");
             }
 
         }
@@ -163,19 +163,19 @@ namespace ContactManager
             switch (option)
             {
                 case 1:
-                    string userName = InputManager.GetUserName(_contactList, true);
+                    string userName = ConsoleInputHandler.GetUserName(_contactList, true);
                     contact.Name = userName;
                     break;
                 case 2:
-                    string phoneNumber = InputManager.GetPhoneNumber(_contactList, true);
+                    string phoneNumber = ConsoleInputHandler.GetPhoneNumber(_contactList, true);
                     contact.PhoneNumber = phoneNumber;
                     break;
                 case 3:
-                    string email = InputManager.GetEmail(_contactList, true);
+                    string email = ConsoleInputHandler.GetEmail(_contactList, true);
                     contact.Email = email;
                     break;
                 case 4:
-                    string notes = InputManager.GetNotes();
+                    string notes = ConsoleInputHandler.GetNotes();
                     contact.Notes = notes;
                     break;
             }

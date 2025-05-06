@@ -1,6 +1,6 @@
 ﻿namespace ContactManager
 {
-    internal class OutputManager
+    internal class ConsoleOutputHandler
     {
         /// <summary>
         /// To print the correct message in the console.

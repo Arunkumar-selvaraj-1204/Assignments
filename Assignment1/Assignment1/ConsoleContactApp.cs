@@ -1,13 +1,13 @@
 ﻿namespace ContactManager
 {
-    internal class ContactUi
+    internal class ConsoleContactApp
     {
         bool isExit = false;
         int userSelection = 0;
-        ContactManager contactManager = new ContactManager();
+        ContactServices contactManager = new ContactServices();
 
         /// <summary>
-        /// To get user input to perofom the operation.
+        /// To get user input to perform the operation.
         /// </summary>
         public void GetUserInput()
         {
