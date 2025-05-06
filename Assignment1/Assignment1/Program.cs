@@ -1,4 +1,4 @@
-﻿using Assignment1;
+﻿using ContactManager;
 
 class Program
 {

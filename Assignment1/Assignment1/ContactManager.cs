@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 
-namespace Assignment1
+namespace ContactManager
 {
     internal class ContactManager
     {
