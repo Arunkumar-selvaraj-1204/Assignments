@@ -10,6 +10,14 @@ namespace EmployeeHierarchy
 {
     internal class IOManager
     {
+        /// <summary>
+        /// Prompts the user to enter a valid string value for the specified parameter.
+        /// Ensures the input is non-empty and does not contain any digits.
+        /// </summary>
+        /// <param name="parameter">The name of the parameter being requested (e.g., "Name", "Position").</param>
+        /// <returns>
+        /// A valid string entered by the user.
+        /// </returns>
         public static string GetInput(string parameter)
         {
             Console.Write($"Enter the {parameter}: ");
@@ -22,6 +30,14 @@ namespace EmployeeHierarchy
             }
             return userInput;
         }
+
+        /// <summary>
+        /// Prompts the user to enter a valid salary amount.
+        /// Ensures the input is a valid decimal or integer value.
+        /// </summary>
+        /// <returns>
+        /// A decimal value representing the user's salary.
+        /// </returns>
         public static decimal GetSalary()
         {
             Console.Write("Enter the salary: ");
@@ -36,11 +52,26 @@ namespace EmployeeHierarchy
             return parsedInput;
         }
 
+        /// <summary>
+        /// Prints the details of an employee, including name, position, salary, and bonus.
+        /// </summary>
+        /// <param name="name">The name of the employee.</param>
+        /// <param name="position">The position of the employee (e.g., "Manager", "Developer").</param>
+        /// <param name="salary">The salary of the employee as a decimal value.</param>
+        /// <param name="bonus">The bonus amount of the employee as a decimal value.</param>
+
         public static void PrintEmployeeDetails(string name, string position, decimal salary, decimal bonus)
         {
             Console.WriteLine($"Name: {name} \nPosition: {position} \nSalary: {salary} \nBonus: {bonus}");
             Console.WriteLine("\n================\n");
         }
+
+        /// <summary>
+        /// Displays a menu of choices (e.g., "Manager", "Developer", "Exit") and gets the user's input as an integer.
+        /// </summary>
+        /// <returns>
+        /// An integer representing the user's choice:
+        /// </returns>
         public static int GetChoice()
         {
             Console.WriteLine("1. Manager \n2. Developer \n3. Exit");

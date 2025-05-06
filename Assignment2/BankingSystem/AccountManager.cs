@@ -8,6 +8,10 @@ namespace BankingSystem
 {
     internal class AccountManager
     {
+        /// <summary>
+        /// Allows the user to perform transactions such as deposits and withdrawals.
+        /// </summary>
+        /// <param name="account">The bank account object that will be initialized and modified with user inputs.</param>
         public void OpenAccount(BankAccount account)
         {
             
