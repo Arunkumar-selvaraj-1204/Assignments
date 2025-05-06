@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "Assignment1\ContactManager.csproj", "{BBE9A50A-16B1-40A8-936A-D9757A6CF2F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "ContactManager.csproj", "{BBE9A50A-16B1-40A8-936A-D9757A6CF2F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
