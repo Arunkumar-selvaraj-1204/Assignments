@@ -32,7 +32,7 @@
                             contactManager.ViewContact();
                             break;
                         case 4:
-                            Console.WriteLine("serach");
+                            Console.WriteLine("search");
                             contactManager.SearchContact();
                             break;
                         case 5:

@@ -1,4 +1,6 @@
-﻿namespace ContactManager
+﻿using Assignment1;
+
+namespace ContactManager
 {
     internal class ConsoleOutputHandler
     {
@@ -19,7 +21,7 @@
                     PrintPressKeyToContinueMessage();
                     break;
                 case "EditChoise":
-                    Console.WriteLine("\nEnter the choise to edit: ");
+                    Console.WriteLine("\nEnter the choice to edit: ");
                     break;
             }
         }
@@ -71,25 +73,25 @@
             Console.ReadKey();
             Console.Clear();
         }
-        public static void PrintSuccessMessaage(string message)
+        public static void PrintSuccessMessaage(ApplicationEnums.SuccessMessage successMessage )
         {
-            switch (message)
+            switch (successMessage)
             {
-                case "add":
+                case ApplicationEnums.SuccessMessage.Add:
                     Utilities.PrintColorMessage("New contact added successfully!", ConsoleColor.Green);
                     PrintPressKeyToContinueMessage();
                     break;
-                case "edit":
+                case ApplicationEnums.SuccessMessage.Edit:
                     Utilities.PrintColorMessage("Contact edited successfully!", ConsoleColor.Green);
                     PrintPressKeyToContinueMessage();
                     break;
-                case "view":
+                case ApplicationEnums.SuccessMessage.View:
                     PrintPressKeyToContinueMessage();
                     break;
-                case "search":
+                case ApplicationEnums.SuccessMessage.Search:
                     PrintPressKeyToContinueMessage();
                     break;
-                case "delete":
+                case ApplicationEnums.SuccessMessage.Delete:
                     Utilities.PrintColorMessage("Contact deleted successfully!", ConsoleColor.Green);
                     PrintPressKeyToContinueMessage();
                     break;

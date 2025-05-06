@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using Assignment1;
 
 namespace ContactManager
 {
@@ -19,7 +20,7 @@ namespace ContactManager
             string notes = ConsoleInputHandler.GetNotes();
             Contact newContact = new Contact(userName, phoneNumber, email, notes);
             AddContactToList(newContact);
-            ConsoleOutputHandler.PrintSuccessMessaage("add");
+            ConsoleOutputHandler.PrintSuccessMessaage(ApplicationEnums.SuccessMessage.Add);
 
         }
 
@@ -49,7 +50,7 @@ namespace ContactManager
                     selectedContact = EditContactDetail(editOption, selectedContact);
                     _contactList[contactIndex] = selectedContact;
                     _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
-                    ConsoleOutputHandler.PrintSuccessMessaage("edit");
+                    ConsoleOutputHandler.PrintSuccessMessaage(ApplicationEnums.SuccessMessage.Edit);
                 }
 
             }
@@ -72,7 +73,7 @@ namespace ContactManager
             Console.Clear();
             ConsoleOutputHandler.PrintCurrentTask("View");
             ConsoleOutputHandler.PrintContactDetails(_contactList);
-            ConsoleOutputHandler.PrintSuccessMessaage("view");
+            ConsoleOutputHandler.PrintSuccessMessaage(ApplicationEnums.SuccessMessage.View);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace ContactManager
             if (searchedContact != null)
             {
                 ConsoleOutputHandler.PrintContactDetails(searchedContact);
-                ConsoleOutputHandler.PrintSuccessMessaage("search");
+                ConsoleOutputHandler.PrintSuccessMessaage(ApplicationEnums.SuccessMessage.Search);
             }
             else
             {
@@ -123,7 +124,7 @@ namespace ContactManager
                 {
                     int contactIndex = _contactList.IndexOf(searchedContact);
                     _contactList.RemoveAt(contactIndex);
-                    ConsoleOutputHandler.PrintSuccessMessaage("delete");
+                    ConsoleOutputHandler.PrintSuccessMessaage(ApplicationEnums.SuccessMessage.Delete);
                 }
                 else
                 {
@@ -149,9 +150,17 @@ namespace ContactManager
         void AddContactToList(Contact contact)
         {
             _contactList.Add(contact);
-            _contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
+           SortContactList(_contactList);
         }
 
+        /// <summary>
+        /// Sorts the contact list by contact name.
+        /// </summary>
+        /// <param name="contactList">List of contacts</param>
+        private void SortContactList(List<Contact> contactList)
+        {
+            contactList.Sort((c1, c2) => string.Compare(c1.Name, c2.Name, StringComparison.OrdinalIgnoreCase));
+        }
         /// <summary>
         /// To edit the contact based on the option.
         /// </summary>

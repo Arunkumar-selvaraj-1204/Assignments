@@ -14,7 +14,7 @@ namespace ContactManager
         /// </summary>
         /// <param name="userInput">contact name or email</param>
         /// <param name="contacts">contact list</param>
-        /// <returns>return the contact if exist otherwis returns null</returns>
+        /// <returns>return the contact if exist otherwise returns null</returns>
         public static Contact GetContact(string userInput, List<Contact> contacts)
         {
             foreach (Contact contact in contacts)
