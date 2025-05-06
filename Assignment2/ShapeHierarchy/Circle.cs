@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShapeHierarchy
+﻿namespace ShapeHierarchy
 {
     internal class Circle: Shape
     {
@@ -13,11 +6,11 @@ namespace ShapeHierarchy
 
         public void GetRadius()
         {
-            _radius = InputManager.GetInput("Radius");
+            _radius = ConsoleInputManager.GetInput("Radius");
         }
         public void GetColor()
         {
-            color = InputManager.GetColor();
+            color = ConsoleInputManager.GetColor();
         }
         public override double CalculateArea()
         {
@@ -26,7 +19,7 @@ namespace ShapeHierarchy
 
         public void PrintDetails()
         {
-            OutputManager.PrintShapeDetails(color, "Circle", CalculateArea());
+            ConsoleOutputManager.PrintShapeDetails(color, "Circle", CalculateArea());
         }
     }
 }

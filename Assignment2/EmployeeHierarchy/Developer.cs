@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace EmployeeHierarchy
+﻿namespace EmployeeHierarchy
 {
     internal class Developer : Employee
     {
         public void GetName()
         {
-            name = IOManager.GetInput("name");
+            name = ConsoleIOHandler.GetInput("name");
         }
         public void GetSalary()
         {
-            salary = IOManager.GetSalary();
+            salary = ConsoleIOHandler.GetSalary();
         }
 
         public override decimal CalculateBonus()
@@ -25,7 +18,7 @@ namespace EmployeeHierarchy
 
         public void PrintDetails()
         {
-            IOManager.PrintEmployeeDetails(name, "Developer", salary, CalculateBonus());
+            ConsoleIOHandler.PrintEmployeeDetails(name, "Developer", salary, CalculateBonus());
         }
     }
 }

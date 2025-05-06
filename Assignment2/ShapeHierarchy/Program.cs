@@ -8,7 +8,7 @@
             bool isExit = false;
             while (!isExit)
             {
-                int userChoice = InputManager.GetChoice();
+                int userChoice = ConsoleInputManager.GetChoice();
                 switch (userChoice)
                 {
                     case 1:

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankingSystem
+﻿namespace BankingSystem
 {
-    internal class IOManager
+    internal class ConsoleIOHandler
     {
         /// <summary>
         /// Displays a menu with two options and an exit option, and gets the user's choice as an integer.

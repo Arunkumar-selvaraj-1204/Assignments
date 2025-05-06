@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-
-namespace EmployeeHierarchy
+﻿namespace EmployeeHierarchy
 {
     internal class Program
     {
@@ -11,7 +9,7 @@ namespace EmployeeHierarchy
             bool isExit = false;
             while (!isExit)
             {
-                int userChoice = IOManager.GetChoice();
+                int userChoice = ConsoleIOHandler.GetChoice();
                 switch (userChoice)
                 {
                     case 1:

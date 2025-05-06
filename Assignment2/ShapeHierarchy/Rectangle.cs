@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShapeHierarchy
+﻿namespace ShapeHierarchy
 {
     internal class Rectangle : Shape
     {
@@ -13,16 +7,16 @@ namespace ShapeHierarchy
 
         public void GetLength()
         {
-            _length = InputManager.GetInput("Length");
+            _length = ConsoleInputManager.GetInput("Length");
         }
         public void GetBreadth()
         {
-            _breadth = InputManager.GetInput("Breadth");
+            _breadth = ConsoleInputManager.GetInput("Breadth");
         }
 
         public void GetColor()
         {
-            color = InputManager.GetColor();
+            color = ConsoleInputManager.GetColor();
         }
         public override double CalculateArea()
         {
@@ -31,7 +25,7 @@ namespace ShapeHierarchy
 
         public void PrintDetails()
         {
-            OutputManager.PrintShapeDetails(color, "Rectangle", CalculateArea());
+            ConsoleOutputManager.PrintShapeDetails(color, "Rectangle", CalculateArea());
         }
     }
 }

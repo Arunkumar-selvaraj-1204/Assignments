@@ -1,31 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EmployeeHierarchy
+﻿namespace EmployeeHierarchy
 {
-    internal class IOManager
+    internal class ConsoleIOHandler
     {
         /// <summary>
-        /// Prompts the user to enter a valid string value for the specified parameter.
+        /// Prompts the user to enter a valid string value for the specified prompt message.
         /// Ensures the input is non-empty and does not contain any digits.
         /// </summary>
-        /// <param name="parameter">The name of the parameter being requested (e.g., "Name", "Position").</param>
+        /// <param name="promptMessage">The prompt message being requested (e.g., "Name", "Position").</param>
         /// <returns>
         /// A valid string entered by the user.
         /// </returns>
-        public static string GetInput(string parameter)
+        public static string GetInput(string promptMessage)
         {
-            Console.Write($"Enter the {parameter}: ");
+            Console.Write($"Enter the {promptMessage}: ");
             string userInput = Console.ReadLine();
             while (string.IsNullOrWhiteSpace(userInput) || userInput.Any(char.IsDigit))
             {
                 Console.WriteLine("Invalid input!");
-                Console.Write($"Enter the {parameter}: ");
+                Console.Write($"Enter the {promptMessage}: ");
                 userInput = Console.ReadLine();
             }
             return userInput;

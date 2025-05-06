@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShapeHierarchy
+﻿namespace ShapeHierarchy
 {
-    internal class OutputManager
+    internal class ConsoleOutputManager
     {
        public static void PrintShapeDetails(string color, string shapeType, double area)
         {

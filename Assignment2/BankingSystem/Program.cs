@@ -4,21 +4,21 @@
     {
         static void Main(string[] args)
         {
-            AccountManager accountManager = new AccountManager();
+            AccountServices accountService = new AccountServices();
             Console.WriteLine("Select Bank account type");
             bool isExit = false;
             while (!isExit)
             {
-                int userChoice = IOManager.GetChoice("Savings Account", "Checking Account");
+                int userChoice = ConsoleIOHandler.GetChoice("Savings Account", "Checking Account");
                 switch (userChoice)
                 {
                     case 1:
                         SavingsAccount SavingsAccount = new SavingsAccount();
-                        accountManager.OpenAccount(SavingsAccount);
+                        accountService.OpenAccount(SavingsAccount);
                         break;
                     case 2:
                         CheckingAccount checkingAccount = new CheckingAccount();
-                        accountManager.OpenAccount(checkingAccount);
+                        accountService.OpenAccount(checkingAccount);
                         break;
                     case 3:
                         isExit = true;

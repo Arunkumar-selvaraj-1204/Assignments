@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShapeHierarchy
+﻿namespace ShapeHierarchy
 {
-    internal class InputManager
+    internal class ConsoleInputManager
     {
         /// <summary>
         /// Prompts the user to enter a numeric value for the specified prompt message and validates the input.

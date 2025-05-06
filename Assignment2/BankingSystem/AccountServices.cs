@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankingSystem
+﻿namespace BankingSystem
 {
-    internal class AccountManager
+    internal class AccountServices
     {
         /// <summary>
         /// Allows the user to perform transactions such as deposits and withdrawals.
@@ -15,21 +9,21 @@ namespace BankingSystem
         public void OpenAccount(BankAccount account)
         {
             
-            account.accountNumber = IOManager.GetAccountNumber();
-            account.balance = IOManager.GetAmount("Balance");
+            account.accountNumber = ConsoleIOHandler.GetAccountNumber();
+            account.balance = ConsoleIOHandler.GetAmount("Balance");
             decimal amount;
             bool isExit = false;
             while (!isExit)
             {
-                int userChoice = IOManager.GetChoice("Deposit", "Withdraw");
+                int userChoice = ConsoleIOHandler.GetChoice("Deposit", "Withdraw");
                 switch (userChoice)
                 {
                     case 1:
-                        amount = IOManager.GetAmount("Deposit Amount");
+                        amount = ConsoleIOHandler.GetAmount("Deposit Amount");
                         account.DepositAmount(amount);
                         break;
                     case 2:
-                        amount = IOManager.GetAmount("Withdrawal Amount");
+                        amount = ConsoleIOHandler.GetAmount("Withdrawal Amount");
                         account.WithdrawAmount(amount);
                         break;
                     case 3:
