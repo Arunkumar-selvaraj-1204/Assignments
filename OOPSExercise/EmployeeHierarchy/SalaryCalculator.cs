@@ -2,14 +2,21 @@
 {
     internal class SalaryCalculator
     {
-        public void CalculateManagerSalary()
+        /// <summary>
+        /// Gets manager details and prints with their bonus.
+        /// </summary>
+        public void DisplayManagerBonus()
         {
             Manager manager = new Manager();
             manager.GetName();
             manager.GetSalary();
             manager.PrintDetails();
         }
-        public void CalculateDeveloperSalary()
+
+        /// <summary>
+        /// Gets developer details and prints with their bonus.
+        /// </summary>
+        public void DisplayDeveloperBonus()
         {
             Developer developer = new Developer();
             developer.GetName();

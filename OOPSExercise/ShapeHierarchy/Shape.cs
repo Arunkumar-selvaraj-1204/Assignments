@@ -4,7 +4,11 @@
     {
         public string color { get; set; }
         public abstract double CalculateArea();
-        public void PrintDetails()
+
+        /// <summary>
+        /// Prints shape details and it will get override by child classes.
+        /// </summary>
+        public virtual void PrintDetails()
         {
             Console.WriteLine("It a generic shape");
         }

@@ -1,6 +1,6 @@
 ﻿namespace ShapeHierarchy
 {
-    internal class ConsoleInputManager
+    internal class ConsoleInputHandler
     {
         /// <summary>
         /// Prompts the user to enter a numeric value for the specified prompt message and validates the input.

@@ -1,22 +1,21 @@
-﻿namespace EmployeeHierarchy
+﻿namespace ShapeHierarchy
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            SalaryCalculator calculator = new SalaryCalculator();
-            Console.WriteLine("Select your role");
+            ShapeGenerator generator = new ShapeGenerator();
             bool isExit = false;
             while (!isExit)
             {
-                int userChoice = ConsoleIOHandler.GetChoice();
+                int userChoice = ConsoleInputHandler.GetChoice();
                 switch (userChoice)
                 {
                     case 1:
-                        calculator.CalculateManagerSalary();
+                        generator.CreateRectangle();
                         break;
                     case 2:
-                        calculator.CalculateDeveloperSalary();
+                        generator.CreateCircle();
                         break;
                     case 3:
                         isExit = true;

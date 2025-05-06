@@ -2,6 +2,10 @@
 {
     internal class ShapeGenerator
     {
+
+        /// <summary>
+        /// Creates rectangle and prints shape details.
+        /// </summary>
         public void CreateRectangle()
         {
             Rectangle rectangle = new Rectangle();
@@ -11,6 +15,9 @@
             rectangle.PrintDetails();
         }
 
+        /// <summary>
+        /// Creates circle and prints shape details.
+        /// </summary>
         public void CreateCircle()
         {
             Circle circle = new Circle();
