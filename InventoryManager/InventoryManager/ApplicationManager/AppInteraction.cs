@@ -14,7 +14,10 @@ namespace InventoryManager.ApplicationManager
         bool isExit = false;
         InventoryManager inventoryManager = new InventoryManager(new List<Product>());
         InputManager inputManager = new InputManager();
-        
+
+        /// <summary>
+        /// Displays the initial menu and continuously processes user choices until the user decides to exit.
+        /// </summary>
         public void DisplayInitialMenu()
         {
             OutputManager.PrintInitialMenu();
@@ -22,11 +25,15 @@ namespace InventoryManager.ApplicationManager
             {
                 int userChoice = inputManager.GetUserChoice();
                 MainMenuChoices mainMenuChoice = (MainMenuChoices)userChoice;
-                MakeIntialChoice(mainMenuChoice);
+                MakeInitialChoice(mainMenuChoice);
             }
         }
 
-        public void MakeIntialChoice(MainMenuChoices choice)
+        /// <summary>
+        /// Processes the user's choice from the main menu and performs the corresponding action.
+        /// </summary>
+        /// <param name="choice">The user's selected option from the main menu, represented as an enum of type <see cref="MainMenuChoices"/>.</param>
+        public void MakeInitialChoice(MainMenuChoices choice)
         {
             
                 switch (choice)

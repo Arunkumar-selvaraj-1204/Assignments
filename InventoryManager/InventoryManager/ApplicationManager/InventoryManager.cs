@@ -19,12 +19,10 @@ internal class InventoryManager
         _productList = productList;
         inputManager = new InputManager(_productList);
     }
+    /// <summary>
+    /// Adds a new product to the inventory by getting the product details from the user.
+    /// </summary>
 
-
-    public IEnumerable<Product> GetProductList()
-    {
-        return _productList;
-    }
     public void AddProduct()
     {
         OutputManager.PrintCurrentTask("ADD");
@@ -35,6 +33,9 @@ internal class InventoryManager
         OutputManager.ClearConsoleAndPrintMenu();
     }
 
+    /// <summary>
+    /// Displays all products in the inventory in a tabular format.
+    /// </summary>
     public void ViewAllProducts()
     {
         OutputManager.PrintCurrentTask("VIEW");
@@ -54,6 +55,9 @@ internal class InventoryManager
         OutputManager.ClearConsoleAndPrintMenu();
     }
 
+    /// <summary>
+    /// Searches for a product in the inventory by product ID or name. Displays the product details if found.
+    /// </summary>
     public void SearchProduct()
     {
         OutputManager.PrintCurrentTask("SEARCH");
@@ -71,6 +75,9 @@ internal class InventoryManager
         }
     }
 
+    /// <summary>
+    /// Edits the details of an existing product in the inventory by allowing the user to select and modify fields.
+    /// </summary>
     public void EditProduct()
     {
         OutputManager.PrintCurrentTask("EDIT");
@@ -93,6 +100,10 @@ internal class InventoryManager
         }
     }
 
+
+    /// <summary>
+    /// Deletes a product from the inventory after confirming the action with the user.
+    /// </summary>
     public void DeleteProduct()
     {
 
@@ -124,6 +135,14 @@ internal class InventoryManager
 
 
     //helper functions
+
+    /// <summary>
+    /// Searches for a product in the inventory by its ID or name.
+    /// </summary>
+    /// <param name="productIdOrName">The ID or name of the product to search for.</param>
+    /// <returns>
+    /// The <see cref="Product"/> object if found, otherwise null.
+    /// </returns>
     private Product FindProduct(string productIdOrName)
     {
         foreach(Product product in _productList)
@@ -134,6 +153,11 @@ internal class InventoryManager
         return null;
     }
 
+    /// <summary>
+    /// Edits the specified product based on the user's choice of which attribute to modify.
+    /// </summary>
+    /// <param name="product">The product object to be edited.</param>
+    /// <param name="editChoice">The user's choice of which attribute to edit, represented as an <see cref="EditChoice"/> enum.</param>
     private void PerformEdit(Product product, EditChoice editChoice)
     {
         switch (editChoice)

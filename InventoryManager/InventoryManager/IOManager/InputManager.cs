@@ -16,6 +16,11 @@ namespace InventoryManager.IOManager
         public InputManager() { 
 
         }
+
+        /// <summary>
+        /// Prompts the user to enter a menu choice and validates the input as an integer.
+        /// </summary>
+        /// <returns>A valid integer representing the user's choice.</returns>
         public int GetUserChoice()
         {
             Console.Write("Enter choice: ");
@@ -29,6 +34,10 @@ namespace InventoryManager.IOManager
             return userChoice;
         }
 
+        /// <summary>
+        /// Collects product details from the user and creates a new Product object.
+        /// </summary>
+        /// <returns>A Product object containing the entered details.</returns>
         public Product GetProductDetails()
         {
             string productId = GetProductId(true);
@@ -38,6 +47,12 @@ namespace InventoryManager.IOManager
             return new Product(productId, productName, price, quantity);
         }
 
+        /// <summary>
+        /// Prompts the user to enter a product ID and validates it.
+        /// Optionally checks for duplicate IDs in the product list.
+        /// </summary>
+        /// <param name="checkDuplicate">Whether to check for duplicate product IDs.</param>
+        /// <returns>A valid product ID string.</returns>
         public string GetProductId(bool checkDuplicate = false)
         {
             Console.Write("Enter Product ID: ");
@@ -51,6 +66,12 @@ namespace InventoryManager.IOManager
             return productId;
         }
 
+        /// <summary>
+        /// Prompts the user to enter a product name and validates it.
+        /// Optionally checks for duplicate names in the product list.
+        /// </summary>
+        /// <param name="checkDuplicate">Whether to check for duplicate product names.</param>
+        /// <returns>A valid product name string.</returns>
         public string GetProductName(bool checkDuplicate = false)
         {
             Console.Write("Enter Product Name: ");
@@ -64,6 +85,11 @@ namespace InventoryManager.IOManager
             return productName;
         }
 
+
+        /// <summary>
+        /// Prompts the user to enter the product price and validates it.
+        /// </summary>
+        /// <returns>A valid float value representing the product price.</returns>
         public float GetPrice()
         {
             Console.Write("Enter Product Price: ");
@@ -79,6 +105,11 @@ namespace InventoryManager.IOManager
             return price;
         }
 
+
+        /// <summary>
+        /// Prompts the user to enter the product quantity and validates it.
+        /// </summary>
+        /// <returns>A valid integer value representing the product quantity.</returns>
         public int GetQuantity()
         {
             Console.Write("Enter Product Quantity: ");
@@ -91,6 +122,10 @@ namespace InventoryManager.IOManager
             return int.Parse(quantity);
         }
 
+        /// <summary>
+        /// Prompts the user to enter either a product ID or product name and validates the input.
+        /// </summary>
+        /// <returns>A valid string representing the product ID or name.</returns>
         public string GetProductNameorId()
         {
             Console.Write("Enter product ID/Name: ");
@@ -103,12 +138,20 @@ namespace InventoryManager.IOManager
             }
             return userInput;
         }
+
+        /// <summary>
+        /// Displays a message prompting the user to press any key to continue.
+        /// </summary>
         public void PressKeyToContinue()
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
 
+
+        /// <summary>
+        /// Prompts the user to confirm an action by typing "Y" or "y".
+        /// </summary>
         public bool GetConfirmation()
         {
             Console.Write("Enter Y/y to confirm: ");
