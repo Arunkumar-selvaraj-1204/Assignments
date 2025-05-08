@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            SalaryCalculator calculator = new SalaryCalculator();
+            BonusCalculator calculator = new BonusCalculator();
             Console.WriteLine("Select your role");
             bool isExit = false;
             while (!isExit)

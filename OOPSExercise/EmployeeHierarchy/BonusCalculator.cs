@@ -1,6 +1,6 @@
 ﻿namespace EmployeeHierarchy
 {
-    internal class SalaryCalculator
+    internal class BonusCalculator
     {
         /// <summary>
         /// Gets manager details and prints with their bonus.

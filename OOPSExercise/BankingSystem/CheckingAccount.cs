@@ -15,7 +15,7 @@
             }else
             {
                 balance -= amount;
-                Console.WriteLine($"Rs.{amount} deposit successfully. Current balance: {balance}");
+                Console.WriteLine($"Rs.{amount} withdrawn successfully. Current balance: {balance}");
             }
         }
     }
