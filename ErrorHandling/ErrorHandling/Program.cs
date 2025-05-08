@@ -6,6 +6,8 @@ namespace ErrorHandling
     {
         static void Main(string[] args)
         {
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
             bool isExit = false;
             while (!isExit)
             {
@@ -42,5 +44,11 @@ namespace ErrorHandling
             Console.WriteLine("1. DivideByZero \n2. IndexOutOfBound");
             Console.Write("Enter choice: ");
         }
+        static void MyHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            Console.WriteLine("Unhandled exception caught : " + e.Message);
+        }
+
     }
 }

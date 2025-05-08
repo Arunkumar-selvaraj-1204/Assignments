@@ -28,6 +28,7 @@ namespace ErrorHandling
             {
                 Utils.PressKeyToContinue();       
             }
+            GetIndex();
         }
         public int[] GenerateArray()
         {
@@ -48,7 +49,7 @@ namespace ErrorHandling
             
             if (length <= 0)
             {
-                throw new InvalidUserInputException("Array length should be a positive integer.");
+                throw new InvalidUserInputException("Array length should be a positive integer."); //Task 3
             }
             return length;
         }
@@ -84,9 +85,30 @@ namespace ErrorHandling
             }
             catch (IndexOutOfRangeException e)
             {
-                throw new Exception($"Array index out of range. Array length is {_numbers.Length}");
+                throw new Exception($"Array index out of range. Array length is {_numbers.Length}"); //Task 2
             }
 
+        }
+
+        public void GetIndex()
+        {
+            Console.Write("Enter number to find index: ");
+            string userInput = Console.ReadLine();
+            int element = int.Parse(userInput); // Task 4
+            try
+            {
+                for (int i = 0; i < _numbers.Length; i++)
+                {
+                    if (_numbers[i] == element)
+                    {
+                        Console.WriteLine($"Index of the element {i}");
+                        return;
+                    }
+                }
+            }
+            catch (IndexOutOfRangeException e) { 
+            Console.WriteLine(e.Message);
+            }
         }
     }
 }
