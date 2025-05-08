@@ -11,6 +11,7 @@
             if(balance - amount < 100)
             {
                 Console.WriteLine("Insufficient Balance!!!. You should maintain Rs.100 as minimum balance.");
+                Console.WriteLine($"You can withdraw maximum of {balance-100}");
             }
             else
             {

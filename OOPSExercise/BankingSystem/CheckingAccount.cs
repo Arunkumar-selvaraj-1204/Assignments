@@ -12,7 +12,9 @@
             if (balance - amount < 0)
             {
                 Console.WriteLine("Insufficient Balance!!!.");
-            }else
+                Console.WriteLine($"You can withdraw maximum of {balance}");
+            }
+            else
             {
                 balance -= amount;
                 Console.WriteLine($"Rs.{amount} withdrawn successfully. Current balance: {balance}");
