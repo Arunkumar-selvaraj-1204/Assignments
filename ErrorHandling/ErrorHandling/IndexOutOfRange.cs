@@ -10,12 +10,15 @@ namespace ErrorHandling
     {
         private int[] _numbers;
         public IndexOutOfRange() {
-            _numbers = GenerateArray();
-            GetArrayElements();
+            
             try
             {
+                _numbers = GenerateArray();
+                GetArrayElements();
                 GetElementByIndex();
+
             }
+
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -41,6 +44,11 @@ namespace ErrorHandling
                 Console.WriteLine("Invalid number! Enter an integer");
                 Console.Write("Enter array length: ");
                 userInput = Console.ReadLine();
+            }
+            
+            if (length <= 0)
+            {
+                throw new InvalidUserInputException("Array length should be a positive integer.");
             }
             return length;
         }
