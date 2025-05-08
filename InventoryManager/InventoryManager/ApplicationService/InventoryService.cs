@@ -86,7 +86,7 @@ internal class InventoryService
         if (searchedProduct != null)
         {
             ConsoleOutputHandler.ShowProductDetail(searchedProduct, true);
-            int userChoice = inputManager.GetUserChoice();
+            int userChoice = inputManager.GetUserChoice(true);
             PerformEdit(searchedProduct, (EditChoice)userChoice);
             ConsoleOutputHandler.PrintSuccessMessage("product edited successfully");
             inputManager.PressKeyToContinue();

@@ -32,6 +32,7 @@ namespace InventoryManager.Model
             Search = 3,
             Edit = 4,
             Delete = 5,
+            
         }
     }
 }

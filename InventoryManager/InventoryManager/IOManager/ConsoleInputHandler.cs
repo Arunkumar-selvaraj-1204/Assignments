@@ -1,5 +1,6 @@
 ﻿using InventoryManager.Model;
 using InventoryManager.Utils;
+using static InventoryManager.Model.ApplicationEnums;
 
 
 namespace InventoryManager.IOManager
@@ -21,10 +22,17 @@ namespace InventoryManager.IOManager
         /// Prompts the user to enter a menu choice and validates the input as an integer.
         /// </summary>
         /// <returns>A valid integer representing the user's choice.</returns>
-        public int GetUserChoice()
+        public int GetUserChoice(bool isEdit = false)
         {
-            Console.Write("Enter choice: ");
-            string userInput = Console.ReadLine();
+            if (isEdit)
+            {
+                Console.Write("Enter the detail number that you want to edit: ");
+            }
+            else
+            {
+                Console.Write("Enter choice: ");
+            }
+                string userInput = Console.ReadLine();
             int userChoice;
             while (!int.TryParse(userInput, out userChoice))
             {

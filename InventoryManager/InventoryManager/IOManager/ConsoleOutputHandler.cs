@@ -50,10 +50,11 @@ namespace InventoryManager.IOManager
 
         public static void ShowProductDetail(Product product, bool showChoice = false)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("--- Product Details ---");
             Console.WriteLine($"{(showChoice ? "1." : "")}Product ID:        {product.ProductId}");
             Console.WriteLine($"{(showChoice ? "2." : "")}Product Name:      {product.ProductName}");
-            Console.WriteLine($"{(showChoice ? "3." : "")}Price:             ₹{product.Price:N2}");
+            Console.WriteLine($"{(showChoice ? "3." : "")}Price:             {product.Price:N2}");
             Console.WriteLine($"{(showChoice ? "4." : "")}Quantity in Stock: {product.QuantityInStock}");
             Console.WriteLine("-----------------------");
         }
