@@ -78,6 +78,25 @@
             }
             return userChoice;
         }
+        
+        /// <summary>
+        /// Gets the bonus percentage for the employee
+        /// </summary>
+        /// <returns>Bonus percentage</returns>
+        public static decimal GetBonusPercentage()
+        {
+            Console.Write("Enter bonus percentage %: ");
+            string userInput = Console.ReadLine();
+            decimal bonus;
+            while (!decimal.TryParse(userInput, out bonus))
+            {
+                Console.WriteLine("Enter a valid input");
+                Console.Write("Enter Bonus percentage %: ");
+                userInput = Console.ReadLine();
+            }
+            return bonus/100;
+
+        }
 
     }
 

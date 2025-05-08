@@ -24,7 +24,8 @@
         /// <returns>Bonus amount</returns>
         public override decimal CalculateBonus()
         {
-            return salary * (decimal)0.02;
+            decimal bonusPercentage = ConsoleIOHandler.GetBonusPercentage();
+            return salary * bonusPercentage;
         }
 
         /// <summary>
