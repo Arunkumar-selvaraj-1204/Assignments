@@ -25,7 +25,7 @@ internal class InventoryService
 
     public void AddProduct()
     {
-        ConsoleOutputHandler.PrintCurrentTask("ADD");
+        ConsoleOutputHandler.PrintCurrentTask(Tasks.Add);
         Product product = inputManager.GetProductDetails();
         _productList.Add(product);
         ConsoleOutputHandler.PrintSuccessMessage("Product added successfully");
@@ -38,7 +38,7 @@ internal class InventoryService
     /// </summary>
     public void ViewAllProducts()
     {
-        ConsoleOutputHandler.PrintCurrentTask("VIEW");
+        ConsoleOutputHandler.PrintCurrentTask(Tasks.View);
         Console.WriteLine("------------------------------------------------------------");
         Console.WriteLine(String.Format("| {0,-10} | {1,-20} | {2,8} | {3,5} |",
                                          "Product ID", "Product Name", "Price", "Stock"));
@@ -60,7 +60,7 @@ internal class InventoryService
     /// </summary>
     public void SearchProduct()
     {
-        ConsoleOutputHandler.PrintCurrentTask("SEARCH");
+        ConsoleOutputHandler.PrintCurrentTask(Tasks.Search);
         string productIdOrName = inputManager.GetProductNameorId();
         Product searchedProduct = FindProduct(productIdOrName);
         if (searchedProduct != null)
@@ -80,7 +80,7 @@ internal class InventoryService
     /// </summary>
     public void EditProduct()
     {
-        ConsoleOutputHandler.PrintCurrentTask("EDIT");
+        ConsoleOutputHandler.PrintCurrentTask(Tasks.Edit);
         string productIdOrName = inputManager.GetProductNameorId();
         Product searchedProduct = FindProduct(productIdOrName);
         if (searchedProduct != null)
@@ -107,7 +107,7 @@ internal class InventoryService
     public void DeleteProduct()
     {
 
-        ConsoleOutputHandler.PrintCurrentTask("DELETE");
+        ConsoleOutputHandler.PrintCurrentTask(Tasks.Delete);
         string productIdOrName = inputManager.GetProductNameorId();
         Product searchedProduct = FindProduct(productIdOrName);
         if (searchedProduct != null)

@@ -25,5 +25,13 @@ namespace InventoryManager.Model
             productPrice = 3,
             productQuantity = 4,
         }
+        public enum Tasks
+        {
+            Add = 1,
+            View = 2,
+            Search = 3,
+            Edit = 4,
+            Delete = 5,
+        }
     }
 }

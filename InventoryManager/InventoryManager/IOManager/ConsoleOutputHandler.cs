@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using InventoryManager.Model;
 using InventoryManager.Utils;
+using static InventoryManager.Model.ApplicationEnums;
+
 
 namespace InventoryManager.IOManager
 {
@@ -25,7 +27,7 @@ namespace InventoryManager.IOManager
             Console.WriteLine(validFormat);
         }
 
-        public static void PrintCurrentTask(string task)
+        public static void PrintCurrentTask(Tasks task)
         {
             Console.WriteLine($"----- {task} PRODUCT -----");
         }
