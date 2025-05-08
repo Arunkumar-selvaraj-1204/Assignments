@@ -4,16 +4,16 @@ using InventoryManager.Utils;
 
 namespace InventoryManager.IOManager
 {
-    internal class InputManager
+    internal class ConsoleInputHandler
     {
         private List<Product> _productList;
 
-        public InputManager(List<Product> productList)
+        public ConsoleInputHandler(List<Product> productList)
         {
             _productList = productList;
         }
 
-        public InputManager() { 
+        public ConsoleInputHandler() { 
 
         }
 
@@ -28,7 +28,7 @@ namespace InventoryManager.IOManager
             int userChoice;
             while (!int.TryParse(userInput, out userChoice))
             {
-                OutputManager.PrintInvalidOption("");
+                ConsoleOutputHandler.PrintInvalidOption("");
                 userInput = Console.ReadLine();
             }
             return userChoice;
@@ -57,9 +57,16 @@ namespace InventoryManager.IOManager
         {
             Console.Write("Enter Product ID: ");
             string productId = Console.ReadLine();
-            while (!Validator.IsValidProductId(productId) || (checkDuplicate ? Validator.IsDuplicateIdOrName(_productList, productId) : false))
+            while (!ProductValidator.IsValidProductId(productId) || (checkDuplicate ? ProductValidator.IsDuplicateId(_productList, productId) : false))
             {
-                OutputManager.PrintInvalidInput("Product id should be less than 5 chars and should not be duplicate.");
+                if (checkDuplicate ? ProductValidator.IsDuplicateId(_productList, productId) : false)
+                {
+                    ConsoleOutputHandler.PrintInvalidInput("Product name should not be duplicate");
+                }
+                else
+                {
+                    ConsoleOutputHandler.PrintInvalidInput("Product id should be less than 5 chars.");
+                }
                 Console.Write("Enter Product ID: ");
                 productId = Console.ReadLine();
             }
@@ -76,9 +83,16 @@ namespace InventoryManager.IOManager
         {
             Console.Write("Enter Product Name: ");
             string productName = Console.ReadLine();
-            while (!Validator.IsValidProductName(productName) || (checkDuplicate ? Validator.IsDuplicateIdOrName(_productList, productName) : false))
+            while (!ProductValidator.IsValidProductName(productName) || (checkDuplicate ? ProductValidator.IsDuplicateName(_productList, productName) : false))
             {
-                OutputManager.PrintInvalidInput("Product Name should not have only numbers or empty and should not be duplicate.");
+                if (checkDuplicate ? ProductValidator.IsDuplicateName(_productList, productName) : false)
+                {
+                    ConsoleOutputHandler.PrintInvalidInput("Product name should not be duplicate.");
+                }
+                else
+                {
+                    ConsoleOutputHandler.PrintInvalidInput("Product Name should not have only numbers or empty.");
+                }
                 Console.Write("Enter Product Name: ");
                 productName = Console.ReadLine();
             }
@@ -95,9 +109,9 @@ namespace InventoryManager.IOManager
             Console.Write("Enter Product Price: ");
             string userInput = Console.ReadLine();
             float price;
-            while (!Validator.IsValidProductPrice(userInput, out string invalidMessage))
+            while (!ProductValidator.IsValidProductPrice(userInput, out string invalidMessage))
             {
-                OutputManager.PrintInvalidOption(invalidMessage);
+                ConsoleOutputHandler.PrintInvalidOption(invalidMessage);
                 Console.Write("Enter Product Price: ");
                 userInput = Console.ReadLine();
             }
@@ -114,7 +128,7 @@ namespace InventoryManager.IOManager
         {
             Console.Write("Enter Product Quantity: ");
             string quantity = Console.ReadLine();
-            while (!Validator.IsValidProductQuantity(quantity))
+            while (!ProductValidator.IsValidProductQuantity(quantity))
             {
                 Console.Write("Enter Product quantity: ");
                 quantity = Console.ReadLine();
@@ -130,9 +144,9 @@ namespace InventoryManager.IOManager
         {
             Console.Write("Enter product ID/Name: ");
             string userInput = Console.ReadLine();
-            while (!Validator.IsValidProductIdOrName(userInput))
+            while (!ProductValidator.IsValidProductIdOrName(userInput))
             {
-                OutputManager.PrintInvalidInput("Note: Product Name should not be a number.");
+                ConsoleOutputHandler.PrintInvalidInput("Note: Product Name should not be a number.");
                 Console.Write("Enter product ID/Name: ");
                 userInput = Console.ReadLine();
             }

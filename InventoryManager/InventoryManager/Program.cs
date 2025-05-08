@@ -5,7 +5,7 @@ namespace InventoryManager
     {
         static void Main(string[] args)
         {
-            AppInteraction appInteraction = new AppInteraction();
+            AppService appInteraction = new AppService();
             appInteraction.DisplayInitialMenu();
         }
     }

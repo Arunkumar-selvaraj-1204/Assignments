@@ -8,7 +8,7 @@ using InventoryManager.Utils;
 
 namespace InventoryManager.IOManager
 {
-    internal class OutputManager
+    internal class ConsoleOutputHandler
     {
         public static void PrintInitialMenu()
         {

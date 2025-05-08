@@ -9,21 +9,21 @@ using static InventoryManager.Model.ApplicationEnums;
 
 namespace InventoryManager.ApplicationManager
 {
-    internal class AppInteraction
+    internal class AppService
     {
         bool isExit = false;
-        InventoryManager inventoryManager = new InventoryManager(new List<Product>());
-        InputManager inputManager = new InputManager();
+        InventoryService inventoryManager = new InventoryService(new List<Product>());
+        ConsoleInputHandler inputHandler = new ConsoleInputHandler();
 
         /// <summary>
         /// Displays the initial menu and continuously processes user choices until the user decides to exit.
         /// </summary>
         public void DisplayInitialMenu()
         {
-            OutputManager.PrintInitialMenu();
+            ConsoleOutputHandler.PrintInitialMenu();
             while (!isExit)
             {
-                int userChoice = inputManager.GetUserChoice();
+                int userChoice = inputHandler.GetUserChoice();
                 MainMenuChoices mainMenuChoice = (MainMenuChoices)userChoice;
                 MakeInitialChoice(mainMenuChoice);
             }
@@ -61,7 +61,7 @@ namespace InventoryManager.ApplicationManager
                         isExit = true;
                         break;
                     default:
-                        OutputManager.PrintInvalidOption("Choice should be between 1 - 6");
+                        ConsoleOutputHandler.PrintInvalidOption("Choice should be between 1 - 6");
                         break;
                 }
             

@@ -1,7 +1,7 @@
 ﻿using InventoryManager.Model;
 namespace InventoryManager.Utils
 {
-    internal class Validator
+    internal class ProductValidator
     {
         /// <summary>
         /// Validates if the given product ID is valid.
@@ -89,16 +89,33 @@ namespace InventoryManager.Utils
         }
 
         /// <summary>
-        /// Checks if the given input is a duplicate product ID or name in the product list.
+        /// Checks if the given input is a duplicate product ID in the product list.
         /// </summary>
         /// <param name="productList">The list of products to check for duplicates.</param>
         /// <param name="userInput">The input to check for duplicate ID or name.</param>
         /// <returns>true if the input is a duplicate; otherwise, false.</returns>
-        public static bool IsDuplicateIdOrName(List<Product> productList, string userInput)
+        public static bool IsDuplicateId(List<Product> productList, string userInput)
         {
             foreach (Product product in productList)
             {
-                if(product.ProductId == userInput || product.ProductName == userInput)
+                if(product.ProductId == userInput)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// Checks if the given input is a duplicate product name in the product list.
+        /// </summary>
+        /// <param name="productList">The list of products to check for duplicates.</param>
+        /// <param name="userInput">The input to check for duplicate ID or name.</param>
+        /// <returns>true if the input is a duplicate; otherwise, false.</returns>
+        public static bool IsDuplicateName(List<Product> productList, string userInput)
+        {
+            foreach (Product product in productList)
+            {
+                if (product.ProductName == userInput)
                 {
                     return true;
                 }

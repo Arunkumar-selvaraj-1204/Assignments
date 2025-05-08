@@ -9,15 +9,15 @@ using static InventoryManager.Model.ApplicationEnums;
 
 namespace InventoryManager.ApplicationManager;
 
-internal class InventoryManager
+internal class InventoryService
 {
     private List<Product> _productList;
-    InputManager inputManager;
+    ConsoleInputHandler inputManager;
 
-    public InventoryManager(List<Product> productList)
+    public InventoryService(List<Product> productList)
     {
         _productList = productList;
-        inputManager = new InputManager(_productList);
+        inputManager = new ConsoleInputHandler(_productList);
     }
     /// <summary>
     /// Adds a new product to the inventory by getting the product details from the user.
@@ -25,12 +25,12 @@ internal class InventoryManager
 
     public void AddProduct()
     {
-        OutputManager.PrintCurrentTask("ADD");
+        ConsoleOutputHandler.PrintCurrentTask("ADD");
         Product product = inputManager.GetProductDetails();
         _productList.Add(product);
-        OutputManager.PrintSuccessMessage("Product added successfully");
+        ConsoleOutputHandler.PrintSuccessMessage("Product added successfully");
         inputManager.PressKeyToContinue();
-        OutputManager.ClearConsoleAndPrintMenu();
+        ConsoleOutputHandler.ClearConsoleAndPrintMenu();
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ internal class InventoryManager
     /// </summary>
     public void ViewAllProducts()
     {
-        OutputManager.PrintCurrentTask("VIEW");
+        ConsoleOutputHandler.PrintCurrentTask("VIEW");
         Console.WriteLine("------------------------------------------------------------");
         Console.WriteLine(String.Format("| {0,-10} | {1,-20} | {2,8} | {3,5} |",
                                          "Product ID", "Product Name", "Price", "Stock"));
@@ -52,7 +52,7 @@ internal class InventoryManager
 
         Console.WriteLine("------------------------------------------------------------");
         inputManager.PressKeyToContinue();
-        OutputManager.ClearConsoleAndPrintMenu();
+        ConsoleOutputHandler.ClearConsoleAndPrintMenu();
     }
 
     /// <summary>
@@ -60,18 +60,18 @@ internal class InventoryManager
     /// </summary>
     public void SearchProduct()
     {
-        OutputManager.PrintCurrentTask("SEARCH");
+        ConsoleOutputHandler.PrintCurrentTask("SEARCH");
         string productIdOrName = inputManager.GetProductNameorId();
         Product searchedProduct = FindProduct(productIdOrName);
         if (searchedProduct != null)
         {
-            OutputManager.ShowProductDetail(searchedProduct);
+            ConsoleOutputHandler.ShowProductDetail(searchedProduct);
             inputManager.PressKeyToContinue();
-            OutputManager.ClearConsoleAndPrintMenu();
+            ConsoleOutputHandler.ClearConsoleAndPrintMenu();
         }
         else
         {
-            OutputManager.PrintErrorMessage("Product Not Found!");
+            ConsoleOutputHandler.PrintErrorMessage("Product Not Found!");
         }
     }
 
@@ -80,23 +80,23 @@ internal class InventoryManager
     /// </summary>
     public void EditProduct()
     {
-        OutputManager.PrintCurrentTask("EDIT");
+        ConsoleOutputHandler.PrintCurrentTask("EDIT");
         string productIdOrName = inputManager.GetProductNameorId();
         Product searchedProduct = FindProduct(productIdOrName);
         if (searchedProduct != null)
         {
-            OutputManager.ShowProductDetail(searchedProduct, true);
+            ConsoleOutputHandler.ShowProductDetail(searchedProduct, true);
             int userChoice = inputManager.GetUserChoice();
             PerformEdit(searchedProduct, (EditChoice)userChoice);
-            OutputManager.PrintSuccessMessage("product edited successfully");
+            ConsoleOutputHandler.PrintSuccessMessage("product edited successfully");
             inputManager.PressKeyToContinue();
-            OutputManager.ClearConsoleAndPrintMenu();
+            ConsoleOutputHandler.ClearConsoleAndPrintMenu();
         }
         else
         {
-            OutputManager.PrintErrorMessage("Product Not Found!");
+            ConsoleOutputHandler.PrintErrorMessage("Product Not Found!");
             inputManager.PressKeyToContinue();
-            OutputManager.ClearConsoleAndPrintMenu();
+            ConsoleOutputHandler.ClearConsoleAndPrintMenu();
         }
     }
 
@@ -107,29 +107,29 @@ internal class InventoryManager
     public void DeleteProduct()
     {
 
-        OutputManager.PrintCurrentTask("DELETE");
+        ConsoleOutputHandler.PrintCurrentTask("DELETE");
         string productIdOrName = inputManager.GetProductNameorId();
         Product searchedProduct = FindProduct(productIdOrName);
         if (searchedProduct != null)
         {
-            OutputManager.ShowProductDetail(searchedProduct, true);
+            ConsoleOutputHandler.ShowProductDetail(searchedProduct, true);
             if (inputManager.GetConfirmation())
             {
                 _productList.Remove(searchedProduct);
-                OutputManager.PrintSuccessMessage("product deleted successfully");
+                ConsoleOutputHandler.PrintSuccessMessage("product deleted successfully");
             }
             else
             {
-                OutputManager.PrintErrorMessage("Confirmation denied");
+                ConsoleOutputHandler.PrintErrorMessage("Confirmation denied");
             }
                 inputManager.PressKeyToContinue();
-            OutputManager.ClearConsoleAndPrintMenu();
+            ConsoleOutputHandler.ClearConsoleAndPrintMenu();
         }
         else
         {
-            OutputManager.PrintErrorMessage("Product Not Found!");
+            ConsoleOutputHandler.PrintErrorMessage("Product Not Found!");
             inputManager.PressKeyToContinue();
-            OutputManager.ClearConsoleAndPrintMenu();
+            ConsoleOutputHandler.ClearConsoleAndPrintMenu();
         }
     }
 
@@ -179,7 +179,7 @@ internal class InventoryManager
                 product.QuantityInStock = quantity;
                 break;
             default:
-                OutputManager.PrintInvalidInput("Enter between 1- 4.");
+                ConsoleOutputHandler.PrintInvalidInput("Enter between 1- 4.");
                 break;
 
 
