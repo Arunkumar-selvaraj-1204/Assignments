@@ -20,6 +20,10 @@ namespace ErrorHandling
                             DivideByZero divideByZero = new DivideByZero();
                             divideByZero = null;
                             break;
+                        case MainMenuChoice.ArrayIndexOutOfRange:
+                            IndexOutOfRange indexOutOfRange = new IndexOutOfRange();
+                            indexOutOfRange = null;
+                            break;
                         default:
                             Console.WriteLine("Default");
                             break;
@@ -35,7 +39,7 @@ namespace ErrorHandling
         }
         public static void ShowMainMenu()
         {
-            Console.WriteLine("1. DivideByZero");
+            Console.WriteLine("1. DivideByZero \n2. IndexOutOfBound");
             Console.Write("Enter choice: ");
         }
     }

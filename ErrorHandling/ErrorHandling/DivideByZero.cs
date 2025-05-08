@@ -11,7 +11,6 @@ namespace ErrorHandling
     internal class DivideByZero
     {
         public DivideByZero() {
-            Console.WriteLine("helooo");
            int dividend =  GetInput(DivisionInput.dividend);
             int divisor = GetInput(DivisionInput.divisor);
             divideNumbers(dividend, divisor);
