@@ -3,33 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExpenseTracker.IOManager;
+using ExpenseTracker.ConsoleIOHandler;
 using static ExpenseTracker.Model.ApplicationEnum;
 
-namespace ExpenseTracker.AppInteraction
+namespace ExpenseTracker.ApplicationService
 {
-    internal class Application
+    internal class AppService
     {
-        private InputManager _inputManager;
-        private MoneyManager _moneyManager;
+        private ConsoleInputHandler _consoleInputHandler;
+        private TransactionService _transactionHandler;
 
-        public Application(InputManager inputManager, MoneyManager moneyManager)
+        public AppService(ConsoleInputHandler inputHandler, TransactionService transactionHandler)
         {
-            _moneyManager = moneyManager;
-            _inputManager = inputManager;
+            _transactionHandler = transactionHandler;
+            _consoleInputHandler = inputHandler;
         }
         public void DisplayMainMenu()
         {
             bool isExit = false;
             while (!isExit)
             {
-                OutputManager.PrintMainMenu();
-                int userChoice = _inputManager.GetUserChoice();
+                ConsoleOutputHandler.PrintMainMenu();
+                int userChoice = _consoleInputHandler.GetUserChoice();
                 MainMenu choice = (MainMenu)userChoice;
                 switch (choice)
                 {
                     case MainMenu.TrackIncome:
-                        _moneyManager.TrackIncome();
+                        _transactionHandler.TrackIncome();
                         break;
                     case MainMenu.Exit:
                         isExit = true;

@@ -11,8 +11,6 @@ namespace ExpenseTracker.Model
         public enum MainMenu
         {
             TrackIncome = 1,
-            TrackExpense = 2,
-            FinancialSummary = 3,
             Exit = 4,
 
         }

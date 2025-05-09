@@ -1,5 +1,5 @@
-﻿using ExpenseTracker.AppInteraction;
-using ExpenseTracker.IOManager;
+﻿using ExpenseTracker.ApplicationService;
+using ExpenseTracker.ConsoleIOHandler;
 
 namespace Assignment4
 {
@@ -7,9 +7,9 @@ namespace Assignment4
     {
         static void Main(string[] args)
         {
-            InputManager inputManager = new InputManager();
-            MoneyManager moneyManager = new MoneyManager(inputManager);
-            Application app = new Application(inputManager, moneyManager);
+            ConsoleInputHandler inputHandler = new ConsoleInputHandler();
+            TransactionService transactionHandler = new TransactionService(inputHandler);
+            AppService app = new AppService(inputHandler, transactionHandler);
             app.DisplayMainMenu();
         }
     }

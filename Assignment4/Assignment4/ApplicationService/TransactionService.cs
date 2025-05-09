@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExpenseTracker.IOManager;
+using ExpenseTracker.ConsoleIOHandler;
 using static ExpenseTracker.Model.ApplicationEnum;
 using ExpenseTracker.Model;
 using System.Runtime.CompilerServices;
@@ -11,21 +11,20 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Text.Json;
 using ExpenseTracker.Utils;
 
-namespace ExpenseTracker.AppInteraction
+namespace ExpenseTracker.ApplicationService
 {
-    public class MoneyManager
+    public class TransactionService
     {
-        private InputManager _inputManager;
+        private ConsoleInputHandler _consoleInputHandler;
         
         private List<Income> _listOfIncome  = InitializeListOfIncome();
-        private List<Expense> _listOfExpense = new List<Expense>();
-        public MoneyManager(InputManager manager) {
-            _inputManager = manager;
+        public TransactionService(ConsoleInputHandler inputHandler) {
+            _consoleInputHandler = inputHandler;
         }
         public void TrackIncome()
         {
-            OutputManager.DisplayIncomeChoice();
-            int userChoice =  _inputManager.GetUserChoice();
+            ConsoleOutputHandler.DisplayIncomeChoice();
+            int userChoice =  _consoleInputHandler.GetUserChoice();
             IncomeChoice choice = (IncomeChoice)userChoice;
             switch (choice)
             {
@@ -53,18 +52,18 @@ namespace ExpenseTracker.AppInteraction
         //helper
         public void AddIncome()
         {
-            Income income =_inputManager.GetIncomeDetails();
+            Income income =_consoleInputHandler.GetIncomeDetails();
             _listOfIncome.Add(income);
             
         }
         private void ShowAllIncome()
         {
-            OutputManager.PrintAllIncome(_listOfIncome);
+            ConsoleOutputHandler.PrintAllIncome(_listOfIncome);
         }
         private void DeleteIncome()
         {
             ShowAllIncome();
-            int index = _inputManager.GetIndex("delete");
+            int index = _consoleInputHandler.GetIndex("delete");
             if (index > _listOfIncome.Count())
             {
                 Console.WriteLine("Invalid index entered");
@@ -76,26 +75,26 @@ namespace ExpenseTracker.AppInteraction
         private void EditIncome()
         {
             ShowAllIncome();
-            int index = _inputManager.GetIndex("edit");
+            int index = _consoleInputHandler.GetIndex("edit");
             if (index > _listOfIncome.Count())
             {
                 Console.WriteLine("Invalid index entered");
                 return;
             }
             Income selectedRecord = _listOfIncome[index-1];
-            OutputManager.PrintIncomeDetails(selectedRecord);
-            int userChoice = _inputManager.GetUserChoice();
+            ConsoleOutputHandler.PrintIncomeDetails(selectedRecord);
+            int userChoice = _consoleInputHandler.GetUserChoice();
             EditChoice choice = (EditChoice) userChoice;
             switch (choice)
             {
                 case EditChoice.EditSource:
-                    selectedRecord.Source = _inputManager.GetIncomeSource();
+                    selectedRecord.Source = _consoleInputHandler.GetIncomeSource();
                     break;
                 case EditChoice.EditDate:
-                    selectedRecord.Date = _inputManager.GetDate();
+                    selectedRecord.Date = _consoleInputHandler.GetDate();
                     break;
                 case EditChoice.EditAmount:
-                    selectedRecord.Amount = _inputManager.GetAmount();
+                    selectedRecord.Amount = _consoleInputHandler.GetAmount();
                     break;
                 default:
                     Console.WriteLine("Invalid choice");

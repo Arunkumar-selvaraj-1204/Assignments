@@ -31,7 +31,6 @@ namespace ExpenseTracker.Utils
                 }
                 else
                 {
-                    Console.WriteLine($"File not found: {filePath}");
                     File.Create(filePath).Close();
                     return null;
                 }

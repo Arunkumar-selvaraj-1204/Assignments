@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ExpenseTracker.Model;
 
-namespace ExpenseTracker.IOManager
+namespace ExpenseTracker.ConsoleIOHandler
 {
-    public class OutputManager
+    public class ConsoleOutputHandler
     {
         public static void PrintMainMenu()
         {

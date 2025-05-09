@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using ExpenseTracker.Model;
 using ExpenseTracker.Utils;
 
-namespace ExpenseTracker.IOManager
+namespace ExpenseTracker.ConsoleIOHandler
 {
-    public class InputManager
+    public class ConsoleInputHandler
     {
         public int GetUserChoice()
         {
@@ -17,7 +17,7 @@ namespace ExpenseTracker.IOManager
             int userChoice;
             while (!int.TryParse(userInput, out userChoice))
             {
-                OutputManager.PrintInvalidOption("");
+                ConsoleOutputHandler.PrintInvalidOption("");
                 userInput = Console.ReadLine();
             }
             return userChoice;
@@ -38,7 +38,7 @@ namespace ExpenseTracker.IOManager
             int index;
             while (!int.TryParse(userInput, out index) || index <= 0)
             {
-                OutputManager.PrintInvalidOption("");
+                ConsoleOutputHandler.PrintInvalidOption("");
                 userInput = Console.ReadLine();
             }
             return index;
@@ -48,7 +48,7 @@ namespace ExpenseTracker.IOManager
         {
             Console.Write("Enter source of income: ");
             string incomeSource = Console.ReadLine();
-            while (!Validator.IsValidSource(incomeSource))
+            while (!InputValidator.IsValidSource(incomeSource))
             {
                 Console.WriteLine("Invalid source details");
                 Console.Write("Enter source of income: ");
@@ -62,7 +62,7 @@ namespace ExpenseTracker.IOManager
         {
             Console.Write("Enter Date in YYYY-MM-DD: ");
             string date = Console.ReadLine();
-            while (!Validator.IsValidDate(date))
+            while (!InputValidator.IsValidDate(date))
             {
                 Console.WriteLine("Invalid date format.");
                 Console.Write("Enter Date in YYYY-MM-DD: ");
@@ -75,7 +75,7 @@ namespace ExpenseTracker.IOManager
         {
             Console.Write("Enter amount: ");
             string amount = Console.ReadLine();
-            while (!Validator.IsValidAmount(amount))
+            while (!InputValidator.IsValidAmount(amount))
             {
                 Console.WriteLine("Invalid amount. It should be greater than zero");
                 Console.Write("Enter amount: ");

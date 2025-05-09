@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracker.Utils
 {
-    internal class Validator
+    internal class InputValidator
     {
         public static bool IsValidSource(string source)
         {
