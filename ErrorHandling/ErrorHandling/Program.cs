@@ -39,11 +39,21 @@ namespace ErrorHandling
                 }
             }
         }
+
+        /// <summary>
+        /// Displays the main menu with options for the user to select a task.
+        /// </summary>
         public static void ShowMainMenu()
         {
-            Console.WriteLine("1. DivideByZero \n2. IndexOutOfBound");
+            Console.WriteLine("1. DivideByZero(Task 1) \n2. IndexOutOfRange(Task 2, Task 3, Task 4, Task 5)");
             Console.Write("Enter choice: ");
         }
+
+        /// <summary>
+        /// Handles unhandled exceptions in the application and logs the stack trace.
+        /// </summary>
+        /// <param name="sender">The source of the unhandled exception event.</param>
+        /// <param name="args">The event arguments containing exception information.</param>
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;

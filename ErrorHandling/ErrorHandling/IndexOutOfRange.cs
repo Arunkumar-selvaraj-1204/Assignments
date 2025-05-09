@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ErrorHandling
+﻿namespace ErrorHandling
 {
     internal class IndexOutOfRange
     {
@@ -30,12 +24,25 @@ namespace ErrorHandling
             }
             GetIndex();
         }
+
+        /// <summary>
+        /// Generates an integer array by prompting the user to input its length.
+        /// </summary>
+        /// <returns>An integer array of the specified length.</returns>
         public int[] GenerateArray()
         {
             Console.Write("Enter array length: ");
             int length = GetArrayLength();
             return new int[length];
         }
+
+        /// <summary>
+        /// Gets the length of the array from the user.
+        /// Ensures the input is a positive integer.
+        /// </summary>
+        /// <returns>The length of the array.</returns>
+        /// <exception cref="InvalidUserInputException">Thrown if the input length is zero or negative.</exception>
+
         public int GetArrayLength()
         {
             string userInput = Console.ReadLine();
@@ -53,6 +60,10 @@ namespace ErrorHandling
             }
             return length;
         }
+
+        /// <summary>
+        /// Gets elements of the array.
+        /// </summary>
         public void GetArrayElements()
         {
             for(int i = 0; i< _numbers.Length; i++)
@@ -68,6 +79,13 @@ namespace ErrorHandling
                 _numbers[i] = number;
             }
         }
+
+
+        /// <summary>
+        /// Retrieves an array element at a specified index provided by the user.
+        /// Handles index out-of-range errors.
+        /// </summary>
+        /// <exception cref="Exception">Thrown if the index is out of range.</exception>
         public void GetElementByIndex()
         {
             Console.Write("Enter index to search element: ");
@@ -90,6 +108,12 @@ namespace ErrorHandling
 
         }
 
+
+        /// <summary>
+        /// Finds the index of a specified number in the array provided by the user.
+        /// Throws an unhandled exception if element is not an integer.
+        /// </summary>
+        /// <exception cref="Exception">Purposefully thrown to simulate global unhandled exception handling.</exception>
         public void GetIndex()
         {
             Console.Write("Enter number to find index: ");

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ErrorHandling
+﻿namespace ErrorHandling
 {
     internal class Utils
     {
+
+        /// <summary>
+        /// Pauses the console until the user press a key.
+        /// </summary>
         public static void PressKeyToContinue()
         {
             Console.WriteLine("Enter any key to continue...");

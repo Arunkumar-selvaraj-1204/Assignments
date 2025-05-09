@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-using static ErrorHandling.ApplicationEnums;
+﻿using static ErrorHandling.ApplicationEnums;
 
 namespace ErrorHandling
 {
@@ -15,6 +9,12 @@ namespace ErrorHandling
             int divisor = GetInput(DivisionInput.divisor);
             divideNumbers(dividend, divisor);
         }
+
+        /// <summary>
+        /// Gets input for the division component.
+        /// </summary>
+        /// <param name="input">The division component (dividend or divisor).</param>
+        /// <returns>The valid integer input provided by the user.</returns>
         public int GetInput(DivisionInput input)
         {
             Console.Write($"Enter {input}: ");
@@ -29,6 +29,11 @@ namespace ErrorHandling
             return userChoice;
         }
 
+        /// <summary>
+        /// Divides two numbers and handles division by zero exceptions.
+        /// </summary>
+        /// <param name="dividend">The number to be divided.</param>
+        /// <param name="divisor">The number to divide by.</param>
         public void divideNumbers(int dividend, int divisor)
         {
             try
