@@ -34,10 +34,10 @@ namespace ExpenseTracker.ApplicationService
                         break;
                     case MainMenu.TrackExpense:
                         Console.Clear();
-                        _moneyManager.TrackExpense();
+                        _transactionHandler.TrackExpense();
                         break;
                     case MainMenu.FinancialSummary:
-                        _moneyManager.ShowFinancialSummary();
+                        _transactionHandler.ShowFinancialSummary();
                         break;
                     case MainMenu.Exit:
                         isExit = true;
