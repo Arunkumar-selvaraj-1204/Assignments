@@ -72,7 +72,7 @@ namespace ExpenseTracker.ConsoleIOHandler
         {
             Console.Write("Enter category of expense: ");
             string category = Console.ReadLine();
-            while (!Validator.IsValidSource(category))
+            while (!InputValidator.IsValidSource(category))
             {
                 Console.WriteLine("Invalid category");
                 Console.Write("Enter category of expense: ");

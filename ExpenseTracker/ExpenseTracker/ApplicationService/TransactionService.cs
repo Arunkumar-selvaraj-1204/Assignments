@@ -72,8 +72,8 @@ namespace ExpenseTracker.ApplicationService
             while (!isExit)
             {
                 Console.Clear();
-                OutputManager.DisplayExpenseChoice();
-                int userChoice = _inputManager.GetUserChoice();
+                ConsoleOutputHandler.DisplayExpenseChoice();
+                int userChoice = _consoleInputHandler.GetUserChoice();
                 ExpenseChoice choice = (ExpenseChoice)userChoice;
                 switch (choice)
                 {
@@ -118,7 +118,7 @@ namespace ExpenseTracker.ApplicationService
             {
                 totalExpense += expense.Amount;
             }
-            OutputManager.PrintFinancialSummary(totalIncome,totalExpense);
+            ConsoleOutputHandler.PrintFinancialSummary(totalIncome,totalExpense);
             Utilities.PressAnyKey();
             Console.Clear();
         }
@@ -133,7 +133,7 @@ namespace ExpenseTracker.ApplicationService
         }
         public void AddExpense()
         {
-            Expense expense = _inputManager.GetExpenseDetails();
+            Expense expense = _consoleInputHandler.GetExpenseDetails();
             _listOfExpense.Add(expense);
             Utilities.PrintSuccessMessage("Added");
         }
@@ -154,7 +154,7 @@ namespace ExpenseTracker.ApplicationService
                 Utilities.PrintNoRecords("expense");
                 return;
             }
-            OutputManager.PrintAllExpense(_listOfExpense);
+            ConsoleOutputHandler.PrintAllExpense(_listOfExpense);
         }
 
         private void DeleteIncome()
@@ -184,7 +184,7 @@ namespace ExpenseTracker.ApplicationService
                 return;
             }
             ShowAllIncome();
-            int index = _inputManager.GetIndex("delete");
+            int index = _consoleInputHandler.GetIndex("delete");
             if (index > _listOfExpense.Count())
             {
                 Console.WriteLine("Invalid index entered");
@@ -241,26 +241,26 @@ namespace ExpenseTracker.ApplicationService
                 return;
             }
             ShowAllExpense();
-            int index = _inputManager.GetIndex("edit");
+            int index = _consoleInputHandler.GetIndex("edit");
             if (index > _listOfIncome.Count())
             {
                 Console.WriteLine("Invalid index entered");
                 return;
             }
             Expense selectedRecord = _listOfExpense[index - 1];
-            OutputManager.PrintExpenseDetails(selectedRecord);
-            int userChoice = _inputManager.GetUserChoice();
+            ConsoleOutputHandler.PrintExpenseDetails(selectedRecord);
+            int userChoice = _consoleInputHandler.GetUserChoice();
             EditChoice choice = (EditChoice)userChoice;
             switch (choice)
             {
                 case EditChoice.EditSourceOrCategory:
-                    selectedRecord.Category = _inputManager.GetCategory();
+                    selectedRecord.Category = _consoleInputHandler.GetCategory();
                     break;
                 case EditChoice.EditDate:
-                    selectedRecord.Date = _inputManager.GetDate();
+                    selectedRecord.Date = _consoleInputHandler.GetDate();
                     break;
                 case EditChoice.EditAmount:
-                    selectedRecord.Amount = _inputManager.GetAmount();
+                    selectedRecord.Amount = _consoleInputHandler.GetAmount();
                     break;
                 default:
                     Console.WriteLine("Invalid choice");
