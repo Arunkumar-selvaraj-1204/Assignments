@@ -94,9 +94,11 @@ namespace ErrorHandling
         {
             Console.Write("Enter number to find index: ");
             string userInput = Console.ReadLine();
-            int element = int.Parse(userInput); // Task 4
+
+            // Task 4
             try
             {
+                int element = int.Parse(userInput);
                 for (int i = 0; i < _numbers.Length; i++)
                 {
                     if (_numbers[i] == element)
@@ -106,8 +108,13 @@ namespace ErrorHandling
                     }
                 }
             }
-            catch (IndexOutOfRangeException e) { 
-            Console.WriteLine(e.Message);
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(); //Throws the exception purposefully to caught by global unhandled exception
             }
         }
     }

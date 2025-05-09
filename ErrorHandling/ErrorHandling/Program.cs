@@ -47,7 +47,7 @@ namespace ErrorHandling
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
         {
             Exception e = (Exception)args.ExceptionObject;
-            Console.WriteLine("Unhandled exception caught : " + e.Message);
+            Console.WriteLine("Unhandled exception caught : " + e.StackTrace); //Task 5
         }
 
     }
