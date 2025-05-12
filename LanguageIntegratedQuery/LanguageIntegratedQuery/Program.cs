@@ -11,6 +11,8 @@
             task1.Run();
             Task2 task2 = new Task2(productGenerator.GetProductList(), productGenerator.GetCategories());
             task2.Run();
+            Task4 task4 = new Task4 (productGenerator.GetProductList());
+            task4.Run();
         }
 
         public static void DisplayAllProducts(List<Product> products)
