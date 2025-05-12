@@ -5,7 +5,7 @@ namespace ErrorHandling
     internal class DivideByZero
     {
         public DivideByZero() {
-           int dividend =  GetInput(DivisionInput.dividend);
+            int dividend =  GetInput(DivisionInput.dividend);
             int divisor = GetInput(DivisionInput.divisor);
             divideNumbers(dividend, divisor);
         }

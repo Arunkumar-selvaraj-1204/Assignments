@@ -21,8 +21,8 @@
 &nbsp;&nbsp;In Task5,The stack trace of the exception thrown was printed to the console
 
 &nbsp;&nbsp;The stack trace message is given below:
-"Unhandled exception caught : at ErrorHandling.IndexOutOfRange.GetIndex() in C:\Users\arunkumar.selvaraj\Desktop\C# Assignments\Assignments\ErrorHandling\ErrorHandling\IndexOutOfRange.cs:line 141
-at ErrorHandling.IndexOutOfRange..ctor() in C:\Users\arunkumar.selvaraj\Desktop\C# Assignments\Assignments\ErrorHandling\ErrorHandling\IndexOutOfRange.cs:line 25
-at ErrorHandling.Program.Main(String[] args) in C:\Users\arunkumar.selvaraj\Desktop\C# Assignments\Assignments\ErrorHandling\ErrorHandling\Program.cs:line 26"
+"Unhandled exception caught : at ErrorHandling.IndexOutOfRange.GetIndex() in ..\ErrorHandling\IndexOutOfRange.cs:line 141
+at ErrorHandling.IndexOutOfRange..ctor() in ..\ErrorHandling\IndexOutOfRange.cs:line 25
+at ErrorHandling.Program.Main(String[] args) in ..\ErrorHandling\Program.cs:line 26"
 
 &nbsp;&nbsp;This message shows that the initial call is from the creating an object for IndexOutOfRange and then it's constructor call the GetIndex function where the exception thrown in line 141.
