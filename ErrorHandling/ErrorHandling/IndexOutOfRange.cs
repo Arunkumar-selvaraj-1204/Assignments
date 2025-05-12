@@ -66,7 +66,7 @@
         {
             for(int i = 0; i< _numbers.Length; i++)
             {
-                Console.Write($"Enter number {i}: ");
+                Console.Write($"Enter number {i+1}: ");
                 string userInput = Console.ReadLine();
                 int number;
                 while (!int.TryParse(userInput, out number))
@@ -129,6 +129,7 @@
                         return;
                     }
                 }
+                Console.WriteLine($"Element {element} is not found.");
             }
             catch (IndexOutOfRangeException e)
             {
@@ -137,6 +138,10 @@
             catch (Exception e)
             {
                 throw new Exception(); //Throws the exception purposefully to caught by global unhandled exception
+            }
+            finally
+            {
+                Utils.PressKeyToContinue();
             }
         }
     }
