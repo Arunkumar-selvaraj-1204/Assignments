@@ -18,6 +18,7 @@ namespace LanguageIntegratedQuery
         }
 
         public List<Product> GetProductList() { return productList; }
+        public string[] GetCategories() { return Categories; }
 
         /// <summary>
         /// Creates a specified number of products and ensures each category appears at least once.

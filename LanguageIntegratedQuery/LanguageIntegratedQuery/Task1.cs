@@ -27,7 +27,7 @@ namespace LanguageIntegratedQuery
         private void DisplayProducts(IEnumerable<(string productName, decimal productPrice)> products)
         {
             Console.WriteLine("{0,-20} {1,10}", "Product Name", "Product Price");
-            Console.WriteLine(new string('-', 30));
+            Console.WriteLine(new string('-', 40));
 
             foreach (var product in products)
             {
