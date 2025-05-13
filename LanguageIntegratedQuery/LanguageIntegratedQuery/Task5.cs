@@ -69,17 +69,17 @@ namespace LanguageIntegratedQuery
             Console.WriteLine("\n\nTask 5.3: Products with price less than 100 and sorted by price and performed Inner join with Supplier using Supplier ID");
             Console.ResetColor();
 
-            var result = queryBuilder.Filter(product => product.ProductPrice < 100).SortBy(product => product.ProductPrice).Join((p,s) => p.ProductId == s.ProductId).Execute();
-            Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10} ", "ProductId", "ProductName", "Supplier Name","Price");
+            var result = queryBuilder.Filter(product => product.ProductPrice < 100).SortBy(product => product.ProductPrice).Join((p, s) => p.ProductId == s.ProductId).Execute();
+            Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}", "ProductId", "ProductName", "Supplier name", "Price");
             Console.WriteLine(new string('-', 60));
 
-            foreach (Tuple<int,string,string,decimal> item in result)
+            foreach (Tuple<Product, string> item in result)
             {
-                Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10} ",
-                    item.Item1,
+                Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}",
+                    item.Item1.ProductId,
+                    item.Item1.ProductName,
                     item.Item2,
-                    item.Item3,
-                    item.Item4
+                    item.Item1.ProductPrice
                     );
             }
         }

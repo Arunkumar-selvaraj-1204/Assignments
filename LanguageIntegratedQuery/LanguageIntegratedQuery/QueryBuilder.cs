@@ -9,62 +9,59 @@ namespace LanguageIntegratedQuery
 {
     internal class QueryBuilder<T>
     {
-        private List<Product> _products;
-        private List<Supplier> _suppliers;
-
-        List <(object, QueryOperation)> queryList = new List<(object, QueryOperation)> ();
-        public IEnumerable<object> queryResult { get; set; }
-        public QueryBuilder(List<Product> products, List<Supplier> suppliers)
+        List<Func<T, bool>> FilterQueries = new List<Func<T, bool>>();
+        List<Func<T, object>> SortQueries = new List<Func<T, object>>();
+        Func<T, Supplier, bool> joinQuery;
+        public IEnumerable<Supplier> Suppliers { get; set; }
+        IEnumerable<T> dataList { get; set; }
+        public IEnumerable<T> queryResult { get; set; }
+        public QueryBuilder(IEnumerable<T> products, List<Supplier> suppliers)
         {
-            _products = products;
-            _suppliers = suppliers;
-            queryResult = products;
+            Suppliers = suppliers;
+            dataList = products;
         }
 
         public QueryBuilder<T> Filter(Func<T, bool> func)
         {
-            queryList.Add(new (func, QueryOperation.Filter));
+            FilterQueries.Add(func);
             return this;
         }
 
-        public QueryBuilder<T> SortBy(Func<T, decimal> func)
+        public QueryBuilder<T> SortBy<TKey>(Func<T, TKey> keySelector)
         {
-            queryList.Add(new(func, QueryOperation.SortBy));
+            SortQueries.Add(x=>keySelector(x));
             return this;
         }
 
-        public QueryBuilder<T> Join(Func<T, Supplier, bool> func)
+        public QueryBuilder<T> Join(Func<T, Supplier, bool> joinFunc)
         {
-            queryList.Add(new(func, QueryOperation.Join));
+            joinQuery = joinFunc;
             return this;
         }
 
         public IEnumerable<object> Execute()
         {
-            foreach (var query in queryList)
+            queryResult = dataList;
+            foreach (var filterQuery in FilterQueries)
             {
-                var source = (IEnumerable<Product>)queryResult;
-                if (query.Item2 == QueryOperation.Filter)
-                {
-                    queryResult = source.Where((Func<Product, bool>)query.Item1).ToList();
-                }
-                else if(query.Item2 == QueryOperation.SortBy)
-                {
-                    
-                    queryResult = source.OrderBy((Func<Product, decimal>)query.Item1).ToList();
-                }
-                else
-                {
-                    queryResult = from product in source
-                                  from supplier in _suppliers
-                                  where ((Func<Product, Supplier, bool>) query.Item1)(product, supplier)
-                                  select new Tuple<int, string, string, decimal> ( product.ProductId, product.ProductName, supplier.SupplierName, product.ProductPrice );
-                }
+                queryResult = queryResult.Where(filterQuery);
             }
-            queryList.Clear();
-            var result = queryResult;
-            queryResult = _products;
-            return result;
+            foreach(var sortQuery in SortQueries)
+            {
+                queryResult =  queryResult.OrderBy(sortQuery);
+            }
+            if(joinQuery is not null)
+            {
+                var joinResult = (from source in queryResult
+                              from supplier in Suppliers
+                              where (joinQuery(source, supplier))
+                              select new Tuple<T, string>(source, supplier.SupplierName)).ToList();
+                joinQuery = null;
+                return joinResult;
+            }
+            FilterQueries.Clear();
+            SortQueries.Clear();
+            return queryResult.Cast<object>();
         }
     }
     static class ApplicationEnums
