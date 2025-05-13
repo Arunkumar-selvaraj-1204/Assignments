@@ -9,11 +9,14 @@ namespace LanguageIntegratedQuery
     internal class Task2
     {
         private List<Product> _products;
+        public List<Supplier> suppliers { get; set; }
+
         string[] _categories;
 
         public Task2(List<Product> productList, string[] categories)
         {
             _products = productList;
+            suppliers = GenerateSupplierList();
             _categories = categories;
         }
         public void Run()
@@ -85,10 +88,6 @@ namespace LanguageIntegratedQuery
                 new  Supplier{SupplierId = 5, SupplierName = "Supplier 5", ProductId = 3 },
                 new  Supplier{SupplierId = 5, SupplierName = "Supplier 5", ProductId = 1 },
             };
-            //for (int i = 1; i <= 10; i++)
-            //{
-            //    suppliers.Add(new Supplier {SupplierId = i, SupplierName = $"Supplier {i}", ProductId = (11-i) });
-            //}
             return suppliers;
         }
     }

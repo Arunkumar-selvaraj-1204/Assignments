@@ -8,7 +8,7 @@ namespace LanguageIntegratedQuery
 {
     internal class ProductGenerator
     {
-        private static readonly string[] Categories = { "Electronics", "Clothing", "Grocery", "Books" };
+        private static readonly string[] Categories = { "Electronics", "Clothing", "Grocery", "Books", "Entertainment" };
         private static readonly Random RandomGenerator = new Random();
         private List<Product> productList;
         public ProductGenerator()

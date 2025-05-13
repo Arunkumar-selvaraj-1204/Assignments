@@ -15,15 +15,17 @@
             task.Run();
             Task4 task4 = new Task4 (productGenerator.GetProductList());
             task4.Run();
+            Task5 task5 = new Task5(productGenerator.GetProductList(), task2.suppliers); //Suppliers list is generated in task2
+            task5.Run();
         }
 
         public static void DisplayAllProducts(List<Product> products)
         {
-            Console.WriteLine("{0,-10} {1,-20} {2,10} {3,-15}", "ProductId", "ProductName", "Price", "Category");
+            Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}", "ProductId", "ProductName", "Price", "Category");
             Console.WriteLine(new string('-', 60));
             foreach (Product product in products)
             {
-                Console.WriteLine("{0,-10} {1,-20} {2,10} {3,-15}",
+                Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}",
                     product.ProductId,
                     product.ProductName,
                     $"RS. {product.ProductPrice}",

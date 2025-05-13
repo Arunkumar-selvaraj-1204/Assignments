@@ -35,7 +35,7 @@ namespace LanguageIntegratedQuery
         private void RunTask3_2(int sum)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\nTask 3.2: Display all unique pairs of numbers in the array that add up to a specified target. ");
+            Console.WriteLine($"\n\nTask 3.2: Display all unique pairs of numbers in the array that add up to a specified target. ({sum}) ");
             Console.ResetColor();
 
             IEnumerable<(int num1, int num2)> uniqueSumPairs = numbers.Distinct().Where(number => numbers.Contains(sum - number)).Select(number => (number, sum - number));
