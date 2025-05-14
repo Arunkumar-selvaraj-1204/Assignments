@@ -4,8 +4,8 @@
 <br> &emsp; The .NET platform is a development framework developed by Microsoft that provides the execution runtime (CLR) and the set of standard libraries that are required for the development of applications in C# and other .NET compatible languages such as F#, Visual Basic, Iron Python, etc.
  
 2. What are the key components of the .NET platform? 
-<br> &emsp; The key components of .NET platfrom are - CLR (Common Language Runtime) and FCL (Framework Class Library). 
-<br> &emsp; CLR is the runtime environment for managing the exectuion of .NET applications. It is also responsible for performing various low-level tasks such as managing the memory, providing error handling, dealing with thread, and garbage collection. 
+<br> &emsp; The key components of .NET platform are - CLR (Common Language Runtime) and FCL (Framework Class Library). 
+<br> &emsp; CLR is the runtime environment for managing the execution of .NET applications. It is also responsible for performing various low-level tasks such as managing the memory, providing error handling, dealing with thread, and garbage collection. 
 <br> &emsp; FCL contains various classes, interfaces and data types required to implement different functions and develop different types of applications such as desktop applications, web application, or mobile applications.
  
 3. Differentiate between the Common Language Runtime (CLR) and the Common Type System (CTS) in .NET. 
@@ -17,16 +17,16 @@
  
 5. Explain the difference between value types and reference types in C#. 
 <br> Value Types 
-<br> &emsp; They follow value semantics. The only way to modify the value of a variableis through the variable itself.
+<br> &emsp; They follow value semantics. The only way to modify the value of a variable through the variable itself.
 <br> &emsp; The values stored in the variable are independent of other variables.
 <br> &emsp; They are derived from the System.ValueType class.
 <br> &emsp; Value types are stored in the stack.
 <br> &emsp; Example of value types in C# are all built-in types such as int, decimal, bool, DateTime, etc and all structs.
 <br> Reference Types
 <br> &emsp; They follow reference semantics. The variables of this type stores an identity of some object, called the reference and not a value.
-<br> &emsp; The values stored in the varibale is dependent on other variable.
+<br> &emsp; The values stored in the variable is dependent on other variable.
 <br> &emsp; They are derived from the System.Object class.
-<br> &emsp; For reference type varibles, the reference is stored in stack and the variable values are stored in heap.
+<br> &emsp; For reference type variables, the reference is stored in stack and the variable values are stored in heap.
 <br> &emsp; Examples of reference types in C# are List, array, strings, etc and all classes.
  
 6. Describe the concept of garbage collection on .NET and its advantages. 
