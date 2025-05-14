@@ -3,45 +3,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static LanguageIntegratedQuery.ApplicationEnums;
+
 
 namespace LanguageIntegratedQuery
 {
-    internal class QueryBuilder<T>
+    internal class QueryBuilder<T, T2>
     {
         List<Func<T, bool>> FilterQueries = new List<Func<T, bool>>();
         List<Func<T, object>> SortQueries = new List<Func<T, object>>();
-        Func<T, Supplier, bool> joinQuery;
-        public IEnumerable<Supplier> Suppliers { get; set; }
-        IEnumerable<T> dataList { get; set; }
+        Func<T, T2, bool> joinQuery;
+        private IEnumerable<T> _primaryList { get; set; }
+        private IEnumerable<T2> _secondaryList { get; set; }
         public IEnumerable<T> queryResult { get; set; }
-        public QueryBuilder(IEnumerable<T> products, List<Supplier> suppliers)
+
+        public QueryBuilder(IEnumerable<T> primaryList, IEnumerable<T2> secondaryList)
         {
-            Suppliers = suppliers;
-            dataList = products;
+            _secondaryList = secondaryList;
+            _primaryList = primaryList;
         }
 
-        public QueryBuilder<T> Filter(Func<T, bool> func)
+        /// <summary>
+        /// Adds lambda function to the filterQueries list.
+        /// </summary>
+        /// <param name="filterCondition">Filter condition</param>
+        /// <returns>Instance of this class.</returns>
+        public QueryBuilder<T, T2> Filter(Func<T, bool> filterCondition)
         {
-            FilterQueries.Add(func);
+            FilterQueries.Add(filterCondition);
             return this;
         }
 
-        public QueryBuilder<T> SortBy<TKey>(Func<T, TKey> keySelector)
+        /// <summary>
+        /// Adds lambda function to the SortQueries list.
+        /// </summary>
+        /// <typeparam name="TKey">Return type of the lambda function</typeparam>
+        /// <param name="keySelector">The key used to sort the list.</param>
+        /// <returns>Instance of this class.</returns>
+        public QueryBuilder<T, T2> SortBy<TKey>(Func<T, TKey> keySelector) where TKey : class  
         {
-            SortQueries.Add(x=>keySelector(x));
+            SortQueries.Add(keySelector);
             return this;
         }
 
-        public QueryBuilder<T> Join(Func<T, Supplier, bool> joinFunc)
+        /// <summary>
+        /// Assigns joinCondition to joinQuery
+        /// </summary>
+        /// <param name="joinCondition">Join condition</param>
+        /// <returns>Instance of this class.</returns>
+        public QueryBuilder<T, T2> Join(Func<T, T2, bool> joinCondition)
         {
-            joinQuery = joinFunc;
+            joinQuery = joinCondition;
             return this;
         }
 
+        /// <summary>
+        /// Executes all filterQueries and SortQueries. If join is not null then joins with secondaryList.
+        /// </summary>
+        /// <returns>result of the query</returns>
         public IEnumerable<object> Execute()
         {
-            queryResult = dataList;
+            queryResult = _primaryList;
             foreach (var filterQuery in FilterQueries)
             {
                 queryResult = queryResult.Where(filterQuery);
@@ -53,9 +74,9 @@ namespace LanguageIntegratedQuery
             if(joinQuery is not null)
             {
                 var joinResult = (from source in queryResult
-                              from supplier in Suppliers
-                              where (joinQuery(source, supplier))
-                              select new Tuple<T, string>(source, supplier.SupplierName)).ToList();
+                              from source2 in _secondaryList
+                              where (joinQuery(source, source2))
+                              select new Tuple<T, T2>(source, source2)).ToList();
                 joinQuery = null;
                 return joinResult;
             }
@@ -64,13 +85,5 @@ namespace LanguageIntegratedQuery
             return queryResult.Cast<object>();
         }
     }
-    static class ApplicationEnums
-    {
-        public enum QueryOperation
-        {
-            Filter,
-            SortBy,
-            Join,
-        }
-    }
+
 }

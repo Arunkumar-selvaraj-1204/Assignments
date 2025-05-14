@@ -19,6 +19,10 @@
             task5.Run();
         }
 
+        /// <summary>
+        /// Display all product data.
+        /// </summary>
+        /// <param name="products">List of products</param>
         public static void DisplayAllProducts(List<Product> products)
         {
             Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}", "ProductId", "ProductName", "Price", "Category");

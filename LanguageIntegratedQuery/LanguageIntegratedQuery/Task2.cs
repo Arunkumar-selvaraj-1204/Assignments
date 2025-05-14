@@ -25,6 +25,9 @@ namespace LanguageIntegratedQuery
             RunTask2_2();
          }
 
+        /// <summary>
+        /// Displays product grouped by category and its expensive product detail.
+        /// </summary>
         private void RunTask2_1()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -37,10 +40,9 @@ namespace LanguageIntegratedQuery
             foreach (string category in _categories)
             {
                 int productCount = _products.Count(product => product.Category == category);
-                Product expensiveProduct = _products
-                    .Where(product => product.Category == category)
-                    .OrderByDescending(product => product.ProductPrice)
-                    .FirstOrDefault();
+                Product expensiveProduct = _products.Where(product => product.Category == category)
+                                            .OrderByDescending(product => product.ProductPrice)
+                                            .FirstOrDefault();
 
                 Console.WriteLine("{0,-15} {1,-10} {2,-20} {3,10}",
                     category,
@@ -49,6 +51,10 @@ namespace LanguageIntegratedQuery
                     $"RS. {expensiveProduct?.ProductPrice ?? 0}");
             }
         }
+
+        /// <summary>
+        /// Prints supplier name of the products.
+        /// </summary>
         private void RunTask2_2()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -68,6 +74,10 @@ namespace LanguageIntegratedQuery
             }
         }
 
+        /// <summary>
+        /// Generates a static supplier list.
+        /// </summary>
+        /// <returns>supplier list</returns>
         private List<Supplier> GenerateSupplierList()
         {
             List <Supplier> suppliers = new List<Supplier>()

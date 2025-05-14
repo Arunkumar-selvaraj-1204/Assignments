@@ -9,11 +9,11 @@ namespace LanguageIntegratedQuery
 {
     internal class Task5
     {
-        QueryBuilder<Product> queryBuilder;
+        QueryBuilder<Product, Supplier> queryBuilder;
 
         public Task5(List<Product> products, List<Supplier> suppliers)
         {
-            queryBuilder = new QueryBuilder<Product>(products, suppliers);
+            queryBuilder = new QueryBuilder<Product, Supplier>(products, suppliers);
         }
 
         public void Run()
@@ -21,8 +21,11 @@ namespace LanguageIntegratedQuery
             DisplayProductNameContains2();
             DisplayProductCategoryStartsWithE();
             JoinProductsWithSuppliers();
-        } 
+        }
 
+        /// <summary>
+        /// Displays product name contains '2'
+        /// </summary>
         private void DisplayProductNameContains2()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -42,7 +45,10 @@ namespace LanguageIntegratedQuery
                     item.Category);
             }
         }
-        
+
+        /// <summary>
+        /// Displays products whose category starts with 'E' and sort by price
+        /// </summary>
         private void DisplayProductCategoryStartsWithE()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -63,6 +69,9 @@ namespace LanguageIntegratedQuery
             }
         }
 
+        /// <summary>
+        /// Displays products with price less than 100 and sorted by price and performed Inner join with Supplier using Supplier ID
+        /// </summary>
         private void JoinProductsWithSuppliers()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -73,12 +82,12 @@ namespace LanguageIntegratedQuery
             Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}", "ProductId", "ProductName", "Supplier name", "Price");
             Console.WriteLine(new string('-', 60));
 
-            foreach (Tuple<Product, string> item in result)
+            foreach (Tuple<Product, Supplier> item in result)
             {
                 Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}",
                     item.Item1.ProductId,
                     item.Item1.ProductName,
-                    item.Item2,
+                    item.Item2.SupplierName,
                     item.Item1.ProductPrice
                     );
             }

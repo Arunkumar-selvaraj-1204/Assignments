@@ -24,6 +24,10 @@ namespace LanguageIntegratedQuery
             DisplayProducts(selectedProductsInDesc);
         }
 
+        /// <summary>
+        /// Displays the result.
+        /// </summary>
+        /// <param name="products">Product list</param>
         private void DisplayProducts(IEnumerable<(string productName, decimal productPrice)> products)
         {
             Console.WriteLine("{0,-20} {1,10}", "Product Name", "Product Price");

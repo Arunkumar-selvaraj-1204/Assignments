@@ -14,6 +14,10 @@ namespace LanguageIntegratedQuery
         {
             _products = productList;
         }
+
+        /// <summary>
+        ///  Displays all books sort by price.
+        /// </summary>
         public void Run()
         {
             IEnumerable<Product> books = _products.Where(product => product.Category == "Books").OrderBy(p => p.ProductPrice);
