@@ -21,6 +21,7 @@
                 isInt = int.TryParse(Console.ReadLine(), out intValue);
                 if (!isInt)
                 {
+                    Console.Write("Enter number :");
                     Console.WriteLine("Please enter valid integer");
                 }
             } while (!isInt);
