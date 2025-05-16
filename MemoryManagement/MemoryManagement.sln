@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueAndReferenceTypes", "ValueAndReferenceTypes\ValueAndReferenceTypes.csproj", "{7F821242-CC17-446C-AB96-4FCF445934DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarbageCollection", "GarbageCollection\GarbageCollection.csproj", "{39B70C66-3288-43AF-8251-4558ECBAC6D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7F821242-CC17-446C-AB96-4FCF445934DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F821242-CC17-446C-AB96-4FCF445934DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F821242-CC17-446C-AB96-4FCF445934DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B70C66-3288-43AF-8251-4558ECBAC6D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B70C66-3288-43AF-8251-4558ECBAC6D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B70C66-3288-43AF-8251-4558ECBAC6D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B70C66-3288-43AF-8251-4558ECBAC6D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
