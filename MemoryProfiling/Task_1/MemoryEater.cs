@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemoryProfiling.Task1
+namespace MemoryProfiling.Task_1
 {
     public class MemoryEater
     {

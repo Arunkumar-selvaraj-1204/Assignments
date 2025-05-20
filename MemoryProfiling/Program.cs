@@ -1,4 +1,5 @@
-﻿using MemoryProfiling.Task1;
+﻿using MemoryProfiling.Task_1;
+using MemoryProfiling.Task_2;
 namespace MemoryProfiling
 {
     internal class Program
@@ -7,6 +8,9 @@ namespace MemoryProfiling
         {
             MemoryEater task1 = new MemoryEater();
             task1.Allocate();
+            Task2 task2 = new Task2();
+            task2.GetValuesFromUser();
+            task2.Allocate();
         }
     }
 
