@@ -8,9 +8,9 @@ namespace MemoryProfiling
         {
             MemoryEater task1 = new MemoryEater();
             task1.Allocate();
-            Task2 task2 = new Task2();
-            task2.GetValuesFromUser();
-            task2.Allocate();
+            //Task2 task2 = new Task2();
+            //task2.GetValuesFromUser();
+            //task2.Allocate();
         }
     }
 
