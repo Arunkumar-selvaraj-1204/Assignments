@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryProfiling", "MemoryProfiling.csproj", "{7A497402-FC51-4411-96C9-EF792ABC049D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InefficientMemoryManager", "..\InefficientMemoryManager\InefficientMemoryManager.csproj", "{E88ED87C-A86A-42FE-9B6B-376C0BC24B86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfiicientMemoryManager", "..\EfiicientMemoryManager\EfiicientMemoryManager.csproj", "{183BA988-E984-4474-89EA-C955C2EA8C2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7A497402-FC51-4411-96C9-EF792ABC049D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A497402-FC51-4411-96C9-EF792ABC049D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A497402-FC51-4411-96C9-EF792ABC049D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88ED87C-A86A-42FE-9B6B-376C0BC24B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88ED87C-A86A-42FE-9B6B-376C0BC24B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88ED87C-A86A-42FE-9B6B-376C0BC24B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88ED87C-A86A-42FE-9B6B-376C0BC24B86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{183BA988-E984-4474-89EA-C955C2EA8C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183BA988-E984-4474-89EA-C955C2EA8C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183BA988-E984-4474-89EA-C955C2EA8C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183BA988-E984-4474-89EA-C955C2EA8C2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

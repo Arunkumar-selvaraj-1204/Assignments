@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemoryProfiling.Task_2
+namespace EfficientMemoryManager.Task_2
 {
     public class Task2 : IDisposable
     {

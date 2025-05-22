@@ -1,5 +1,5 @@
 ## Task 1 
-&nbsp;&nbsp;In the task,there is a code snippet with that we have to analyze the code and find the memory issue with the help of the Visual studio's Diagnostic Tool and  find a optimization techniques that can be applied to the code so that the memory issue will be resolve.
+&nbsp;&nbsp;In the first task,there is a code snippet with that we have to analyze the code and find the memory issue with the help of the Visual studio's Diagnostic Tool and  find a optimization techniques that can be applied to the code so that the memory issue will be resolve.
 
    ## Code 
        public void Allocate()
