@@ -12,7 +12,7 @@
 
 ## Task3
 
-&nbsp;&nbsp;An custom exception was created with class name "InvalidUserInputException" and it is used to handle when the user input is not a number.
+&nbsp;&nbsp;A custom exception was created with class name "InvalidUserInputException" and it is used to handle when the user input is not a number.
 <br>&nbsp;&nbsp; If user enters array length is less than or equals to zero, It will throw InvalidUserInputException.
 
 ## Task4
@@ -24,9 +24,9 @@
 
 &nbsp;&nbsp;The stack trace of the exception thrown was printed to the console
 
-&nbsp;&nbsp;The stack trace message is given below:
+&nbsp;&nbsp;The stack trace message will be of format like below:
 "Unhandled exception caught : at ErrorHandling.IndexOutOfRange.GetIndex() in ..\ErrorHandling\IndexOutOfRange.cs:line 141
 at ErrorHandling.IndexOutOfRange..ctor() in ..\ErrorHandling\IndexOutOfRange.cs:line 25
 at ErrorHandling.Program.Main(String[] args) in ..\ErrorHandling\Program.cs:line 26"
 
-&nbsp;&nbsp;This message shows that the initial call is from the creating an object for IndexOutOfRange and then it's constructor call the GetIndex function where the exception thrown in line 141.
+&nbsp;&nbsp;IndexOutOfRange exception was thrown at line 141 in the GetIndex() method of the IndexOutOfRange class, located in the ErrorHandling/IndexOutOfRange.cs file. The error then propagated up to the constructor of the IndexOutOfRange class at line 25, and finally reached the Main method of your program at line 26 in Program.cs. This is because the code tries to access an array or collection index that does not exist and there was no code in place to catch and handle this exception, causing the program to terminate and print this stack trace.
