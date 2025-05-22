@@ -11,10 +11,12 @@ namespace LanguageIntegratedQuery
         private static readonly string[] Categories = { "Electronics", "Clothing", "Grocery", "Books", "Entertainment" };
         private static readonly Random RandomGenerator = new Random();
         private List<Product> productList;
+        int noOfProducts;
         public ProductGenerator()
         {
+            noOfProducts = 15;
             productList = new List<Product>();
-            CreateProducts(productList, 15);
+            CreateProducts(productList, noOfProducts);
         }
 
         public List<Product> GetProductList() { return productList; }

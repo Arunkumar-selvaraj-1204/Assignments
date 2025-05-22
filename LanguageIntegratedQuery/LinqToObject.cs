@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LanguageIntegratedQuery
 {
-    internal class Task3
+    internal class LinqToObject
     {
        private int[] numbers = { 45, 12, 78, 56, 89, 23, 45, 67, 12, 34, 78, 90, 23, 56, 89, 67, 12, 34, 45, 78, 90 };
 

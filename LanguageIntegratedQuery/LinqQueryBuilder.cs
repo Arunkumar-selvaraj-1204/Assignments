@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LanguageIntegratedQuery
 {
-    internal class Task5
+    internal class LinqQueryBuilder
     {
         QueryBuilder<Product, Supplier> queryBuilder;
 
-        public Task5(List<Product> products, List<Supplier> suppliers)
+        public LinqQueryBuilder(List<Product> products, List<Supplier> suppliers)
         {
             queryBuilder = new QueryBuilder<Product, Supplier>(products, suppliers);
         }

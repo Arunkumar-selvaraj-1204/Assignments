@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LanguageIntegratedQuery
 {
-    internal class Task1
+    internal class BasicLinqQueries
     {
         private List<Product> _products;
 
-        public Task1(List<Product> productList)
+        public BasicLinqQueries(List<Product> productList)
         {
             _products = productList;
         }

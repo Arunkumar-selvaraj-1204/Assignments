@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LanguageIntegratedQuery
 {
-    internal class Task2
+    internal class ComplexLinqQueries
     {
         private List<Product> _products;
         public List<Supplier> suppliers { get; set; }
 
         string[] _categories;
 
-        public Task2(List<Product> productList, string[] categories)
+        public ComplexLinqQueries(List<Product> productList, string[] categories)
         {
             _products = productList;
             suppliers = GenerateSupplierList();

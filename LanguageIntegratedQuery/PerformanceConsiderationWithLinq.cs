@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LanguageIntegratedQuery
 {
-    internal class Task4
+    internal class PerformanceConsiderationWithLinq
     {
         private List<Product> _products;
 
-        public Task4(List<Product> productList)
+        public PerformanceConsiderationWithLinq(List<Product> productList)
         {
             _products = productList;
         }

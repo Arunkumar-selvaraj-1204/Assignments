@@ -7,16 +7,16 @@
         {
             ProductGenerator productGenerator = new ProductGenerator();
             DisplayAllProducts(productGenerator.GetProductList());
-            Task1 task1 = new Task1(productGenerator.GetProductList());
-            task1.Run();
-            Task2 task2 = new Task2(productGenerator.GetProductList(), productGenerator.GetCategories());
-            task2.Run();
-            Task3 task = new Task3();
-            task.Run();
-            Task4 task4 = new Task4 (productGenerator.GetProductList());
-            task4.Run();
-            Task5 task5 = new Task5(productGenerator.GetProductList(), task2.suppliers); //Suppliers list is generated in task2
-            task5.Run();
+            BasicLinqQueries basicLinqQueries = new BasicLinqQueries(productGenerator.GetProductList());
+            basicLinqQueries.Run();
+            ComplexLinqQueries complexLinqQueries = new ComplexLinqQueries(productGenerator.GetProductList(), productGenerator.GetCategories());
+            complexLinqQueries.Run();
+            LinqToObject linqToObject = new LinqToObject();
+            linqToObject.Run();
+            PerformanceConsiderationWithLinq performanceConsiderationWithLinq = new PerformanceConsiderationWithLinq (productGenerator.GetProductList());
+            performanceConsiderationWithLinq.Run();
+            LinqQueryBuilder linqQueryBuilder = new LinqQueryBuilder(productGenerator.GetProductList(), complexLinqQueries.suppliers); //Suppliers list is generated in task2
+            linqQueryBuilder.Run();
         }
 
         /// <summary>

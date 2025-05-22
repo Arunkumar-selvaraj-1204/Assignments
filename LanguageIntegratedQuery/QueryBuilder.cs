@@ -18,8 +18,8 @@ namespace LanguageIntegratedQuery
 
         public QueryBuilder(IEnumerable<T> primaryList, IEnumerable<T2> secondaryList)
         {
-            _secondaryList = secondaryList;
             _primaryList = primaryList;
+            _secondaryList = secondaryList;
         }
 
         /// <summary>
