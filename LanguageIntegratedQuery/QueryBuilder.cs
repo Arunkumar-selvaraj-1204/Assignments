@@ -39,9 +39,9 @@ namespace LanguageIntegratedQuery
         /// <typeparam name="TKey">Return type of the lambda function</typeparam>
         /// <param name="keySelector">The key used to sort the list.</param>
         /// <returns>Instance of this class.</returns>
-        public QueryBuilder<T, T2> SortBy<TKey>(Func<T, TKey> keySelector) where TKey : class  
+        public QueryBuilder<T, T2> SortBy<TKey>(Func<T, TKey> keySelector)  
         {
-            SortQueries.Add(keySelector);
+            SortQueries.Add(x => keySelector(x));
             return this;
         }
 
