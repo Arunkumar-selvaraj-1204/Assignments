@@ -4,6 +4,7 @@ using CollectionAndGenerics.Task2;
 using CollectionAndGenerics.Task3;
 using CollectionAndGenerics.Task4;
 using CollectionAndGenerics.Task5;
+using CollectionAndGenerics.Task6;
 namespace CollectionAndGenerics
 {
     internal class Program
@@ -24,6 +25,9 @@ namespace CollectionAndGenerics
 
             GenericCollections genericCollections = new GenericCollections();
             genericCollections.ExecuteGenericOperations();
+
+            UnderstandingCollections understandingCollections = new UnderstandingCollections();
+            understandingCollections.ExecuteTask6();
         }
     }
 }

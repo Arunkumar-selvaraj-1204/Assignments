@@ -39,8 +39,8 @@ namespace CollectionAndGenerics.Task5.GenericCollectionImplementation
         {
             Console.WriteLine("Dictionary Implementation using String and Int \n");
             Console.WriteLine("______________________");
-            _stringIntDictionary.Add("Prasath", 21);
-            Console.WriteLine("Added Name : Prasath ,Age :21");
+            _stringIntDictionary.Add("Arunkumar", 21);
+            Console.WriteLine("Added Name : Arunkumar ,Age :21");
             _stringIntDictionary.Add("Arun", 20);
             Console.WriteLine("Added Name : Arun ,Age : 20");
             _stringIntDictionary.Add("Pirai", 19);
@@ -48,7 +48,7 @@ namespace CollectionAndGenerics.Task5.GenericCollectionImplementation
             _stringIntDictionary.Remove("Pirai");
             Console.WriteLine("Removed Pirai from Dictionary");
             Console.WriteLine($"Age of Arun is {_stringIntDictionary.GetValue("Arun")}");
-            Console.WriteLine($"Is Prasath Contains in Dictionary ? {_stringIntDictionary.Contains("Prasath")}");
+            Console.WriteLine($"Is Arunkumar Contains in Dictionary ? {_stringIntDictionary.Contains("Arunkumar")}");
             Console.WriteLine("______________________");
         }
 
