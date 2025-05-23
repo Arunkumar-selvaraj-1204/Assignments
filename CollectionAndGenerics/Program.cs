@@ -3,6 +3,7 @@ using CollectionAndGenerics.Task1;
 using CollectionAndGenerics.Task2;
 using CollectionAndGenerics.Task3;
 using CollectionAndGenerics.Task4;
+using CollectionAndGenerics.Task5;
 namespace CollectionAndGenerics
 {
     internal class Program
@@ -20,6 +21,9 @@ namespace CollectionAndGenerics
 
             Dictionaries dictionaries = new Dictionaries();
             dictionaries.ExecuteDictionaryOperations();
+
+            GenericCollections genericCollections = new GenericCollections();
+            genericCollections.ExecuteGenericOperations();
         }
     }
 }
