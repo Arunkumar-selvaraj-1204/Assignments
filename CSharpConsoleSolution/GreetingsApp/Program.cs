@@ -1,4 +1,4 @@
-﻿using DisplayApp;
+﻿using ProjectE;
 
 namespace GreetingsApp
 {
@@ -7,7 +7,7 @@ namespace GreetingsApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello everyone");
-            Printer.PerformMathematicalCalculation();
+            Connector.DisplayConnector();
         }
     }
 }
