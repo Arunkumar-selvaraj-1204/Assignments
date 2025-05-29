@@ -32,7 +32,9 @@ namespace LanguageIntegratedQuery
             Console.WriteLine("\n\nTask 3.1: Display second largest number in array.");
             Console.ResetColor();
 
-            int secondLargestElement = numbers.Distinct().OrderByDescending(number => number).ToArray()[1];
+            int secondLargestElement = numbers.Distinct()
+                                              .OrderByDescending(number => number)
+                                              .ToArray()[1];
             Console.WriteLine($"Second largest element in the array: {secondLargestElement}");
         }
 
@@ -43,10 +45,13 @@ namespace LanguageIntegratedQuery
         private void RunTask3_2(int targetNumber)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\n\nTask 3.2: Display all unique pairs of numbers in the array that add up to a specified target. ({targetNumber}) ");
+            Console.WriteLine($"\n\nTask 3.2: Display all unique pairs of numbers in the array" +
+                $" that add up to a specified target. ({targetNumber}) ");
             Console.ResetColor();
 
-            IEnumerable<(int num1, int num2)> uniqueSumPairs = numbers.Distinct().Where(number => numbers.Contains(targetNumber - number)).Select(number => (number, targetNumber - number));
+            IEnumerable<(int num1, int num2)> uniqueSumPairs = numbers.Distinct()
+                                                                      .Where(number => numbers.Contains(targetNumber - number))
+                                                                      .Select(number => (number, targetNumber - number));
             foreach (var pairs in uniqueSumPairs)
             {
                 Console.WriteLine($"Number 1: {pairs.num1} - Number 2: {pairs.num2}");

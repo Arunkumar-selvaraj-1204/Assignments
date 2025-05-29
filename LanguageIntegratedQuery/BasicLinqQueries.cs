@@ -17,9 +17,11 @@ namespace LanguageIntegratedQuery
         public void Run()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\nTask 1: Electronics priced greater than 500, sorted by price in descending order.");
+            Console.WriteLine("\n\nTask 1: Electronics priced greater than 500," +
+                " sorted by price in descending order.");
             Console.ResetColor();
-            IEnumerable<(string productName, decimal productPrice)> electronicsGreaterThan500 = _products.Where(product => product.Category == "Electronics" && product.ProductPrice > 500).Select(product => ( product.ProductName, product.ProductPrice));
+            IEnumerable<(string productName, decimal productPrice)> electronicsGreaterThan500 = _products.Where(product => product.Category == "Electronics" && product.ProductPrice > 500)
+                                                                                                         .Select(product => (product.ProductName, product.ProductPrice));
             IEnumerable<(string productName, decimal productPrice)> selectedProductsInDesc = electronicsGreaterThan500.OrderByDescending(product => product.productPrice);
             DisplayProducts(selectedProductsInDesc);
         }

@@ -20,7 +20,8 @@ namespace LanguageIntegratedQuery
         /// </summary>
         public void Run()
         {
-            IEnumerable<Product> books = _products.Where(product => product.Category == "Books").OrderBy(p => p.ProductPrice);
+           var books = _products.Where(product => product.Category == "Books")
+                                                  .OrderBy(p => p.ProductPrice);
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\n\nTask 4: Display all books sort by price.");

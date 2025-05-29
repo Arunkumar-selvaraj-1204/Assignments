@@ -80,7 +80,7 @@ namespace LanguageIntegratedQuery
         /// <returns>supplier list</returns>
         private List<Supplier> GenerateSupplierList()
         {
-            List <Supplier> suppliers = new List<Supplier>()
+            var suppliers = new List<Supplier>()
             {
                 new  Supplier{SupplierId = 1, SupplierName = "Supplier 1", ProductId = 15 },
                 new  Supplier{SupplierId = 1, SupplierName = "Supplier 1", ProductId = 12 },

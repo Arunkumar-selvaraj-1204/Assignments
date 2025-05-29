@@ -67,7 +67,10 @@ namespace LanguageIntegratedQuery
             Console.WriteLine("\n--- Product List ---");
             foreach (var product in productList)
             {
-                Console.WriteLine($"ID: {product.ProductId}, Name: {product.ProductName}, Price: {product.ProductPrice:C}, Category: {product.Category}");
+                Console.WriteLine($"ID: {product.ProductId}," +
+                    $" Name: {product.ProductName}," +
+                    $" Price: {product.ProductPrice:C}," +
+                    $" Category: {product.Category}");
             }
         }
 

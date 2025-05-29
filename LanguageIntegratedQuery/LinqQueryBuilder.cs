@@ -52,10 +52,13 @@ namespace LanguageIntegratedQuery
         private void DisplayProductCategoryStartsWithE()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\nTask 5.2: Display products whose category starts with 'E' and sort by price");
+            Console.WriteLine("\n\nTask 5.2:" +
+                " Display products whose category starts with 'E' and sort by price");
             Console.ResetColor();
 
-            var result = queryBuilder.Filter(product => product.Category.StartsWith("E")).SortBy(product => product.ProductPrice).Execute();
+            var result = queryBuilder.Filter(product => product.Category.StartsWith("E"))
+                                     .SortBy(product => product.ProductPrice)
+                                     .Execute();
             Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}", "ProductId", "ProductName", "Price", "Category");
             Console.WriteLine(new string('-', 60));
 
@@ -75,10 +78,14 @@ namespace LanguageIntegratedQuery
         private void JoinProductsWithSuppliers()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\nTask 5.3: Products with price less than 100 and sorted by price and performed Inner join with Supplier using Supplier ID");
+            Console.WriteLine("\n\nTask 5.3: Products with price less than 100 and" +
+                " sorted by price and performed Inner join with Supplier using Supplier ID");
             Console.ResetColor();
 
-            var result = queryBuilder.Filter(product => product.ProductPrice < 100).SortBy(product => product.ProductPrice).Join((p, s) => p.ProductId == s.ProductId).Execute();
+            var result = queryBuilder.Filter(product => product.ProductPrice < 100)
+                                     .SortBy(product => product.ProductPrice)
+                                     .Join((p, s) => p.ProductId == s.ProductId)
+                                     .Execute();
             Console.WriteLine("{0,-10} {1,-20} {2,-15} {3,-10}", "ProductId", "ProductName", "Supplier name", "Price");
             Console.WriteLine(new string('-', 60));
 
