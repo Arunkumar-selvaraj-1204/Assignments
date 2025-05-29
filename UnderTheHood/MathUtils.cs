@@ -37,10 +37,10 @@ namespace UnderTheHood
         /// </summary>
         public void ExecuteOperations()
         {
-            add(FirstNumber, SecondNumber);
-            Subtract(FirstNumber, SecondNumber);
-            Multiply(FirstNumber, SecondNumber);
-            Divide(FirstNumber, SecondNumber);
+            Console.WriteLine($"addition of {FirstNumber} and {SecondNumber} is {add(FirstNumber, SecondNumber)}");
+            Console.WriteLine($"Subtraction of {FirstNumber} and {SecondNumber} is {Subtract(FirstNumber, SecondNumber)}");
+            Console.WriteLine($"Multiplication of {FirstNumber} and {SecondNumber} is {Multiply(FirstNumber, SecondNumber)}");
+            Console.WriteLine($"Division of {FirstNumber}  and  {SecondNumber} is {Divide(FirstNumber, SecondNumber)}");
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace UnderTheHood
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
-        private void add(int firstNumber, int secondNumber)
+        private int add(int firstNumber, int secondNumber)
         {
-            Console.WriteLine($"addition of {firstNumber} and {secondNumber} is {firstNumber + secondNumber}");
+            return firstNumber + secondNumber;
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace UnderTheHood
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
-        private void Subtract(int firstNumber, int secondNumber)
+        private int Subtract(int firstNumber, int secondNumber)
         {
-            Console.WriteLine($"Subtraction of {firstNumber} and {secondNumber} is {firstNumber - secondNumber}");
+            return firstNumber - secondNumber;
         }
 
         /// <summary>
@@ -68,9 +68,9 @@ namespace UnderTheHood
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
-        private void Multiply(int firstNumber, int secondNumber)
+        private int Multiply(int firstNumber, int secondNumber)
         {
-            Console.WriteLine($"Multiplication of {firstNumber} and {secondNumber} is {firstNumber * secondNumber}");
+            return firstNumber * secondNumber;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace UnderTheHood
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
-        private void Divide(int firstNumber, int secondNumber)
+        private int Divide(int firstNumber, int secondNumber)
         {
             try
             {
@@ -86,12 +86,12 @@ namespace UnderTheHood
                 {
                     throw new DivideByZeroException("Cannot divide by zero !");
                 }
-                Console.WriteLine($"Division of {firstNumber} and {secondNumber} is {firstNumber / secondNumber}");
+                return firstNumber / secondNumber;
             }
             catch (DivideByZeroException e)
             {
                 Console.WriteLine(e.Message);
-
+                return 0;
             }
         }
     }
