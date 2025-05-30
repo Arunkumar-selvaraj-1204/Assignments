@@ -1,0 +1,13 @@
+﻿using ProjectE;
+
+namespace GreetingsApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello everyone");
+            Connector.DisplayConnector();
+        }
+    }
+}
