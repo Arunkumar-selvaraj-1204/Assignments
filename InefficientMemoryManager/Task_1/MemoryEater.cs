@@ -8,13 +8,13 @@ namespace InefficientMemoryManager.Task_1
 {
     public class MemoryEater
     {
-        List<int[]> memalloc = new List<int[]>();
+        List<int[]> memoryAllocator = new List<int[]>();
 
         public void Allocate()
         {
             while (true)
             {
-                memalloc.Add(new int[1000]);
+                memoryAllocator.Add(new int[1000]);
                 Thread.Sleep(100);
             }
         }

@@ -5,7 +5,7 @@ namespace EfficientMemoryManager
     {
         static void Main(string[] args)
         {
-            Task2 task2 = new Task2();
+            EfficientArrayHandler task2 = new EfficientArrayHandler();
             task2.GetValuesFromUser();
             task2.Allocate();
         }

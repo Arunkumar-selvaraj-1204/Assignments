@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EfficientMemoryManager.Task_2
 {
-    public class Task2 : IDisposable
+    public class EfficientArrayHandler : IDisposable
     {
         /// <summary>
         /// Number of elements to allocate
@@ -21,7 +21,7 @@ namespace EfficientMemoryManager.Task_2
         /// <summary>
         /// Constructor to initialize the list
         /// </summary>
-        public Task2()
+        public EfficientArrayHandler()
         {
             IntegerArrayList = new List<int[]>();
         }
