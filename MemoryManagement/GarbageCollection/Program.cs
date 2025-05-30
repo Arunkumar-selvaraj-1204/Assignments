@@ -8,7 +8,7 @@ namespace GarbageCollection
         {
             Console.WriteLine("-------- Memory Management in C# --------");
             Console.WriteLine("-------- Triggered Garbage Collection --------");
-            List<Person> people = new List<Person>();
+            var people = new List<Person>();
 
             for (int outerCount = 0; outerCount < 10; outerCount++)
             {

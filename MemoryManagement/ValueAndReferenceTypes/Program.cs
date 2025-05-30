@@ -15,20 +15,22 @@ namespace ValueAndReferenceTypes
             Console.WriteLine("-------- Value and Reference types --------");
 
             // Print the value of integer and object member before function call
-            Console.WriteLine($"Value of value type before function call is {number}.\nValue of reference type before function call is {person.Age}.");
+            Console.WriteLine($"Value of value type before function call is {number}." +
+                $"\nValue of reference type before function call is {person.Age}.");
 
             IncrementByOne(number, person);
 
             // Print the value of integer and object member after function call
-            Console.WriteLine($"\nValue of value type after function call is {number}.\nValue of reference type after function call is {person.Age}.");
+            Console.WriteLine($"\nValue of value type after function call is {number}." +
+                $"\nValue of reference type after function call is {person.Age}.");
 
             Console.WriteLine("\n-------- Working with integers --------");
             // Call the function dealing with numbers
-            SumOfIntegers();
+            Console.WriteLine($"Sum of given integers is {SumOfIntegers()}."); 
 
             Console.WriteLine("\n-------- Working with array of integers --------");
             // Call the function dealing with an array of number
-            SumOfArrayElements();
+            Console.WriteLine($"Sum of array elements is {SumOfArrayElements()}.");
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
@@ -49,28 +51,48 @@ namespace ValueAndReferenceTypes
         /// <summary>
         /// Method to calculate the sum of entered numbers by accessing the value type integers
         /// </summary>
-        public static void SumOfIntegers()
+        public static int SumOfIntegers()
         {
             Console.Write("Enter the count of numbers: ");
             int countOfNumbers = GetInteger();
-            int sum = 0;
+            return PerformIntSum(countOfNumbers);  
+        }
 
+        /// <summary>
+        /// Calculates sum
+        /// </summary>
+        /// <param name="countOfNumbers">count of numbers</param>
+        /// <returns>sum of the numbers</returns>
+        public static int PerformIntSum(int countOfNumbers)
+        {
+            int sum = 0;
             for (int i = 0; i < countOfNumbers; i++)
             {
                 Console.Write("Enter the number: ");
                 sum += GetInteger();
             }
-            Console.WriteLine($"Sum of given integers is {sum}.");
+            return sum;
         }
 
         /// <summary>
         /// Method to calculate the sum of entered numbers by accessing the reference type array of integers
         /// </summary>
-        public static void SumOfArrayElements()
+        public static int SumOfArrayElements()
         {
             Console.Write("Enter the size of the array: ");
             int arrayLength = GetInteger();
             int[] arrayOfNumbers = new int[arrayLength];
+            return PerformArraySum(arrayLength, arrayOfNumbers);
+        }
+
+        /// <summary>
+        /// Calculates sum of array elements
+        /// </summary>
+        /// <param name="arrayLength">Length of the array</param>
+        /// <param name="arrayOfNumbers">Array of numbers</param>
+        /// <returns>Sum of array elements</returns>
+        public static int PerformArraySum(int arrayLength, int[] arrayOfNumbers)
+        {
             int sum = 0;
             for (int i = 0; i < arrayLength; i++)
             {
@@ -79,7 +101,7 @@ namespace ValueAndReferenceTypes
                 sum += arrayOfNumbers[i];
             }
 
-            Console.WriteLine($"Sum of array elements is {sum}.");
+            return sum;
         }
 
         /// <summary>
