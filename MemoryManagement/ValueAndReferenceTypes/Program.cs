@@ -26,18 +26,18 @@ namespace ValueAndReferenceTypes
 
             Console.WriteLine("\n-------- Working with integers --------");
             // Call the function dealing with numbers
-            Console.WriteLine($"Sum of given integers is {SumOfIntegers()}."); 
+            Console.WriteLine($"Sum of given integers is {GetSumOfIntegers()}."); 
 
             Console.WriteLine("\n-------- Working with array of integers --------");
             // Call the function dealing with an array of number
-            Console.WriteLine($"Sum of array elements is {SumOfArrayElements()}.");
+            Console.WriteLine($"Sum of array elements is {GetSumOfArrayElements()}.");
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
         }
 
         /// <summary>
-        /// Function to increment the number and person's age by one
+        /// Increments the number and person's age by one
         /// </summary>
         /// <param name="number"> Represents the integer number </param>
         /// <param name="person"> Represents the person object </param>
@@ -49,9 +49,9 @@ namespace ValueAndReferenceTypes
         }
 
         /// <summary>
-        /// Method to calculate the sum of entered numbers by accessing the value type integers
+        /// Calculates the sum of entered numbers by accessing the value type integers
         /// </summary>
-        public static int SumOfIntegers()
+        public static int GetSumOfIntegers()
         {
             Console.Write("Enter the count of numbers: ");
             int countOfNumbers = GetInteger();
@@ -75,9 +75,9 @@ namespace ValueAndReferenceTypes
         }
 
         /// <summary>
-        /// Method to calculate the sum of entered numbers by accessing the reference type array of integers
+        /// Calculates the sum of entered numbers by accessing the reference type array of integers
         /// </summary>
-        public static int SumOfArrayElements()
+        public static int GetSumOfArrayElements()
         {
             Console.Write("Enter the size of the array: ");
             int arrayLength = GetInteger();
@@ -105,7 +105,7 @@ namespace ValueAndReferenceTypes
         }
 
         /// <summary>
-        /// Method to get valid integer input from the user
+        /// Get valid integer from user.
         /// </summary>
         /// <returns> Returns the valid parsed integer </returns>
         public static int GetInteger()

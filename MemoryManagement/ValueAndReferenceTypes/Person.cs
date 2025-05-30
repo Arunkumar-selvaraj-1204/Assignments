@@ -3,12 +3,12 @@
     public class Person
     {
         /// <summary>
-        /// To get and set the name of the person
+        /// Holds the person's name
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// To get and set the age of the person
+        /// Holds the person's age
         /// </summary>
         public int Age { get; set; }
     }

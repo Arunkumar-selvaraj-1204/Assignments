@@ -28,7 +28,7 @@ namespace GarbageCollection
         }
 
         /// <summary>
-        /// Method to increment the age of the person
+        /// Increments the age of the person
         /// </summary>
         /// <param name="person"> Represents the particular person </param>
         public static void IncrementAge(Person person)
