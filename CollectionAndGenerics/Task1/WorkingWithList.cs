@@ -31,32 +31,21 @@ namespace CollectionAndGenerics.Task1
         {
             Console.WriteLine("List implementation");
             Console.WriteLine("______________________");
-            Add();
-            Remove();
-            CheckBookTitle();
-            DisplayAllTitle();
-            Console.WriteLine("***********************");
-        }
 
-        private void Add()
-        {
-            int n = 5;
+            //Add Books
+            int numberOfBooks = 5;
             Console.WriteLine("Enter five book titles to add :");
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < numberOfBooks; i++)
             {
-                TitleList.Add(Console.ReadLine());
+                AddBook(Console.ReadLine(), TitleList);
             }
             Console.WriteLine("Titles added Successfully !");
             Console.WriteLine("______________________");
 
-        }
-
-        private void Remove()
-        {
+            //Remove Book
             Console.WriteLine("Enter the Book title to remove :");
             string titleToRemove = Console.ReadLine();
-            bool result = TitleList.Remove(titleToRemove);
-            if (result)
+            if (RemoveBook(titleToRemove, TitleList))
             {
                 Console.WriteLine("Removed successfully !");
             }
@@ -65,14 +54,11 @@ namespace CollectionAndGenerics.Task1
                 Console.WriteLine("Title not found to remove");
             }
             Console.WriteLine("______________________");
-        }
 
-        private void CheckBookTitle()
-        {
+            //Check Book title
             Console.WriteLine("Enter the title to check :");
             string titleTocheck = Console.ReadLine();
-            bool result = TitleList.Contains(titleTocheck);
-            if (result)
+            if (CheckBookTitle(titleTocheck, TitleList))
             {
                 Console.WriteLine($"Title {titleTocheck} present in the _list ");
             }
@@ -81,13 +67,36 @@ namespace CollectionAndGenerics.Task1
                 Console.WriteLine("Title not found in the _list");
             }
             Console.WriteLine("______________________");
+
+            DisplayAllTitle(TitleList);
+            Console.WriteLine("***********************");
         }
 
-        private void DisplayAllTitle()
+        private void AddBook(string BookTitle, List<string> bookList)
+        {
+            bookList.Add(BookTitle);
+
+        }
+
+        private bool RemoveBook(string titleToRemove, List<string> bookList)
+        {
+            
+            bool result = bookList.Remove(titleToRemove);
+            return result;
+        }
+
+        private bool CheckBookTitle(string titleTocheck, List<string> bookList)
+        {
+            
+            bool result = bookList.Contains(titleTocheck);
+           return result;
+        }
+
+        private void DisplayAllTitle(List<string> bookList)
         {
             Console.WriteLine("All Titles :");
             Console.WriteLine("______________________");
-            foreach (var title in TitleList)
+            foreach (var title in bookList)
             {
                 Console.WriteLine(title);
             }

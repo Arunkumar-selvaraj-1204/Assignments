@@ -14,7 +14,7 @@ namespace CollectionAndGenerics.Task2
         /// <summary>
         /// Stack to store character
         /// </summary>
-        public Stack<char> charStack { get; set; }
+        public Stack<char> CharStack { get; set; }
 
         /// <summary>
         /// String to reverse
@@ -31,7 +31,7 @@ namespace CollectionAndGenerics.Task2
         /// </summary>
         public Stacks()
         {
-            charStack = new Stack<char>();
+            CharStack = new Stack<char>();
         }
 
         /// <summary>
@@ -43,33 +43,35 @@ namespace CollectionAndGenerics.Task2
             Console.WriteLine("______________________");
             Console.WriteLine("Enter a string to reverse: ");
             StringToReverse = Console.ReadLine();
-            AddCharToStack();
-            PopAndAppendChar();
-            DisplayResult();
+            AddCharToStack(StringToReverse, CharStack);
+            Console.WriteLine("String reverse: ");
+            ReversedString = PopAndAppendChar(CharStack);
+            DisplayResult(StringToReverse, ReversedString);
             Console.WriteLine("***********************");
         }
 
-        private void AddCharToStack()
+        private void AddCharToStack(string stringToReverse, Stack<char> charStack)
         {
-            foreach (char c in StringToReverse)
+            foreach (char c in stringToReverse)
             {
                 charStack.Push(c);
             }
         }
 
-        private void PopAndAppendChar()
+        private string PopAndAppendChar(Stack<char> charStack)
         {
-            Console.WriteLine("String reverse: ");
+            string reversedString = "";
             while (charStack.Count > 0)
             {
-                ReversedString += charStack.Pop();
+                reversedString += charStack.Pop();
             }
+            return reversedString;
         }
 
-        private void DisplayResult()
+        private void DisplayResult(string stringToReverse, string reversedString)
         {
-            Console.WriteLine("Original string : " + StringToReverse);
-            Console.WriteLine("Reversed string : " + ReversedString);
+            Console.WriteLine("Original string : " + stringToReverse);
+            Console.WriteLine("Reversed string : " + reversedString);
             Console.WriteLine("___________________________________");
         }
     }
