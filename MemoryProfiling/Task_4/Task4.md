@@ -1,11 +1,29 @@
 ﻿# Reflection on the Assignment
 
-&nbsp;&nbsp;This assignment provides a good experience with memory management and also with using Diagnostic tool in Visual Studio.
+- The assignment gave practical experience with memory management.
+- Learned to use Diagnostic Tools in Visual Studio for analyzing memory issues.
+
 ## Code Analysis
-&nbsp;&nbsp;In the given code,there is a class which contains a list of integer array and a method "Allocate" which allows to add a integer array to a list and pause the flow of execution for 0.1 second. Here the memory increase without any limit shown in the  diagnostic  tool and it will lead to the memory leak.
+
+- The provided code had a class with a list of integer arrays.
+- The `Allocate` method kept adding integer arrays to the list in an infinite loop.
+- Execution paused for 0.1 second in each loop iteration.
+- This caused memory usage to increase without limit, as shown by the Diagnostic Tool.
+- The result was a memory leak.
+
 ## Memory Profiling
-&nbsp;&nbsp;Using Visual Studio's built-in Diagnostic Tools, diagnosed the problem in the code. The results showed an increase in heap memory usage due to the infinite loop.
-## Optimized code implementation
-&nbsp;&nbsp;Here,to make the code more optimized,we have changed the condition to the for loop so that it will terminate at some point of time and it will not keep on adding the integer array to the list and it will not consume the memory without any limit.
-## After optimization
-&nbsp;&nbsp;After optimization, the code will not consume the memory without any limit and it will not lead to the memory leak.Also the diagnostic tool will not show the memory increase without any limit.
+
+- Used Visual Studio's built-in Diagnostic Tools to analyze memory usage.
+- Found that heap memory usage kept rising due to the endless loop.
+
+## Optimized Code Implementation
+
+- Changed the infinite `while` loop to a `for` loop with a set number of iterations.
+- The new approach ensures the loop stops after a certain point.
+- Prevents the list from growing without limit and keeps memory usage in check.
+
+## After Optimization
+
+- The code no longer consumes unlimited memory.
+- Memory leaks are avoided.
+- The Diagnostic Tool now shows stable memory usage without continuous increase.

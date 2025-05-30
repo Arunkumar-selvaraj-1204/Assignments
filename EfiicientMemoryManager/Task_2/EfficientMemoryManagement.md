@@ -1,2 +1,9 @@
 ## Task 2
-&nbsp;&nbsp;To improve memory management, obtain from the user how many arrays to add to the list and the size of each array, so that memory can be allocated accordingly. This class implements the IDisposable interface and includes a Dispose method, which is used to clear the allocated memory when the object's scope ends.
+
+- Ask the user how many arrays need to be added to the list.
+- For each array, get the size from the user.
+- Allocate memory for each array based on the given size.
+- Implement the `IDisposable` interface in the class.
+- Add a `Dispose` method to the class.
+- Use the `Dispose` method to clear the allocated memory when the object is no longer needed.
+- This helps to manage memory better and avoid memory leaks.

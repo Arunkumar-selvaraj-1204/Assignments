@@ -1,5 +1,4 @@
 ﻿
-using MemoryProfiling.Task_2;
 namespace MemoryProfiling
 {
     internal class Program

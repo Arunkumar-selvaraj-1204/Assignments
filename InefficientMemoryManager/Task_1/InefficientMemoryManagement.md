@@ -1,15 +1,27 @@
-## Task 1 
-&nbsp;&nbsp;In the first task,there is a code snippet with that we have to analyze the code and find the memory issue with the help of the Visual studio's Diagnostic Tool and  find a optimization techniques that can be applied to the code so that the memory issue will be resolve.
+## Task 1
 
-   ## Code 
-       public void Allocate()
-        {
-            while(true)
-            {
-                memalloc.Add(new int[1000]);
-                Thread.Sleep(100);  
-            }
-        }
-&nbsp;&nbsp;In the above code ,there is a issue with the memory and also the working of the method "Allocate".In that method,There is a while loop which allows to add a integer array to a list and  pause the flow of execution for 0.1 second. 
-## Issue
-&nbsp;&nbsp;The issue with the code is that the while loop will not terminate at any time so that it will keep on adding the integer array to the list and it will keep on consuming the memory and it will lead to the memory leak.
+- Analyze the given code snippet to find memory issues using Visual Studio's Diagnostic Tool.
+- Identify optimization techniques to fix the memory problem.
+
+### Code
+```csharp
+public void Allocate()
+{
+    while(true)
+    {
+        memalloc.Add(new int[1000]);
+        Thread.Sleep(100);  
+    }
+}
+```
+
+### Observations
+- The method `Allocate` uses an infinite `while(true)` loop.
+- In each loop, it adds a new integer array of size 1000 to the list `memalloc`.
+- After each addition, the method pauses for 0.1 second using `Thread.Sleep(100)`.
+
+### Issue
+- The loop never ends, so arrays keep getting added to `memalloc` without stopping.
+- Memory usage keeps increasing as more arrays are added.
+- Eventually, this can cause the application to run out of memory, leading to a memory leak.
+- No mechanism exists to release or clear the memory used by the list.
