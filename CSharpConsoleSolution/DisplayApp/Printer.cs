@@ -16,9 +16,9 @@ namespace DisplayApp
         {
             bool isExit = false;
             Console.Write("Enter number 1 :");
-            int num1 = Helper.GetInt();
+            int firstNumber = Helper.GetInt();
             Console.Write("Enter number 2 :");
-            int num2 = Helper.GetInt();
+            int secondNumber = Helper.GetInt();
             while (!isExit)
             {
                 int ans = 0;
@@ -27,16 +27,16 @@ namespace DisplayApp
                 switch (userChoice)
                 {
                     case "1":
-                        ans = MathematicalOperations.Add(num1, num2);
+                        ans = MathematicalOperations.Add(firstNumber, secondNumber);
                         break;
                     case "2":
-                        ans = MathematicalOperations.Subtract(num1, num2);
+                        ans = MathematicalOperations.Subtract(firstNumber, secondNumber);
                         break;
                     case "3":
-                        ans = MathematicalOperations.Multiply(num1, num2);
+                        ans = MathematicalOperations.Multiply(firstNumber, secondNumber);
                         break;
                     case "4":
-                        ans = MathematicalOperations.Divide(num1, num2);
+                        ans = MathematicalOperations.Divide(firstNumber, secondNumber);
                         break;
                     case "5":
                         isExit = true;
