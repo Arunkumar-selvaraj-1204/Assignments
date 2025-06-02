@@ -5,9 +5,9 @@ namespace EfficientMemoryManager
     {
         static void Main(string[] args)
         {
-            EfficientArrayHandler task2 = new EfficientArrayHandler();
-            task2.GetValuesFromUser();
-            task2.Allocate();
+            var efficientArrayHandler = new EfficientArrayHandler();
+            efficientArrayHandler.GetValuesFromUser();
+            efficientArrayHandler.Allocate();
         }
     }
 }

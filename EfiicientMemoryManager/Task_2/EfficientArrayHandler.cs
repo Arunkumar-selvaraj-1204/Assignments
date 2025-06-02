@@ -11,7 +11,7 @@ namespace EfficientMemoryManager.Task_2
         /// <summary>
         /// Number of elements to allocate
         /// </summary>
-        public int NumberOfElement { get; set; }
+        public int NumberOfElements { get; set; }
 
         /// <summary>
         /// Stores the list of integer array

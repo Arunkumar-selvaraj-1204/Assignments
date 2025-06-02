@@ -6,8 +6,8 @@ namespace InefficientMemoryManager
     {
         static void Main(string[] args)
         {
-            MemoryEater task1 = new MemoryEater();
-            task1.Allocate();
+            var memoryEater = new MemoryEater();
+            memoryEater.Allocate();
         }
     }
 }
