@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FilesAndStreams
 {
     internal class FileDataHandler
     {
-        public static void CreateLargeFile(long size, string filePath)
+        public void CreateLargeFile(long size, string filePath)
         {
             long fileSize = size * 1024 * 1024 * 1024;
             string textToWrite = "Hello world!\n";
@@ -26,7 +21,48 @@ namespace FilesAndStreams
             }
         }
 
-        public static long ConvertToUpperCaseUsingChunks(string sourcePath, string destinationPath )
+        public long ReadFileUsingFileStream(string sourcePath)
+        {
+            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (StreamReader reader = new StreamReader(fileStreamToRead))
+            {
+                int chunkSize = 4 * 1024;
+                char[] buffer = new char[chunkSize];
+                int bytesRead = 0;
+
+                Stopwatch stopWatch = Stopwatch.StartNew();
+
+                do
+                {
+                    bytesRead = reader.Read(buffer, 0, buffer.Length);
+                    string chunk = new string(buffer, 0, bytesRead);
+                } while (bytesRead > 0);
+                stopWatch.Stop();
+                return stopWatch.ElapsedMilliseconds;
+            }
+        }
+
+        public long ReadFileUsingBufferedStream(string sourcePath)
+        {
+            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (BufferedStream bufferedInput = new BufferedStream(fileStreamToRead)) using (StreamReader reader = new StreamReader(bufferedInput))
+            {
+                int chunkSize = 4 * 1024;
+                char[] buffer = new char[chunkSize];
+                int bytesRead = 0;
+
+                Stopwatch stopWatch = Stopwatch.StartNew();
+
+                do
+                {
+                    bytesRead = reader.Read(buffer, 0, buffer.Length);
+                    string chunk = new string(buffer, 0, bytesRead);
+                } while (bytesRead > 0);
+                stopWatch.Stop();
+                return stopWatch.ElapsedMilliseconds;
+            }
+        }
+        public long ConvertToUpperCaseUsingChunks(string sourcePath, string destinationPath )
         {
             using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
             using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
@@ -36,20 +72,75 @@ namespace FilesAndStreams
                 int chunkSize = 4 * 1024;
                 char[] buffer = new char[chunkSize];
                 int bytesRead = 0;
-                int chunkNumber = 1;
 
-                Stopwatch sw = Stopwatch.StartNew();
+                Stopwatch stopWatch = Stopwatch.StartNew();
                 
                 do{
                     bytesRead = reader.Read(buffer, 0, buffer.Length);
                     string chunk = new string(buffer, 0, bytesRead);
                     writer.Write(chunk.ToUpper());
                 } while (bytesRead > 0) ;
-                    sw.Stop();
-                return sw.ElapsedMilliseconds;
+                    stopWatch.Stop();
+                return stopWatch.ElapsedMilliseconds;
             }
         }
 
-        
+        public long ConvertToUpperCaseUsingBufferStream(string sourcePath, string destinationPath)
+        {
+            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (BufferedStream bufferedInput = new BufferedStream(fileStreamToRead))
+            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (BufferedStream bufferedOutput = new BufferedStream(fileStreamToWrite))
+            using (StreamWriter writer = new StreamWriter(bufferedOutput, Encoding.ASCII))
+            using (StreamReader reader = new StreamReader(bufferedInput))
+            {
+                int chunkSize = 4 * 1024;
+                char[] buffer = new char[chunkSize];
+                int bytesRead = 0;
+
+                Stopwatch stopWatch = Stopwatch.StartNew();
+
+                do
+                {
+                    bytesRead = reader.Read(buffer, 0, buffer.Length);
+                    string chunk = new string(buffer, 0, bytesRead);
+                    writer.Write(chunk.ToUpper());
+                } while (bytesRead > 0);
+                stopWatch.Stop();
+                return stopWatch.ElapsedMilliseconds;
+            }
+        }
+
+        public long ConvertToUpperCaseUsingMemoryStream(string sourcePath, string destinationPath)
+        {
+            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                byte[] buffer = new byte[(4 * 1024)];
+                int bytesRead;
+
+                Stopwatch stopwatch = Stopwatch.StartNew();
+                while ((bytesRead = fileStreamToRead.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        memoryStream.Write(buffer, 0, bytesRead);
+                        memoryStream.Position = 0;
+                        byte[] processedBytes = new byte[bytesRead];
+                        int processedLength = memoryStream.Read(processedBytes, 0, bytesRead);
+
+                        string chunkString = Encoding.ASCII.GetString(processedBytes, 0, processedLength);
+                        string upperChunkString = chunkString.ToUpper();
+                        byte[] upperChunkBytes = Encoding.ASCII.GetBytes(upperChunkString);
+
+                        fileStreamToWrite.Write(upperChunkBytes, 0, upperChunkBytes.Length);
+                    }
+                }
+                stopwatch.Stop();
+                return stopwatch.ElapsedMilliseconds;
+            }
+
+        }
+
     }
 }
