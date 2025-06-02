@@ -8,7 +8,7 @@ namespace FilesAndStreams
         public void CreateLargeFile(long size, string filePath)
         {
             long fileSize = size * 1024 * 1024 * 1024;
-            string textToWrite = "Hello world!\n";
+            string textToWrite = GetTextFromUser();
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             using (StreamWriter writer = new StreamWriter(fileStream, Encoding.ASCII))
             {
@@ -140,6 +140,12 @@ namespace FilesAndStreams
                 return stopwatch.ElapsedMilliseconds;
             }
 
+        }
+
+        private static string GetTextFromUser()
+        {
+            Console.Write("Enter a string to write in the file: ");
+            return Console.ReadLine();
         }
 
     }
