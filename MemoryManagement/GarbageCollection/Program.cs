@@ -15,7 +15,7 @@ namespace GarbageCollection
                 Console.WriteLine($"Memory before object creation: {GC.GetTotalMemory(false)} bytes");
                 for (int innerCount = 0; innerCount < 1000; innerCount++)
                 {
-                    Person person = new Person();
+                    var person = new Person();
                     person.Age = innerCount;
                     IncrementAge(person);
                     people.Add(person);

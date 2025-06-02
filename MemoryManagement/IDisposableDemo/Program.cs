@@ -38,7 +38,7 @@
 
             // Create an instance of file writer and releases it after its use
 
-            using (FileWriter fileWriter = new FileWriter(filename))
+            using (var fileWriter = new FileWriter(filename))
 
             {
 
@@ -78,7 +78,7 @@
 
             // Read the content from the file to ensure it was released properly
 
-            StreamReader streamReader = new StreamReader(filename);
+            var streamReader = new StreamReader(filename);
 
             Console.WriteLine(streamReader.ReadToEnd());
 

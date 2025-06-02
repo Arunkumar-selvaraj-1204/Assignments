@@ -7,7 +7,7 @@ namespace ValueAndReferenceTypes
         public static void Main(string[] args)
         {
             int number = 4;
-            Person person = new Person();
+            var person = new Person();
             person.Name = "Arun";
             person.Age = 21;
 
