@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesAndStreams", "FilesAndStreams.csproj", "{29F3B290-1550-4B73-8817-59BB07A58F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncFileProcessor", "..\AsyncFileProcessor\AsyncFileProcessor.csproj", "{07901519-C901-4B9E-B82D-0618D677FC89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{29F3B290-1550-4B73-8817-59BB07A58F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29F3B290-1550-4B73-8817-59BB07A58F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29F3B290-1550-4B73-8817-59BB07A58F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07901519-C901-4B9E-B82D-0618D677FC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07901519-C901-4B9E-B82D-0618D677FC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07901519-C901-4B9E-B82D-0618D677FC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07901519-C901-4B9E-B82D-0618D677FC89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
