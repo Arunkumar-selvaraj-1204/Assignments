@@ -9,5 +9,8 @@ namespace ProjectE
             Console.WriteLine("This is project E");
             Printer.PerformMathematicalCalculation();
         }
+        public static void Main()
+        {
+        }
     }
 }
