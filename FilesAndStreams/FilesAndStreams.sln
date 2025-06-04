@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesAndStreams", "FilesAnd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncFileProcessor", "..\AsyncFileProcessor\AsyncFileProcessor.csproj", "{07901519-C901-4B9E-B82D-0618D677FC89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssuesInFileUsage", "..\IssuesInFileUsage\IssuesInFileUsage.csproj", "{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07901519-C901-4B9E-B82D-0618D677FC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07901519-C901-4B9E-B82D-0618D677FC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07901519-C901-4B9E-B82D-0618D677FC89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
