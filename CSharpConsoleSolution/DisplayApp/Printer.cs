@@ -1,18 +1,26 @@
 ﻿using UtilityApp;
-using MathApp;
+using ProjectE;
+using System.Runtime.CompilerServices;
 namespace DisplayApp
 {
     public class Printer
     {
+        private IMathHelper _mathematicalOperations;
+
+        public Printer(IMathHelper mathematicalOperations)
+        {
+            _mathematicalOperations = mathematicalOperations;
+            PerformMathematicalCalculation();
+        }
         static void Main(string[] args)
         {
-            
+             
         }
 
         /// <summary>
         /// Perform Mathematical calculations
         /// </summary>
-        public static void PerformMathematicalCalculation()
+        public void PerformMathematicalCalculation()
         {
             bool isExit = false;
             Console.Write("Enter number 1 :");
@@ -22,21 +30,21 @@ namespace DisplayApp
             while (!isExit)
             {
                 int ans = 0;
-                Console.WriteLine("\n[1] Add\n[2] Subtract\n[3] Multiply\n[4] Divide\n[5] Exit\nEnter the choice :");
+                Console.Write("\n[1] Add\n[2] Subtract\n[3] Multiply\n[4] Divide\n[5] Exit\nEnter the choice :");
                 string userChoice = Helper.GetString();
                 switch (userChoice)
                 {
                     case "1":
-                        ans = MathematicalOperations.Add(firstNumber, secondNumber);
+                        ans = _mathematicalOperations.Add(firstNumber, secondNumber);
                         break;
                     case "2":
-                        ans = MathematicalOperations.Subtract(firstNumber, secondNumber);
+                        ans = _mathematicalOperations.Subtract(firstNumber, secondNumber);
                         break;
                     case "3":
-                        ans = MathematicalOperations.Multiply(firstNumber, secondNumber);
+                        ans = _mathematicalOperations.Multiply(firstNumber, secondNumber);
                         break;
                     case "4":
-                        ans = MathematicalOperations.Divide(firstNumber, secondNumber);
+                        ans = _mathematicalOperations.Divide(firstNumber, secondNumber);
                         break;
                     case "5":
                         isExit = true;
@@ -45,7 +53,12 @@ namespace DisplayApp
                         Console.WriteLine("Invalid choice !");
                         break;
                 }
-                Console.WriteLine("Answer is " + ans);
+                if (!isExit)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Answer is " + ans);
+                    Console.ResetColor();
+                }
             }
         }
 

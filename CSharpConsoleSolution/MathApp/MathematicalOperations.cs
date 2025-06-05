@@ -1,27 +1,31 @@
 ﻿using UtilityApp;
+using ProjectE;
 
+using DisplayApp;
 namespace MathApp
 {
-    public class MathematicalOperations
+    public class MathematicalOperations : IMathHelper
     {
-        
-
-            public static  int Add(int num1, int num2)
+        public MathematicalOperations()
+        {
+            Printer printer = new Printer(this);
+        }
+            public int Add(int num1, int num2)
             {
                 return num1 + num2;
             }
 
-            public static int Subtract(int num1, int num2)
+            public int Subtract(int num1, int num2)
             {
                 return num1 - num2;
             }
 
-            public static int Multiply(int num1, int num2)
+            public int Multiply(int num1, int num2)
             {
                 return num1 * num2;
             }
 
-            public static int Divide(int num1, int num2)
+            public int Divide(int num1, int num2)
             {
                 return num1 / num2;
             }

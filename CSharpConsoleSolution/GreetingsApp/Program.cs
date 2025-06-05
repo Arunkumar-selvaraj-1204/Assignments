@@ -1,5 +1,5 @@
 ﻿using ProjectE;
-
+using MathApp;
 namespace GreetingsApp
 {
     internal class Program
@@ -7,7 +7,10 @@ namespace GreetingsApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello everyone");
-            Connector.DisplayConnector();
+            MathematicalOperations mathematicalOperations = new MathematicalOperations();
+            Console.WriteLine("Application Closing...");
+            
+            
         }
     }
 }
