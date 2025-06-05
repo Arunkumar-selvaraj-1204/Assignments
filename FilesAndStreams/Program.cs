@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using System;
+using Spectre.Console;
 namespace FilesAndStreams
 {
     internal class Program

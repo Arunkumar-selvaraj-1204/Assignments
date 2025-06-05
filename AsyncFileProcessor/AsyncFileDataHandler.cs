@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Spectre.Console;
 
 namespace AsyncFileProcessor
 {
@@ -24,11 +24,7 @@ namespace AsyncFileProcessor
             }
             catch
             {
-                Console.WriteLine("The file not exist :(\n Creating new file...");
-                CreateNewFileWithRandomData(sourcePath);
-                using FileStream sourceStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: ChunkSize, useAsync: true);
-                using FileStream destinationStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: ChunkSize, useAsync: true);
-                await PerformConvertionToUpperCase(sourceStream, destinationStream);
+                AnsiConsole.MarkupLine("[red]More than one user trying to access same file. So the program crashed");
             }
             stopwatch.Stop();
             return stopwatch.ElapsedMilliseconds;
@@ -50,22 +46,6 @@ namespace AsyncFileProcessor
             }
         }
 
-        public static void CreateNewFileWithRandomData(string filePath)
-        {
-            long fileSize = 1L * 1024 * 1024;
-            string textToWrite = GetTextFromUser();
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (StreamWriter writer = new StreamWriter(fileStream, Encoding.ASCII))
-            {
-                long totalWritten = 0;
-                while (totalWritten < fileSize)
-                {
-                    writer.Write(textToWrite);
-                    totalWritten += textToWrite.Length;
-                }
-            }
-        }
-
         private static async Task PerformConvertionToUpperCase(FileStream sourceStream, FileStream destinationStream)
         {
             byte[] buffer = new byte[ChunkSize];
@@ -79,10 +59,6 @@ namespace AsyncFileProcessor
                 await destinationStream.WriteAsync(upperChunkBytes, 0, upperChunkBytes.Length);
             }
         }
-        private static string GetTextFromUser()
-        {
-            Console.Write("Enter a string to write in the file: ");
-            return Console.ReadLine();
-        }
+
     }
 }

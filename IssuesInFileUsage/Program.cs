@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -8,20 +9,20 @@ namespace IssuesInFileUsage
     {
         static void Main(string[] args)
         {
-            string path = "testText.txt";
-            string data = "This is some test data";
+            string path = GetFilePath();
+            string data = GetTextFromUser();
 
             Console.WriteLine("=== Inefficient File Write and Read ===");
-            InefficientFileWriteAndRead(path, data);
+            Console.WriteLine("Time taken for inefficient file operation: " + InefficientFileWriteAndRead(path, data) + "milliseconds");
 
             Console.WriteLine("\n=== Optimized File Write and Read ===");
-            OptimizedFileWriteAndRead(path, data);
-
-            Console.ReadLine();
+            Console.WriteLine("Time taken for optimized file operation: " + OptimizedFileWriteAndRead(path, data) + "milliseconds");
         }
 
-        static void InefficientFileWriteAndRead(string path, string data)
+        static long InefficientFileWriteAndRead(string path, string data)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             // Write using MemoryStream unnecessarily
             using (MemoryStream memoryStream = new MemoryStream())
             {
@@ -49,9 +50,13 @@ namespace IssuesInFileUsage
                     Console.WriteLine();
                 }
             }
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
-        static void OptimizedFileWriteAndRead(string path, string data)
+        static long OptimizedFileWriteAndRead(string path, string data)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             byte[] buffer = Encoding.ASCII.GetBytes(data);
             using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
@@ -66,6 +71,28 @@ namespace IssuesInFileUsage
                 string result = Encoding.ASCII.GetString(readBuffer, 0, bytesRead);
                 Console.WriteLine(result);
             }
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
+        private static string GetTextFromUser()
+        {
+            Console.Write("Enter a string to write in the file: ");
+            return Console.ReadLine();
+        }
+        private static string GetFilePath()
+        {
+            Console.Write($"Enter relative file path (Eg: MainFile.txt): ");
+            string filePath = Console.ReadLine();
+            if (filePath.Contains(".txt"))
+            {
+                return filePath;
+            }
+            else
+            {
+                return filePath + ".txt";
+            }
+        }
+
+
     }
 }
