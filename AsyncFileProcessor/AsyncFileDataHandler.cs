@@ -8,13 +8,20 @@ using Spectre.Console;
 
 namespace AsyncFileProcessor
 {
+    /// <summary>
+    /// Handles asynchronous file processing.
+    /// </summary>
     internal class AsyncFileDataHandler
     {
+        // Buffer size for chunked reading and writing (4KB)
         private const int ChunkSize = 4 * 1024;
 
+        /// <summary>
+        /// Asynchronously converts the contents of a source file to upper case and writes it to a destination file.
+        /// </summary>
         public async Task<long> ConvertToUpperCaseAsync(string sourcePath, string destinationPath)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            var stopwatch = Stopwatch.StartNew();
 
             try
             {
@@ -29,9 +36,13 @@ namespace AsyncFileProcessor
             stopwatch.Stop();
             return stopwatch.ElapsedMilliseconds;
         }
+
+        /// <summary>
+        /// Processes multiple file pairs concurrently, converting each source file to upper case.
+        /// </summary>
         public async Task ProcessMultipleFilesAsync(List<(string sourcePath, string destinationPath)> filePairs)
         {
-            List<Task<long>> processingTasks = new List<Task<long>>();
+            var processingTasks = new List<Task<long>>();
 
             foreach (var (source, dest) in filePairs)
             {
@@ -46,6 +57,9 @@ namespace AsyncFileProcessor
             }
         }
 
+        /// <summary>
+        /// Reads from the source stream, converts each chunk to upper case, and writes to the destination stream asynchronously.
+        /// </summary>
         private static async Task PerformConvertionToUpperCase(FileStream sourceStream, FileStream destinationStream)
         {
             byte[] buffer = new byte[ChunkSize];
@@ -59,6 +73,5 @@ namespace AsyncFileProcessor
                 await destinationStream.WriteAsync(upperChunkBytes, 0, upperChunkBytes.Length);
             }
         }
-
     }
 }

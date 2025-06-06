@@ -8,6 +8,10 @@ namespace LoggingSystem
 {
     public class LoggerUtils
     {
+        /// <summary>
+        /// Reads a choice from user
+        /// </summary>
+        /// <returns>user's choice</returns>
         public static int ReadChoice()
         {
             while (true)
@@ -20,6 +24,10 @@ namespace LoggingSystem
             }
         }
 
+        /// <summary>
+        /// Gets a positive integer from user.
+        /// </summary>
+        /// <returns>positive integer</returns>
         public static int ReadIntInput()
         {
             while (true)

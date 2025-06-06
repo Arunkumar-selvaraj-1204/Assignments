@@ -3,20 +3,29 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
 
 namespace LoggingSystem
 {
+    /// <summary>
+    /// Provides various methods for logging error messages to files using different techniques.
+    /// </summary>
     public class Logger
     {
         private static string _logFilePath;
 
-        public Logger(string filePath) 
+        /// <summary>
+        /// Initializes the logger with a log file path.
+        /// </summary>
+        /// <param name="filePath">Path to the log file.</param>
+        public Logger(string filePath)
         {
             _logFilePath = filePath;
         }
+
+        /// <summary>
+        /// Logs an error inefficiently using a MemoryStream.
+        /// </summary>
+        /// <param name="errorMessage">Error message to log.</param>
         public void LogErrorInefficiently(string errorMessage)
         {
             using (MemoryStream memoryStream = new MemoryStream())
@@ -29,6 +38,11 @@ namespace LoggingSystem
                 }
             }
         }
+
+        /// <summary>
+        /// Logs an error efficiently using async FileStream.
+        /// </summary>
+        /// <param name="errorMessage">Error message to log.</param>
         public async void LogErrorEfficiently(string errorMessage)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(errorMessage);
@@ -38,6 +52,11 @@ namespace LoggingSystem
             }
         }
 
+        /// <summary>
+        /// Logs an error in a thread-safe way using SemaphoreSlim.
+        /// </summary>
+        /// <param name="errorMessage">Error message to log.</param>
+        /// <returns>A task representing the async operation.</returns>
         public async Task LogErrorThreadSafe(string errorMessage)
         {
             var semaphoreSlim = new SemaphoreSlim(1);
@@ -50,18 +69,23 @@ namespace LoggingSystem
                     await fileStream.WriteAsync(bytes, 0, bytes.Length);
                 }
             }
-            finally 
+            finally
             {
                 semaphoreSlim.Release();
             }
-            
         }
 
+        /// <summary>
+        /// Logs an error to a user-specific file asynchronously.
+        /// </summary>
+        /// <param name="userId">User ID for the log file.</param>
+        /// <param name="errorMessage">Error message to log.</param>
+        /// <returns>A task representing the async operation.</returns>
         public async Task LogErrorInUserSpecificFile(string userId, string errorMessage)
         {
             string filePath = $"{userId}Error.log";
             byte[] bytes = Encoding.UTF8.GetBytes(errorMessage);
-            using(FileStream fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
             {
                 await fileStream.WriteAsync(bytes, 0, bytes.Length);
             }
