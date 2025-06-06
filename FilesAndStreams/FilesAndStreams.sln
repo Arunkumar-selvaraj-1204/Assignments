@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncFileProcessor", "..\As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssuesInFileUsage", "..\IssuesInFileUsage\IssuesInFileUsage.csproj", "{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingSystem", "..\LoggingSystem\LoggingSystem.csproj", "{32745E25-C8A9-46E3-A819-B2EF2E51A817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0781EB9F-C0DC-46C0-BA27-8EB8B60AC14B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32745E25-C8A9-46E3-A819-B2EF2E51A817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32745E25-C8A9-46E3-A819-B2EF2E51A817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32745E25-C8A9-46E3-A819-B2EF2E51A817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32745E25-C8A9-46E3-A819-B2EF2E51A817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
