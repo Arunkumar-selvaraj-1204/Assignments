@@ -20,7 +20,14 @@
         /// <returns>Returns int</returns>
         public static int GetInt()
         {
-            return int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            int value;
+            while (!int.TryParse(input, out value))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer:");
+                input = Console.ReadLine();
+            }
+            return value;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace GreetingsApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello everyone");
-            MathematicalOperations mathematicalOperations = new MathematicalOperations();
+            var mathematicalOperations = new MathematicalOperations();
             Console.WriteLine("Application Closing...");
             
             

@@ -8,7 +8,7 @@ namespace MathApp
     {
         public MathematicalOperations()
         {
-            Printer printer = new Printer(this);
+            var printer = new Printer(this);
         }
             public int Add(int num1, int num2)
             {
