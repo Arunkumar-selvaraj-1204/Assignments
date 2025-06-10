@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberFilter", "NumberFilte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortProducts", "SortProducts\SortProducts.csproj", "{8FC0BEC6-BECD-6879-1F7E-DA1646214B0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRecords", "BookRecords\BookRecords.csproj", "{7766E4B8-9154-47C5-A7B5-DD017580921C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8FC0BEC6-BECD-6879-1F7E-DA1646214B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FC0BEC6-BECD-6879-1F7E-DA1646214B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FC0BEC6-BECD-6879-1F7E-DA1646214B0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7766E4B8-9154-47C5-A7B5-DD017580921C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7766E4B8-9154-47C5-A7B5-DD017580921C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7766E4B8-9154-47C5-A7B5-DD017580921C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7766E4B8-9154-47C5-A7B5-DD017580921C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
