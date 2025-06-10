@@ -6,9 +6,9 @@ namespace SortingArray
         static void Main(string[] args)
         {
             Console.Write("Enter number of elements in an array: ");
-            int arrayLengt = GetInt();
-            int[] numbers = new int[arrayLengt];
-            for (int i = 0; i < arrayLengt; i++)
+            int arrayLength = GetInt();
+            int[] numbers = new int[arrayLength];
+            for (int i = 0; i < arrayLength; i++)
             {
                 Console.Write($"Enter {i+1} element: ");
                 numbers[i] = GetInt();

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseOfDynamicAndVar", "..\Ty
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingArray", "..\SortingArray\SortingArray.csproj", "{6E17EF8E-3E9A-41B1-B979-695A1758E310}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberFilter", "..\NumberFilter\NumberFilter.csproj", "{BF7536C5-C153-4393-A47C-13C027A61301}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7536C5-C153-4393-A47C-13C027A61301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7536C5-C153-4393-A47C-13C027A61301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7536C5-C153-4393-A47C-13C027A61301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7536C5-C153-4393-A47C-13C027A61301}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
