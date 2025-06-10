@@ -9,7 +9,7 @@ namespace CollectionAndGenerics.Task4
     /// <summary>
     /// Class to implement task4
     /// </summary>
-    public class Dictionaries
+    public class StudentGradeSystem
     {
         /// <summary>
         /// Dictionary to store string ,int as key value pair
@@ -19,7 +19,7 @@ namespace CollectionAndGenerics.Task4
         /// <summary>
         /// Constructor to initialize values
         /// </summary>
-        public Dictionaries()
+        public StudentGradeSystem()
         {
             StudentDictionary = new Dictionary<string, int>();
         }
@@ -31,6 +31,7 @@ namespace CollectionAndGenerics.Task4
         {
             Console.WriteLine("Dictionary implementation");
             Console.WriteLine("______________________");
+            Console.WriteLine("Enter details of five students: ");
             AddStudents();
             RemoveStudent();
             DisplayStudents();

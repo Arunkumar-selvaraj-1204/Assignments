@@ -35,8 +35,23 @@ namespace CollectionAndGenerics.Task6
         {
             Console.WriteLine("Understanding IEnumerable \n");
             Console.WriteLine("______________________");
+            Console.WriteLine("Elements in list: ");
+            foreach (var number in _list)
+            {
+                Console.WriteLine(number);
+            }
             Console.WriteLine($"Sum of List is {SumOfElements(_list)}");
+            Console.WriteLine("Elements in stack: ");
+            foreach (var number in _stack)
+            {
+                Console.WriteLine(number);
+            }
             Console.WriteLine($"Sum of Stack is {SumOfElements(_stack)}");
+            Console.WriteLine("Elements in queue: ");
+            foreach (var number in _queue)
+            {
+                Console.WriteLine(number);
+            }
             Console.WriteLine($"Sum of Queue is {SumOfElements(_queue)}");
             Console.WriteLine("***********************");
         }

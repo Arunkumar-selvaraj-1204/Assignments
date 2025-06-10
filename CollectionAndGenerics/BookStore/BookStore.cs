@@ -9,7 +9,7 @@ namespace CollectionAndGenerics.Task1
     /// <summary>
     /// Class to implement task1
     /// </summary>
-    public class WorkingWithList
+    public class BookStore
     {
         /// <summary>
         /// List to store titles
@@ -19,7 +19,7 @@ namespace CollectionAndGenerics.Task1
         /// <summary>
         /// Constructor to initialize values
         /// </summary>
-        public WorkingWithList()
+        public BookStore()
         {
             TitleList = new List<string>();
         }

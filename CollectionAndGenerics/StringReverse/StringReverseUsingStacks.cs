@@ -9,7 +9,7 @@ namespace CollectionAndGenerics.Task2
     /// <summary>
     /// Class to implement task2
     /// </summary>
-    public class Stacks
+    public class StringReverseUsingStacks
     {
         /// <summary>
         /// Stack to store character
@@ -29,7 +29,7 @@ namespace CollectionAndGenerics.Task2
         /// <summary>
         /// Constructor to initialize values
         /// </summary>
-        public Stacks()
+        public StringReverseUsingStacks()
         {
             CharStack = new Stack<char>();
         }

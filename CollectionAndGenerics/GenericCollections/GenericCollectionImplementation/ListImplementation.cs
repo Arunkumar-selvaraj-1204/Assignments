@@ -48,7 +48,7 @@ namespace CollectionAndGenerics.Task5.GenericCollectionImplementation
             _genericStringList.Add("Psychology of money");
             Console.WriteLine("ADDED : Psychology of money");
             _genericStringList.Add("Rich Dad poor Dad");
-            Console.WriteLine(" ADDED : Rich Dad poor Dad");
+            Console.WriteLine("ADDED : Rich Dad poor Dad");
             Console.WriteLine($"Atomic Habits Removed : {_genericStringList.Remove("Atomic Habits")}");
             Console.WriteLine($"Is Atomic Habits present in List : {_genericStringList.Contains("Atomic Habits")}");
             Console.WriteLine($"Is Rich Dad poor Dad present in List : {_genericStringList.Contains("Rich Dad poor Dad")}");

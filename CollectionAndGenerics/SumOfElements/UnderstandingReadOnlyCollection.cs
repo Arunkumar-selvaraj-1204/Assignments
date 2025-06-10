@@ -37,7 +37,7 @@ namespace CollectionAndGenerics.Task6
         }
 
         /// <summary>
-        /// Display all the key and value  in the dictionaru=y
+        /// Display all the key and value  in the dictionary
         /// </summary>
         /// <param name="readonlyDictionary">ReadOnlyDictionary to display</param>
         public void PrintDictionary(IReadOnlyDictionary<string, int> readonlyDictionary)

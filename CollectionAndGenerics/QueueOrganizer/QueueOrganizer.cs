@@ -9,7 +9,7 @@ namespace CollectionAndGenerics.Task3
     /// <summary>
     /// Class to implement task3
     /// </summary>
-    public class Queues
+    public class QueueOrganizer
     {
         /// <summary>
         /// Queue stores people
@@ -19,7 +19,7 @@ namespace CollectionAndGenerics.Task3
         /// <summary>
         /// Constructor to initialize values
         /// </summary>
-        public Queues()
+        public QueueOrganizer()
         {
             PeopleQueue = new Queue<string>();
         }
@@ -62,10 +62,16 @@ namespace CollectionAndGenerics.Task3
             else
             {
                 Console.WriteLine("Enter the number of people to serve: ");
-                int numberOfPeople = int.Parse(Console.ReadLine());
+                int numberOfPeople = GetInt();
+                while (numberOfPeople > PeopleQueue.Count)
+                {
+                    Console.WriteLine($"People in queue is {PeopleQueue.Count}");
+                    Console.WriteLine("Enter the number of people to serve: ");
+                    numberOfPeople = GetInt();
+                }
                 for (int i = 0; i < numberOfPeople; i++)
                 {
-                    Console.WriteLine($"Served {PeopleQueue.Dequeue()} in the queue: ");
+                    Console.WriteLine($"Served {PeopleQueue.Dequeue()} from the queue :-) ");
                 }
             }
             Console.WriteLine("______________________");
@@ -75,11 +81,31 @@ namespace CollectionAndGenerics.Task3
         {
             Console.WriteLine("People in the queue: ");
 
+            if(PeopleQueue.Count == 0)
+            {
+                Console.WriteLine("Queue is empty");
+            }
             foreach (string person in PeopleQueue)
             {
                 Console.WriteLine(person);
             }
             Console.WriteLine("______________________");
+        }
+
+        /// <summary>
+        /// Gets int from user
+        /// </summary>
+        /// <returns>Returns int</returns>
+        public static int GetInt()
+        {
+            string input = Console.ReadLine();
+            int value;
+            while (!int.TryParse(input, out value))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer:");
+                input = Console.ReadLine();
+            }
+            return value;
         }
     }
 }
