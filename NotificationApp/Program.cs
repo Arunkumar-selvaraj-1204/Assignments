@@ -1,4 +1,6 @@
-﻿namespace NotificationApp
+﻿using System;
+
+namespace NotificationApp
 {
     internal class Program
     {

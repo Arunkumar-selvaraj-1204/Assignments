@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationApp", "NotificationApp.csproj", "{AC9D35FD-7A1A-41EB-99DF-4F5579018645}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseOfDynamicAndVar", "..\TypeChangerApplication\UseOfDynamicAndVar.csproj", "{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AC9D35FD-7A1A-41EB-99DF-4F5579018645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC9D35FD-7A1A-41EB-99DF-4F5579018645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC9D35FD-7A1A-41EB-99DF-4F5579018645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
