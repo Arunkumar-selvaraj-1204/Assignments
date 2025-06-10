@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationApp", "Notifica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseOfDynamicAndVar", "..\TypeChangerApplication\UseOfDynamicAndVar.csproj", "{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingArray", "..\SortingArray\SortingArray.csproj", "{6E17EF8E-3E9A-41B1-B979-695A1758E310}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEAB16F6-2531-4BB3-A0F6-2C07878B11A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E17EF8E-3E9A-41B1-B979-695A1758E310}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

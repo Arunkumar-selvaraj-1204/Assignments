@@ -1,4 +1,5 @@
-﻿namespace UseOfDynamicAndVar
+﻿using System;
+namespace UseOfDynamicAndVar
 {
     internal class Program
     {
