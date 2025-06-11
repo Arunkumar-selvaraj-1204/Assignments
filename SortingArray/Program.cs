@@ -1,42 +1,47 @@
-﻿using System;
+﻿using Spectre.Console;
+using System;
+
 namespace SortingArray
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.Write("Enter number of elements in an array: ");
-            int arrayLength = GetInt();
-            int[] numbers = new int[arrayLength];
-            for (int i = 0; i < arrayLength; i++)
-            {
-                Console.Write($"Enter {i+1} element: ");
-                numbers[i] = GetInt();
-            }
+            AnsiConsole.MarkupLine("[bold yellow]--- Sorting Array ---[/]");
 
-            Console.WriteLine("Sorted array: ");
-            Array.Sort(numbers, (firstNumber, secondNumber) => firstNumber - secondNumber);
+            int[] numbers = GetArrayFromUser();
+            Array.Sort(numbers);
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                Console.Write(numbers[i] +"\n");
-            }
+            DisplaySortedArray(numbers);
+
+            AnsiConsole.MarkupLine("[bold green]Sorting complete![/]");
         }
 
         /// <summary>
-        /// Gets int from user
+        /// Prompts the user to enter an array of integers.
         /// </summary>
-        /// <returns>Returns int</returns>
-        public static int GetInt()
+        private static int[] GetArrayFromUser()
         {
-            string input = Console.ReadLine();
-            int value;
-            while (!int.TryParse(input, out value))
+            int length = AnsiConsole.Ask<int>("[green]Enter the number of elements[/]:");
+
+            int[] array = new int[length];
+            for (int i = 0; i < length; i++)
             {
-                Console.WriteLine("Invalid input. Please enter a valid integer:");
-                input = Console.ReadLine();
+                array[i] = AnsiConsole.Ask<int>($"[blue]Enter element {i + 1}[/]:");
             }
-            return value;
+            return array;
+        }
+
+        /// <summary>
+        /// Displays the sorted array.
+        /// </summary>
+        private static void DisplaySortedArray(int[] array)
+        {
+            AnsiConsole.MarkupLine("\n[bold cyan]Sorted Array:[/]");
+            foreach (var num in array)
+            {
+                AnsiConsole.MarkupLine($"[green]{num}[/]");
+            }
         }
     }
 }
