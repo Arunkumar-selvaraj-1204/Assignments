@@ -9,7 +9,29 @@ namespace InspectAssembly
             Assembly assembly = Assembly.LoadFrom("../../../InspectAssemblyMetaData.dll");
             Type helperType = assembly.GetType("ReflectionHelper.Helper");
             object helperInstance = Activator.CreateInstance(helperType);
+            DisplayMetaData(helperType, helperInstance);
+            
 
+            //Task 2
+            var objectInspector = new DynamicObjectInspector(assembly);
+            objectInspector.DisplayProerties();
+            string choice = GetPropertyToChange();
+            while (!objectInspector.ChangePropertyValue(choice))
+            {
+                Console.WriteLine("Property not found");
+                choice = GetPropertyToChange();
+            }
+            Console.WriteLine("Value changed successfully...");
+            objectInspector.DisplayProerties();
+        }
+
+        private static string GetPropertyToChange()
+        {
+            Console.Write("Enter the property name (Case sensitive): ");
+            return Console.ReadLine();
+        }
+        private static void DisplayMetaData(Type helperType, object helperInstance)
+        {
             Console.WriteLine("=== Fields ===");
             foreach (var field in helperType.GetFields())
             {
@@ -34,7 +56,6 @@ namespace InspectAssembly
                 Console.WriteLine(ev.Name);
             }
         }
-
         private static string GetName()
         {
             Console.Write("Enter your name to change in the dll: ");
@@ -50,15 +71,6 @@ namespace InspectAssembly
             return result;
         }
 
-        private static int GetNumber()
-        {
-            Console.Write("Enter a number: ");
-            int result;
-            while (int.TryParse(Console.ReadLine(), out result))
-            {
-                Console.Write("Enter valid integer: ");
-            }
-            return result;
-        }
+        
     }
 }
