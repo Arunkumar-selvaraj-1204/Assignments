@@ -1,51 +1,105 @@
-﻿namespace Shapes
+﻿using System;
+using Spectre.Console;
+namespace Shapes
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var shapes = new List<Shape>
-        {
-            new Circle("Circle One", 3.5),
-            new Rectangle("Rectangle One", 5, 7),
-            new Triangle("Triangle One", 4, 6),
-            null // To demonstrate null pattern
-        };
+            List<Shape> shapes = new();
+            bool running = true;
 
+            while (running)
+            {
+                var option = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("[green]Choose an option:[/]")
+                        .AddChoices("Add Circle", "Add Rectangle", "Add Triangle", "Add Null Shape", "View All Shapes", "Exit"));
+
+                switch (option)
+                {
+                    case "Add Circle":
+                        shapes.Add(CreateCircle());
+                        break;
+                    case "Add Rectangle":
+                        shapes.Add(CreateRectangle());
+                        break;
+                    case "Add Triangle":
+                        shapes.Add(CreateTriangle());
+                        break;
+                    case "Add Null Shape":
+                        shapes.Add(null); // Adds a null entry to demonstrate pattern match
+                        break;
+                    case "View All Shapes":
+                        DisplayAllShapes(shapes);
+                        break;
+                    case "Exit":
+                        running = false;
+                        break;
+                }
+                AnsiConsole.MarkupLine("[grey]Press Enter to continue...[/]");
+                Console.ReadLine();
+                Console.Clear();
+            }
+        }
+
+        static Circle CreateCircle()
+        {
+            string name = AnsiConsole.Ask<string>("Enter the name of the Circle:");
+            double radius = AnsiConsole.Ask<double>("Enter the radius:");
+            return new Circle(name, radius);
+        }
+
+        static Rectangle CreateRectangle()
+        {
+            string name = AnsiConsole.Ask<string>("Enter the name of the Rectangle:");
+            double width = AnsiConsole.Ask<double>("Enter the width:");
+            double height = AnsiConsole.Ask<double>("Enter the height:");
+            return new Rectangle(name, width, height);
+        }
+
+        static Triangle CreateTriangle()
+        {
+            string name = AnsiConsole.Ask<string>("Enter the name of the Triangle:");
+            double baseLength = AnsiConsole.Ask<double>("Enter the base length:");
+            double height = AnsiConsole.Ask<double>("Enter the height:");
+            return new Triangle(name, baseLength, height);
+        }
+
+        static void DisplayAllShapes(IEnumerable<Shape> shapes)
+        {
+            AnsiConsole.MarkupLine("[yellow]--- Shape Details ---[/]");
             foreach (var shape in shapes)
             {
                 DisplayShapeDetails(shape);
                 Console.WriteLine();
             }
         }
-        /// <summary>
-        /// Uses pattern matching to print details and area of a shape.
-        /// </summary>
-        /// <param name="shape">The shape object.</param>
+
         static void DisplayShapeDetails(Shape shape)
         {
             switch (shape)
             {
                 case Circle c:
-                    Console.WriteLine($"Shape: {c.Name} (Circle)");
-                    Console.WriteLine($"Radius: {c.Radius}");
-                    Console.WriteLine($"Area: {c.CalculateArea():F2}");
+                    AnsiConsole.MarkupLine($"[blue]Shape:[/] {c.Name} (Circle)");
+                    AnsiConsole.MarkupLine($"Radius: {c.Radius}");
+                    AnsiConsole.MarkupLine($"Area: [green]{c.CalculateArea():F2}[/]");
                     break;
                 case Rectangle r:
-                    Console.WriteLine($"Shape: {r.Name} (Rectangle)");
-                    Console.WriteLine($"Width: {r.Width}, Height: {r.Height}");
-                    Console.WriteLine($"Area: {r.CalculateArea():F2}");
+                    AnsiConsole.MarkupLine($"[blue]Shape:[/] {r.Name} (Rectangle)");
+                    AnsiConsole.MarkupLine($"Width: {r.Width}, Height: {r.Height}");
+                    AnsiConsole.MarkupLine($"Area: [green]{r.CalculateArea():F2}[/]");
                     break;
                 case Triangle t:
-                    Console.WriteLine($"Shape: {t.Name} (Triangle)");
-                    Console.WriteLine($"Base: {t.BaseLength}, Height: {t.Height}");
-                    Console.WriteLine($"Area: {t.CalculateArea():F2}");
+                    AnsiConsole.MarkupLine($"[blue]Shape:[/] {t.Name} (Triangle)");
+                    AnsiConsole.MarkupLine($"Base: {t.BaseLength}, Height: {t.Height}");
+                    AnsiConsole.MarkupLine($"Area: [green]{t.CalculateArea():F2}[/]");
                     break;
                 case null:
-                    Console.WriteLine("Shape is null.");
+                    AnsiConsole.MarkupLine("[red]Shape is null.[/]");
                     break;
                 default:
-                    Console.WriteLine("Unknown shape type.");
+                    AnsiConsole.MarkupLine("[red]Unknown shape type.[/]");
                     break;
             }
         }
