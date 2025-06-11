@@ -5,6 +5,7 @@ namespace UseOfDynamicAndVar
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Difference between var and dynamic keyword");
             Console.Write("Enter a string: ");
             string message = Console.ReadLine() ?? "Default string";
             var valueChangingVariable = message;
@@ -19,7 +20,9 @@ namespace UseOfDynamicAndVar
 
             dynamicVariable = 20.543;
             Console.WriteLine($"Modified value of the variable declared with 'dynamic' keyword is - {dynamicVariable} and it's type is {dynamicVariable.GetType()}");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("For more details about var and dynamic keyword, Please checkout README.md :)");
+            Console.ResetColor();
         }
     }
 }
