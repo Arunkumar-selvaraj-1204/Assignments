@@ -29,7 +29,7 @@ namespace CollectionAndGenerics.Task6
         /// <returns>Returns the dictionary as IReadOnlyDictionary</returns>
         public IReadOnlyDictionary<string, int> GenerateDictionary()
         {
-            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            var dictionary = new Dictionary<string, int>();
             dictionary.Add("Arunkumar", 21);
             dictionary.Add("Pirai", 20);
 
@@ -53,7 +53,7 @@ namespace CollectionAndGenerics.Task6
         /// </summary>
         public void ModifyDictionary()
         {
-            IReadOnlyDictionary<string, int> dictionary = GenerateDictionary();
+            var dictionary = GenerateDictionary();
             //dictionary["Arunkumar"] = 10; //  Throw an error because IReadOnlyDictionary is immutable 
         }
     }
