@@ -23,6 +23,12 @@ namespace InspectAssembly
             }
             Console.WriteLine("Value changed successfully...");
             objectInspector.DisplayProerties();
+
+            //Task 3
+            var methodInvoker = new DynamicMethodInvoker(assembly);
+            int number1 = GetNumber();
+            int number2 = GetNumber();
+            methodInvoker.AddTwoNumber(number1, number2 );
         }
 
         private static string GetPropertyToChange()
@@ -56,14 +62,9 @@ namespace InspectAssembly
                 Console.WriteLine(ev.Name);
             }
         }
-        private static string GetName()
+        private static int GetNumber()
         {
-            Console.Write("Enter your name to change in the dll: ");
-            return Console.ReadLine();
-        }
-        private static int GetVersion()
-        {
-            Console.Write("Enter the version to change in dll: ");
+            Console.Write("Enter a number: ");
             int result;
             while (int.TryParse(Console.ReadLine(), out result)){
                 Console.Write("Enter valid integer: ");
