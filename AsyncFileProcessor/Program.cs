@@ -11,7 +11,7 @@ namespace AsyncFileProcessor
     {
         static async Task Main(string[] args)
         {
-            AsyncFileDataHandler handler = new AsyncFileDataHandler();
+            var handler = new AsyncFileDataHandler();
             var filesToProcess = new List<(string, string)>();
 
             Console.Write("Enter how many files you want to access asynchronously: ");
