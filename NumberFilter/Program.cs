@@ -1,76 +1,70 @@
-﻿using Spectre.Console;
+﻿using System.Reflection.Emit;
+using Spectre.Console;
 
 namespace NumberFilter
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.Write("Enter number of elements in an array: ");
-            int arrayLength = GetInt();
-            int[] numbers = new int[arrayLength];
-            for (int i = 0; i < arrayLength; i++)
-            {
-                Console.Write($"Enter {i + 1} element: ");
-                numbers[i] = GetInt();
-            }
+            AnsiConsole.MarkupLine($"\n[cyan]Application to find squares of even or odd numbers in the array[/]");
+            int arrayLength = AnsiConsole.Ask<int>("Enter number of elements in the array:");
+            int[] numbers = GetNumbers(arrayLength);
 
-            var choice = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Select a filter:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Even numbers",
-                    "Odd numbers"
-                }));
+            string choice = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("Select a filter:")
+                    .PageSize(10)
+                    .AddChoices("Even numbers", "Odd numbers"));
+
             var filteredNumbers = FilterNumbers(numbers, choice);
-            Console.WriteLine($"{choice}:");
-            foreach (var number in filteredNumbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine($"Square of {choice}");
-            var squaredNumbers = GetSquare(filteredNumbers);
-            foreach (var number in squaredNumbers)
-            {
-                Console.WriteLine(number);
-            }
+            DisplayResults(filteredNumbers, $"{choice}");
 
+            var squaredNumbers = GetSquares(filteredNumbers);
+            DisplayResults(squaredNumbers, $"Squares of {choice}");
         }
 
         /// <summary>
-        /// Gets int from user
+        /// Reads an array of integers from the user.
         /// </summary>
-        /// <returns>Returns int</returns>
-        public static int GetInt()
+        static int[] GetNumbers(int count)
         {
-            string input = Console.ReadLine();
-            int value;
-            while (!int.TryParse(input, out value))
+            var numbers = new int[count];
+            for (int i = 0; i < count; i++)
             {
-                Console.WriteLine("Invalid input. Please enter a valid integer:");
-                input = Console.ReadLine();
+                numbers[i] = AnsiConsole.Ask<int>($"Enter element {i + 1}:");
             }
-            return value;
+            return numbers;
         }
 
-        private static IEnumerable<int> FilterNumbers(int[] numbers, string choice)
+        /// <summary>
+        /// Filters even or odd numbers based on choice.
+        /// </summary>
+        static IEnumerable<int> FilterNumbers(IEnumerable<int> numbers, string choice)
         {
-            IEnumerable<int> filteredNumbers;
-            if (choice == "Even numbers")
-            {
-                filteredNumbers = numbers.Where(x => x % 2 == 0);
-            }
-            else
-            {
-                filteredNumbers = numbers.Where(x => x % 2 != 0);
-            }
-            return filteredNumbers;
+            return choice == "Even numbers"
+                ? numbers.Where(x => x % 2 == 0)
+                : numbers.Where(x => x % 2 != 0);
         }
 
-        private static IEnumerable<int> GetSquare(IEnumerable<int> numbers)
+        /// <summary>
+        /// Calculates square of each number.
+        /// </summary>
+        static IEnumerable<int> GetSquares(IEnumerable<int> numbers)
         {
-            return numbers.Select(x => { return x * x; });
+            return numbers.Select(x => x * x);
+        }
+
+        /// <summary>
+        /// Displays a list of numbers with a label.
+        /// </summary>
+        static void DisplayResults(IEnumerable<int> numbers, string label)
+        {
+            AnsiConsole.MarkupLine($"\n[green]{label}[/]:");
+            foreach (var number in numbers)
+            {
+                AnsiConsole.MarkupLine($"[yellow]{number}[/]");
+            }
         }
     }
 }
