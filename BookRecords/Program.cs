@@ -1,70 +1,125 @@
-﻿namespace BookRecords
+﻿using System;
+using Spectre.Console;
+namespace BookRecords
 {
-    /// <summary>
-    /// Defines a record for Book with Title, Author, and ISBN.
-    /// </summary>
     public record Book(string Title, string Author, string ISBN);
 
     class Program
     {
         static void Main()
         {
+            bool running = true;
+
+            while (running)
+            {
+                var choice = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("[yellow]What would you like to do?[/]")
+                        .AddChoices(new[]
+                        {
+                        "Enter books and display them",
+                        "Demonstrate value equality",
+                        "Demonstrate immutability",
+                        "Demonstrate 'with' mutation",
+                        "Exit"
+                        }));
+
+                switch (choice)
+                {
+                    case "Enter books and display them":
+                        EnterAndDisplayBooks();
+                        break;
+
+                    case "Demonstrate value equality":
+                        DemonstrateEquality();
+                        break;
+
+                    case "Demonstrate immutability":
+                        DemonstrateImmutability();
+                        break;
+
+                    case "Demonstrate 'with' mutation":
+                        DemonstrateWithMutation();
+                        break;
+
+                    case "Exit":
+                        AnsiConsole.MarkupLine("[green]Goodbye![/]");
+                        running = false;
+                        break;
+                }
+
+                if (running)
+                {
+                    AnsiConsole.MarkupLine("\n[gray]Press Enter to continue...[/]");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+            }
+        }
+
+        static void EnterAndDisplayBooks()
+        {
             var books = new Book[3];
+            AnsiConsole.MarkupLine($"\n[blue]Enter details of three books to display using records[/]");
             for (int i = 0; i < books.Length; i++)
             {
-                Console.WriteLine($"\nEnter details for Book {i + 1}:");
+                AnsiConsole.MarkupLine($"\n[blue]Enter details for Book {i + 1}[/]");
 
-                Console.Write("Title: ");
-                string title = Console.ReadLine();
-
-                Console.Write("Author: ");
-                string author = Console.ReadLine();
-
-                Console.Write("ISBN: ");
-                string isbn = Console.ReadLine();
+                string title = AnsiConsole.Ask<string>("Title:");
+                string author = AnsiConsole.Ask<string>("Author:");
+                string isbn = AnsiConsole.Ask<string>("ISBN:");
 
                 books[i] = new Book(title, author, isbn);
             }
 
-            Console.WriteLine("\n--- Book Details ---");
+            AnsiConsole.MarkupLine("\n[green]--- Book Details ---[/]");
             foreach (var book in books)
             {
                 DisplayBook(book);
             }
+        }
 
-            // Demonstrate value equality
+        static void DisplayBook(Book book)
+        {
+            AnsiConsole.MarkupLine($"[cyan]Title:[/] {book.Title}");
+            AnsiConsole.MarkupLine($"[cyan]Author:[/] {book.Author}");
+            AnsiConsole.MarkupLine($"[cyan]ISBN:[/] {book.ISBN}\n");
+        }
+
+        static void DemonstrateEquality()
+        {
             var bookA = new Book("C# in Depth", "Jon Skeet", "9781617294532");
             var bookB = new Book("C# in Depth", "Jon Skeet", "9781617294532");
 
-            Console.WriteLine("\n--- Value Equality Demo ---");
-            Console.WriteLine($"BookA: {bookA}");
-            Console.WriteLine($"BookB: {bookB}");
+            AnsiConsole.MarkupLine("\n[green]--- Value Equality Demo ---[/]");
+            DisplayBook(bookA);
+            DisplayBook(bookB);
+
             Console.WriteLine($"BookA == BookB: {bookA == bookB}");
-
-            // Show immutability
-            Console.WriteLine("\n--- Immutability Demo ---");
-            // bookA.Title = "New Title"; // Uncommenting this line will result in an error because records are immutable.
-
-            Console.WriteLine("Records are immutable. You can't change the property after creation.");
-
-            // Demonstrate mutation using 'with'
-            Console.WriteLine("--------------------- \nChange the title of book A \nEnter book name: ");
-            var updatedBookA = bookA with { Title = Console.ReadLine() };
-            Console.WriteLine("\n--- Non-destructive Mutation Demo ---");
-            Console.WriteLine($"Original:    {bookA}");
-            Console.WriteLine($"After 'with': {updatedBookA}");
-
         }
 
-        /// <summary>
-        /// Displays a Book's properties using deconstruction.
-        /// </summary>
-        /// <param name="book">The Book record to display.</param>
-        static void DisplayBook(Book book)
+        static void DemonstrateImmutability()
         {
-            var (title, author, isbn) = book;
-            Console.WriteLine($"Title: {title}, Author: {author}, ISBN: {isbn}");
+            var book = new Book("Immutable Book", "Alice", "1234567890");
+            DisplayBook(book);
+            AnsiConsole.MarkupLine("[red]You can't modify a record's property after creation![/]");
         }
-        
+
+        static void DemonstrateWithMutation()
+        {
+            var bookA = new Book("C# in Depth", "Jon Skeet", "9781617294532");
+
+            AnsiConsole.MarkupLine("[blue]Enter a new title for bookA:[/]");
+            string newTitle = Console.ReadLine();
+
+            var updatedBookA = bookA with { Title = newTitle };
+
+            AnsiConsole.MarkupLine("\n[green]--- Non-destructive Mutation Demo ---[/]");
+            AnsiConsole.MarkupLine("[yellow]Original:[/]");
+            DisplayBook(bookA);
+
+            AnsiConsole.MarkupLine("[yellow]After 'with':[/]");
+            DisplayBook(updatedBookA);
+        }
     }
 }
