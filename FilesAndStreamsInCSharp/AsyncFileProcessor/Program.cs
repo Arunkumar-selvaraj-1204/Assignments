@@ -95,8 +95,8 @@ namespace AsyncFileProcessor
         {
             long fileSize = 1L * 1024 * 1024;
             string textToWrite = GetTextFromUser();
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (StreamWriter writer = new StreamWriter(fileStream, Encoding.ASCII))
+            using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var writer = new StreamWriter(fileStream, Encoding.ASCII))
             {
                 long totalWritten = 0;
                 while (totalWritten < fileSize)

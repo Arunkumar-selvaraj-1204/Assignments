@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace LoggingSystem
 {
@@ -28,11 +24,11 @@ namespace LoggingSystem
         /// <param name="errorMessage">Error message to log.</param>
         public void LogErrorInefficiently(string errorMessage)
         {
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
             {
                 byte[] errorBytes = Encoding.UTF8.GetBytes(errorMessage);
                 memoryStream.Write(errorBytes, 0, errorBytes.Length);
-                using (FileStream fileStream = new FileStream(_logFilePath, FileMode.Append))
+                using (var fileStream = new FileStream(_logFilePath, FileMode.Append))
                 {
                     memoryStream.WriteTo(fileStream);
                 }
@@ -43,10 +39,10 @@ namespace LoggingSystem
         /// Logs an error efficiently using async FileStream.
         /// </summary>
         /// <param name="errorMessage">Error message to log.</param>
-        public async void LogErrorEfficiently(string errorMessage)
+        public async void LogErrorEfficientlyAsync(string errorMessage)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(errorMessage);
-            using (FileStream fileStream = new FileStream(_logFilePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
+            using (var fileStream = new FileStream(_logFilePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
             {
                 await fileStream.WriteAsync(buffer, 0, buffer.Length);
             }
@@ -57,14 +53,14 @@ namespace LoggingSystem
         /// </summary>
         /// <param name="errorMessage">Error message to log.</param>
         /// <returns>A task representing the async operation.</returns>
-        public async Task LogErrorThreadSafe(string errorMessage)
+        public async Task LogAsyncWithThreadSafety(string errorMessage)
         {
             var semaphoreSlim = new SemaphoreSlim(1);
             byte[] bytes = Encoding.UTF8.GetBytes(errorMessage);
             await semaphoreSlim.WaitAsync();
             try
             {
-                using (FileStream fileStream = new FileStream(_logFilePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
+                using (var fileStream = new FileStream(_logFilePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
                 {
                     await fileStream.WriteAsync(bytes, 0, bytes.Length);
                 }
@@ -81,11 +77,11 @@ namespace LoggingSystem
         /// <param name="userId">User ID for the log file.</param>
         /// <param name="errorMessage">Error message to log.</param>
         /// <returns>A task representing the async operation.</returns>
-        public async Task LogErrorInUserSpecificFile(string userId, string errorMessage)
+        public async Task LogErrorAsyncInUserSpecificFile(string userId, string errorMessage)
         {
             string filePath = $"{userId}Error.log";
             byte[] bytes = Encoding.UTF8.GetBytes(errorMessage);
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
+            using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
             {
                 await fileStream.WriteAsync(bytes, 0, bytes.Length);
             }

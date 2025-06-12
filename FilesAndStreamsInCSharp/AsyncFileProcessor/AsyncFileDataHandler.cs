@@ -25,9 +25,9 @@ namespace AsyncFileProcessor
 
             try
             {
-                using FileStream sourceStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: ChunkSize, useAsync: true);
-                using FileStream destinationStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: ChunkSize, useAsync: true);
-                await PerformConvertionToUpperCase(sourceStream, destinationStream);
+                using var sourceStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: ChunkSize, useAsync: true);
+                using var destinationStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: ChunkSize, useAsync: true);
+                await PerformConvertionToUpperCaseAsync(sourceStream, destinationStream);
             }
             catch
             {
@@ -60,7 +60,7 @@ namespace AsyncFileProcessor
         /// <summary>
         /// Reads from the source stream, converts each chunk to upper case, and writes to the destination stream asynchronously.
         /// </summary>
-        private static async Task PerformConvertionToUpperCase(FileStream sourceStream, FileStream destinationStream)
+        private static async Task PerformConvertionToUpperCaseAsync(FileStream sourceStream, FileStream destinationStream)
         {
             byte[] buffer = new byte[ChunkSize];
             int bytesRead;

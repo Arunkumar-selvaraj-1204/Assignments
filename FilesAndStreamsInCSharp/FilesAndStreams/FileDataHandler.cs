@@ -19,8 +19,8 @@ namespace FilesAndStreams
         {
             long fileSize = size * 1024 * 1024 * 1024;
             string textToWrite = GetTextFromUser();
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (StreamWriter writer = new StreamWriter(fileStream, Encoding.ASCII))
+            using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var writer = new StreamWriter(fileStream, Encoding.ASCII))
             {
                 long totalWritten = 0;
                 while (totalWritten < fileSize)
@@ -38,14 +38,14 @@ namespace FilesAndStreams
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ReadFileUsingFileStream(string sourcePath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (StreamReader reader = new StreamReader(fileStreamToRead))
+            using (var fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (var reader = new StreamReader(fileStreamToRead))
             {
                 int chunkSize = 4 * 1024;
                 char[] buffer = new char[chunkSize];
                 int bytesRead = 0;
 
-                Stopwatch stopWatch = Stopwatch.StartNew();
+                var stopWatch = Stopwatch.StartNew();
 
                 do
                 {
@@ -64,15 +64,15 @@ namespace FilesAndStreams
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ReadFileUsingBufferedStream(string sourcePath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (BufferedStream bufferedInput = new BufferedStream(fileStreamToRead))
-            using (StreamReader reader = new StreamReader(bufferedInput))
+            using (var fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (var bufferedInput = new BufferedStream(fileStreamToRead))
+            using (var reader = new StreamReader(bufferedInput))
             {
                 int chunkSize = 4 * 1024;
                 char[] buffer = new char[chunkSize];
                 int bytesRead = 0;
 
-                Stopwatch stopWatch = Stopwatch.StartNew();
+                var stopWatch = Stopwatch.StartNew();
 
                 do
                 {
@@ -92,16 +92,16 @@ namespace FilesAndStreams
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ConvertToUpperCaseUsingChunks(string sourcePath, string destinationPath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (StreamWriter writer = new StreamWriter(fileStreamToWrite, Encoding.ASCII))
-            using (StreamReader reader = new StreamReader(fileStreamToRead))
+            using (var fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (var fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var writer = new StreamWriter(fileStreamToWrite, Encoding.ASCII))
+            using (var reader = new StreamReader(fileStreamToRead))
             {
                 int chunkSize = 4 * 1024;
                 char[] buffer = new char[chunkSize];
                 int bytesRead = 0;
 
-                Stopwatch stopWatch = Stopwatch.StartNew();
+                var stopWatch = Stopwatch.StartNew();
 
                 do
                 {
@@ -122,18 +122,18 @@ namespace FilesAndStreams
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ConvertToUpperCaseUsingBufferStream(string sourcePath, string destinationPath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (BufferedStream bufferedInput = new BufferedStream(fileStreamToRead))
-            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (BufferedStream bufferedOutput = new BufferedStream(fileStreamToWrite))
-            using (StreamWriter writer = new StreamWriter(bufferedOutput, Encoding.ASCII))
-            using (StreamReader reader = new StreamReader(bufferedInput))
+            using (var fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (var bufferedInput = new BufferedStream(fileStreamToRead))
+            using (var fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var bufferedOutput = new BufferedStream(fileStreamToWrite))
+            using (var writer = new StreamWriter(bufferedOutput, Encoding.ASCII))
+            using (var reader = new StreamReader(bufferedInput))
             {
                 int chunkSize = 4 * 1024;
                 char[] buffer = new char[chunkSize];
                 int bytesRead = 0;
 
-                Stopwatch stopWatch = Stopwatch.StartNew();
+                var stopWatch = Stopwatch.StartNew();
 
                 do
                 {
@@ -154,16 +154,16 @@ namespace FilesAndStreams
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ConvertToUpperCaseUsingMemoryStream(string sourcePath, string destinationPath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (var fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 byte[] buffer = new byte[(4 * 1024)];
                 int bytesRead;
 
-                Stopwatch stopwatch = Stopwatch.StartNew();
+                var stopwatch = Stopwatch.StartNew();
                 while ((bytesRead = fileStreamToRead.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    using (MemoryStream memoryStream = new MemoryStream())
+                    using (var memoryStream = new MemoryStream())
                     {
                         memoryStream.Write(buffer, 0, bytesRead);
                         memoryStream.Position = 0;

@@ -34,13 +34,13 @@ namespace LoggingSystem
                 if (choice == 1)
                 {
                     var tasks = Enumerable.Range(0, userCount)
-                        .Select(i => logger.LogErrorThreadSafe($"User{i}: {errorMessage}{Environment.NewLine}"));
+                        .Select(i => logger.LogAsyncWithThreadSafety($"User{i}: {errorMessage}{Environment.NewLine}"));
                     await Task.WhenAll(tasks);
                 }
                 else if (choice == 2)
                 {
                     var tasks = Enumerable.Range(0, userCount)
-                        .Select(i => logger.LogErrorInUserSpecificFile($"user{i}", $"{errorMessage}{Environment.NewLine}"));
+                        .Select(i => logger.LogErrorAsyncInUserSpecificFile($"user{i}", $"{errorMessage}{Environment.NewLine}"));
                     await Task.WhenAll(tasks);
                 }
                 else
@@ -67,13 +67,13 @@ namespace LoggingSystem
             string filePath = Console.ReadLine() ?? "logger.log";
             var logger = new Logger(filePath);
             Console.WriteLine("---Sync logger---");
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            var stopwatch = Stopwatch.StartNew();
             stopwatch.Start();
             logger.LogErrorInefficiently(errorMessage);
             stopwatch.Stop();
             Console.WriteLine("TimeTake: " + stopwatch.ElapsedMilliseconds + "ms");
             Console.WriteLine("---Async logger---");
-            Stopwatch stopwatch2 = Stopwatch.StartNew();
+            var stopwatch2 = Stopwatch.StartNew();
             stopwatch2.Start();
             logger.LogErrorInefficiently(errorMessage);
             stopwatch2.Stop();

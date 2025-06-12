@@ -21,15 +21,15 @@ namespace IssuesInFileUsage
 
         static long InefficientFileWriteAndRead(string path, string data)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
             stopwatch.Start();
             // Write using MemoryStream unnecessarily
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
             {
                 byte[] buffer = Encoding.ASCII.GetBytes(data);
                 memoryStream.Write(buffer, 0, buffer.Length);
 
-                using (FileStream fileStream = new FileStream(path, FileMode.Create))
+                using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     byte[] writeBuffer = memoryStream.ToArray();
                     fileStream.Write(writeBuffer, 0, writeBuffer.Length);
@@ -37,7 +37,7 @@ namespace IssuesInFileUsage
             }
 
             // Read using overly large buffer and inefficient printing
-            using (FileStream fileStream = new FileStream(path, FileMode.Open))
+            using (var fileStream = new FileStream(path, FileMode.Open))
             {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
@@ -55,16 +55,16 @@ namespace IssuesInFileUsage
         }
         static long OptimizedFileWriteAndRead(string path, string data)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
             stopwatch.Start();
             byte[] buffer = Encoding.ASCII.GetBytes(data);
-            using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 fileStream.Write(buffer, 0, buffer.Length);
             }
 
             // Read the file using exact-sized buffer and convert directly to string
-            using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 byte[] readBuffer = new byte[fileStream.Length];
                 int bytesRead = fileStream.Read(readBuffer, 0, readBuffer.Length);
