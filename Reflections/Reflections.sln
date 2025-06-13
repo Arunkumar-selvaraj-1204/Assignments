@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicTypeBuilder", "DynamicTypeBuilder\DynamicTypeBuilder.csproj", "{118E8558-7753-452A-B8F1-3EE91E4E1530}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginsOperator", "PluginsOperator\PluginsOperator.csproj", "{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedPlugin", "SharedPlugin\SharedPlugin.csproj", "{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
