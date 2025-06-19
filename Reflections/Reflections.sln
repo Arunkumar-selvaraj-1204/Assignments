@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspectAssembly", "InspectAssembly\InspectAssembly.csproj", "{A7A759B8-5109-49AE-BF2A-6646CD0AB4A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllGenerator", "ClassLibrary1\DllGenerator.csproj", "{4C086BF2-2ACC-4011-9DAC-ED8B5ACD02E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicTypeBuilder", "DynamicTypeBuilder\DynamicTypeBuilder.csproj", "{118E8558-7753-452A-B8F1-3EE91E4E1530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginsOperator", "PluginsOperator\PluginsOperator.csproj", "{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedPlugin", "SharedPlugin\SharedPlugin.csproj", "{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMocker", "DynamicMocker\DynamicMocker.csproj", "{8B5DF7B6-12AD-4B5E-A951-34EDAD55F2B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializationAPI", "SerializationAPI\SerializationAPI.csproj", "{3E86800E-327B-4D35-94D6-A9F34127CA55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7A759B8-5109-49AE-BF2A-6646CD0AB4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A759B8-5109-49AE-BF2A-6646CD0AB4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A759B8-5109-49AE-BF2A-6646CD0AB4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A759B8-5109-49AE-BF2A-6646CD0AB4A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C086BF2-2ACC-4011-9DAC-ED8B5ACD02E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C086BF2-2ACC-4011-9DAC-ED8B5ACD02E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C086BF2-2ACC-4011-9DAC-ED8B5ACD02E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C086BF2-2ACC-4011-9DAC-ED8B5ACD02E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118E8558-7753-452A-B8F1-3EE91E4E1530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E19C4C0-DD91-459F-9BB4-DF191E1AA87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3A21BB-3824-4738-BD32-AEF2BAB71C72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B5DF7B6-12AD-4B5E-A951-34EDAD55F2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B5DF7B6-12AD-4B5E-A951-34EDAD55F2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B5DF7B6-12AD-4B5E-A951-34EDAD55F2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B5DF7B6-12AD-4B5E-A951-34EDAD55F2B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E86800E-327B-4D35-94D6-A9F34127CA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E86800E-327B-4D35-94D6-A9F34127CA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E86800E-327B-4D35-94D6-A9F34127CA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E86800E-327B-4D35-94D6-A9F34127CA55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28A180D6-A804-4ABF-8727-0BC7B8015DEC}
+	EndGlobalSection
+EndGlobal
