@@ -7,7 +7,7 @@ namespace PluginsOperator
     {
         static void Main(string[] args)
         {
-            Assembly pluginAssembly = Assembly.LoadFrom("../../../pluginsHelper.dll");
+            var pluginAssembly = Assembly.LoadFrom("../../../pluginsHelper.dll");
             foreach (var type in pluginAssembly.GetTypes())
             {
                 if (type.GetInterface("IPlugins") != null && !type.IsInterface && !type.IsAbstract)

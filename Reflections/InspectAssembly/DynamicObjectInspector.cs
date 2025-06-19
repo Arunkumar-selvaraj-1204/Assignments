@@ -14,7 +14,7 @@ namespace InspectAssembly
         public object instanceObject;
         public DynamicObjectInspector(object assemblyObject) 
         { 
-            Assembly assembly = assemblyObject as Assembly;
+            var assembly = assemblyObject as Assembly;
             instanceType = assembly.GetType("ReflectionHelper.Helper");
             instanceObject = Activator.CreateInstance(instanceType);
             propertyInfo = instanceType.GetProperties();

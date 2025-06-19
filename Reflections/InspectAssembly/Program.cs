@@ -6,8 +6,8 @@ namespace InspectAssembly
     {
         static void Main(string[] args)
         {
-            Assembly assembly = Assembly.LoadFrom("../../../InspectAssemblyMetaData.dll");
-            Type helperType = assembly.GetType("ReflectionHelper.Helper");
+            var assembly = Assembly.LoadFrom("../../../InspectAssemblyMetaData.dll");
+            var helperType = assembly.GetType("ReflectionHelper.Helper");
             object helperInstance = Activator.CreateInstance(helperType);
             DisplayMetaData(helperType, helperInstance);
             
